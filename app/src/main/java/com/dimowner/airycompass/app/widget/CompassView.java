@@ -27,11 +27,11 @@ public class CompassView extends View {
 	public static final float INNER_RADIUS = 0.24f;
 	public static final float SMALL_MARK_INNER_RADIUS = 0.35f;
 	public static final float SMALL_MARK_OUTER_RADIUS = 0.38f;
-	public static final float BIG_MARK_INNER_RADIUS = 0.33f;
+	public static final float BIG_MARK_INNER_RADIUS = 0.34f;
 	public static final float BIG_MARK_OUTER_RADIUS = 0.38f;
-	public static final float NORTH_MARK_INNER_RADIUS = 0.32f;
+	public static final float NORTH_MARK_INNER_RADIUS = 0.30f;
 	public static final float NORTH_MARK_OUTER_RADIUS = 0.4f;
-	public static final float DEGREE_RADIUS = 0.29f;
+	public static final float DEGREE_RADIUS = 0.30f;
 	public static final float DIRECTION_RADIUS = 0.215f;
 	public static final float MAGNETIC_VIEW_RADIUS = 0.407f;
 	public static final float MAGNETIC_NAME_RADIUS = 0.414f;
@@ -96,6 +96,7 @@ public class CompassView extends View {
 
 	private void init(Context context) {
 		Typeface typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
+		Typeface typeface2 = Typeface.create("sans-serif-medium", Typeface.NORMAL);
 
 		Resources res = context.getResources();
 		n = res.getString(R.string.n);
@@ -170,7 +171,7 @@ public class CompassView extends View {
 		bigMarkPaint.setStrokeCap(Paint.Cap.ROUND);
 		bigMarkPaint.setColor(bigMarkColor);
 		bigMarkPaint.setStyle(Paint.Style.STROKE);
-		bigMarkPaint.setStrokeWidth(AndroidUtils.dpToPx(2.2f));
+		bigMarkPaint.setStrokeWidth(AndroidUtils.dpToPx(2f));
 
 		//NorthMark
 		northMarkStaticPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -181,10 +182,11 @@ public class CompassView extends View {
 		northMarkPaint.setStrokeCap(Paint.Cap.ROUND);
 		northMarkPaint.setColor(northMarkColor);
 		northMarkPaint.setStyle(Paint.Style.STROKE);
-		northMarkPaint.setStrokeWidth(AndroidUtils.dpToPx(2.46f));
+		northMarkPaint.setStrokeWidth(AndroidUtils.dpToPx(4f));
 
 		northMarkTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		northMarkTextPaint.setColor(northMarkColor);
+		northMarkTextPaint.setTypeface(typeface2);
 		northMarkTextPaint.setTextSize(AndroidUtils.dpToPx(28));
 		northMarkTextPaint.setTextAlign(Paint.Align.CENTER);
 
@@ -197,12 +199,13 @@ public class CompassView extends View {
 
 		directionTextMainPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		directionTextMainPaint.setColor(primaryTextColor);
-		directionTextMainPaint.setTextSize(AndroidUtils.dpToPx(22));
+		directionTextMainPaint.setTextSize(AndroidUtils.dpToPx(26));
+		directionTextMainPaint.setTypeface(typeface2);
 		directionTextMainPaint.setTextAlign(Paint.Align.CENTER);
 
 		directionTextSlavePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		directionTextSlavePaint.setColor(secondaryTextColor);
-		directionTextSlavePaint.setTextSize(AndroidUtils.dpToPx(16));
+		directionTextSlavePaint.setTextSize(AndroidUtils.dpToPx(14));
 		directionTextSlavePaint.setTextAlign(Paint.Align.CENTER);
 
 		//Current direction
