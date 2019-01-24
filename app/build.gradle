@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
+android {
+	compileSdkVersion 28
+	defaultConfig {
+		applicationId "com.dimowner.airycompass"
+		minSdkVersion 16
+		targetSdkVersion 28
+		versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled true
+			shrinkResources true
+			useProguard true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+		debug {
+			minifyEnabled false
+		}
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+	}
+
+	lintOptions {
+		checkReleaseBuilds false
+		// Or, if you prefer, you can continue to check for errors in release builds,
+		// but continue the build even when errors are found:
+		abortOnError false
+	}
+
+	dependencies {
+
+		//Timber
+		implementation 'com.jakewharton.timber:timber:4.6.1'
+	}
+
+}
