@@ -32,12 +32,13 @@ public class SensorEventListenerImpl implements SensorEventListener {
 	private Sensor magneticSensor;
 	private float[] gravity = new float[3];
 	private float[] geomagnetic = new float[3];
-	private static final int UPDATE_INTERVAL = 100; //mills
+	private static final int UPDATE_INTERVAL = 10; //mills
 	private long accelerometerPrevTime = 0;
 	private long magneticPrevTime = 0;
 	private float[] rotationMatrixR = new float[9];
 	private float[] rotationMatrixI = new float[9];
 	private SensorsListener sensorsListener;
+	private final float ALPHA = 0.96f;
 
 	public SensorEventListenerImpl(Context context) {
 		sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -48,16 +49,14 @@ public class SensorEventListenerImpl implements SensorEventListener {
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		if (sensorsListener == null) return;
-		final float alpha = 0.8f;
+
 		long time = System.currentTimeMillis();
-
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-			gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-			gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-			gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+			gravity[0] = ALPHA * gravity[0] + (1 - ALPHA) * event.values[0];
+			gravity[1] = ALPHA * gravity[1] + (1 - ALPHA) * event.values[1];
+			gravity[2] = ALPHA * gravity[2] + (1 - ALPHA) * event.values[2];
 
-			boolean success = SensorManager.getRotationMatrix(rotationMatrixR, rotationMatrixI, gravity, geomagnetic);
-			if (success) {
+			if (SensorManager.getRotationMatrix(rotationMatrixR, rotationMatrixI, gravity, geomagnetic)) {
 				orientation = SensorManager.getOrientation(rotationMatrixR, orientation);
 				if (time - accelerometerPrevTime > UPDATE_INTERVAL) {
 					sensorsListener.onRotationChange(
@@ -69,9 +68,9 @@ public class SensorEventListenerImpl implements SensorEventListener {
 				}
 			}
 		} else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-			geomagnetic[0] = alpha * geomagnetic[0] + (1 - alpha) * event.values[0];
-			geomagnetic[1] = alpha * geomagnetic[1] + (1 - alpha) * event.values[1];
-			geomagnetic[2] = alpha * geomagnetic[2] + (1 - alpha) * event.values[2];
+			geomagnetic[0] = ALPHA * geomagnetic[0] + (1 - ALPHA) * event.values[0];
+			geomagnetic[1] = ALPHA * geomagnetic[1] + (1 - ALPHA) * event.values[1];
+			geomagnetic[2] = ALPHA * geomagnetic[2] + (1 - ALPHA) * event.values[2];
 
 			float magneticField = (float) Math.sqrt(geomagnetic[0] * geomagnetic[0]
 					+ geomagnetic[1] * geomagnetic[1]
@@ -89,8 +88,8 @@ public class SensorEventListenerImpl implements SensorEventListener {
 	}
 
 	public void start() {
-		sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_UI);
-		sensorManager.registerListener(this, magneticSensor, SensorManager.SENSOR_DELAY_UI);
+		sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
+		sensorManager.registerListener(this, magneticSensor, SensorManager.SENSOR_DELAY_GAME);
 	}
 
 	public void stop() {

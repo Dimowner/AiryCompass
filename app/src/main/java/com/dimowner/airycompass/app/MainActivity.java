@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * You may obtain prevDegree copy of the License at
  *
  *    http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -26,11 +26,14 @@ import android.os.Bundle;
 import com.dimowner.airycompass.R;
 import com.dimowner.airycompass.app.widget.AccelerometerView;
 import com.dimowner.airycompass.app.widget.CompassView;
+import com.dimowner.airycompass.app.widget.CompassViewCompound;
 import com.dimowner.airycompass.sensor.SensorEventListenerImpl;
 
 public class MainActivity extends Activity implements SensorEventListenerImpl.SensorsListener {
 
-	private CompassView compassView;
+//	private CompassView compassView;
+	private CompassViewCompound compassViewCompound;
+
 	private AccelerometerView accelerometerView;
 	private SensorEventListenerImpl sensorEventListener;
 
@@ -39,7 +42,9 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		compassView = findViewById(R.id.compass_view);
+		compassViewCompound = findViewById(R.id.compass_view_compound);
+//		compassView = findViewById(R.id.compass_view);
+
 		accelerometerView = findViewById(R.id.accelerometer_view);
 
 		sensorEventListener = new SensorEventListenerImpl(getApplicationContext());
@@ -82,12 +87,14 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 
 	@Override
 	public void onRotationChange(float azimuth, float pitch, float roll) {
-		compassView.updateAzimuth((azimuth + 360) % 360);
+		compassViewCompound.updateRotation((azimuth + 360) % 360);
+//		compassView.updateAzimuth((azimuth + 360) % 360);
 		accelerometerView.updateView(pitch, roll);
 	}
 
 	@Override
 	public void onMagneticFieldChange(float value) {
-		compassView.updateMagneticField(value);
+		compassViewCompound.updateMagneticField(value);
+//		compassView.updateMagneticField(value);
 	}
 }

@@ -24,6 +24,7 @@ public class AnimationUtil {
 	private AnimationUtil() { }
 
 	public static void viewRotationAnimation(View view, float rotation, long duration) {
+		view.clearAnimation();
 		view.animate()
 				.rotation(rotation)
 				.setDuration(duration)

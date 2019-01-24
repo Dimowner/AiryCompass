@@ -15,9 +15,10 @@
   ~ limitations under the License.
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-					 android:layout_width="match_parent"
-					 android:layout_height="match_parent"
-				    android:orientation="vertical">
+				  android:layout_width="match_parent"
+				  android:layout_height="match_parent"
+				  xmlns:tools="http://schemas.android.com/tools"
+				  android:orientation="vertical">
 
 	<com.dimowner.airycompass.app.widget.AccelerometerView
 			android:id="@+id/accelerometer_view"
@@ -29,9 +30,43 @@
 			android:layout_marginRight="@dimen/spacing_normal"
 			/>
 
-	<com.dimowner.airycompass.app.widget.CompassView
-			android:id="@+id/compass_view"
+	<!--<FrameLayout-->
+			<!--android:layout_width="wrap_content"-->
+			<!--android:layout_height="wrap_content">-->
+
+		<!--<com.dimowner.airycompass.app.widget.CompassBackgroundView-->
+				<!--android:id="@+id/compass_background_view"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content" />-->
+
+		<!--<com.dimowner.airycompass.app.widget.MagneticFieldView-->
+				<!--android:id="@+id/magnetic_field_view"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content" />-->
+
+		<!--<com.dimowner.airycompass.app.widget.CompassClockfaceView-->
+				<!--android:id="@+id/compass_clockface_view"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="wrap_content" />-->
+
+		<!--<TextView-->
+				<!--android:id="@+id/txt_direction"-->
+				<!--android:layout_width="wrap_content"-->
+				<!--android:layout_height="wrap_content"-->
+				<!--android:layout_gravity="center"-->
+				<!--android:textSize="36sp"-->
+				<!--android:textColor="@color/primary_text"-->
+				<!--tools:text="234*NE"/>-->
+
+	<!--</FrameLayout>-->
+
+	<!--<com.dimowner.airycompass.app.widget.CompassView-->
+			<!--android:id="@+id/compass_view"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content" />-->
+
+	<com.dimowner.airycompass.app.widget.CompassViewCompound
+			android:id="@+id/compass_view_compound"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" />
-
 </LinearLayout>
