@@ -30,43 +30,44 @@
 			android:layout_marginRight="@dimen/spacing_normal"
 			/>
 
-	<!--<FrameLayout-->
-			<!--android:layout_width="wrap_content"-->
-			<!--android:layout_height="wrap_content">-->
-
-		<!--<com.dimowner.airycompass.app.widget.CompassBackgroundView-->
-				<!--android:id="@+id/compass_background_view"-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="wrap_content" />-->
-
-		<!--<com.dimowner.airycompass.app.widget.MagneticFieldView-->
-				<!--android:id="@+id/magnetic_field_view"-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="wrap_content" />-->
-
-		<!--<com.dimowner.airycompass.app.widget.CompassClockfaceView-->
-				<!--android:id="@+id/compass_clockface_view"-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="wrap_content" />-->
-
-		<!--<TextView-->
-				<!--android:id="@+id/txt_direction"-->
-				<!--android:layout_width="wrap_content"-->
-				<!--android:layout_height="wrap_content"-->
-				<!--android:layout_gravity="center"-->
-				<!--android:textSize="36sp"-->
-				<!--android:textColor="@color/primary_text"-->
-				<!--tools:text="234*NE"/>-->
-
-	<!--</FrameLayout>-->
-
 	<!--<com.dimowner.airycompass.app.widget.CompassView-->
 			<!--android:id="@+id/compass_view"-->
 			<!--android:layout_width="match_parent"-->
 			<!--android:layout_height="wrap_content" />-->
 
-	<com.dimowner.airycompass.app.widget.CompassViewCompound
-			android:id="@+id/compass_view_compound"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+	<FrameLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+		<com.dimowner.airycompass.app.widget.AccuracyView
+				android:id="@+id/accuracy_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" />
+
+		<com.dimowner.airycompass.app.widget.MagneticFieldView
+				android:id="@+id/magnetic_field_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" />
+
+		<com.dimowner.airycompass.app.widget.CompassViewCompound
+				android:id="@+id/compass_view_compound"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" />
+	</FrameLayout>
+
+	<TextView
+			android:id="@+id/txt_accuracy"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/spacing_double"
+			android:layout_marginStart="@dimen/spacing_double"
+			android:textColor="@color/text_primary_light"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:fontFamily="sans-serif-light"
+			android:drawableTop="@drawable/all_inclusive"
+			android:textSize="@dimen/text_normal"
+			android:text="@string/need_calibration"
+			/>
+
 </LinearLayout>

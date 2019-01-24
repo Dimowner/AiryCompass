@@ -27,5 +27,12 @@
 	<string name="nw">NW</string>
 	<string name="mt_val">μT</string>
 	<string name="mag_field">mag.field</string>
+	<string name="accuracy">accuracy</string>
+
+	<string name="accuracy_unreliable">unreliable</string>
+	<string name="accuracy_low">low</string>
+	<string name="accuracy_medium">medium</string>
+	<string name="accuracy_high">high</string>
+	<string name="need_calibration">The compass needs to be calibrated.\n Sweep it through a figure eight pattern until the calibration is complete</string>
 
 </resources>

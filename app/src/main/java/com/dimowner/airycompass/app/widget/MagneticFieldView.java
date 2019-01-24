@@ -100,7 +100,7 @@ public class MagneticFieldView extends View {
 		magneticBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		magneticBackgroundPaint.setStyle(Paint.Style.STROKE);
 		magneticBackgroundPaint.setStrokeCap(Paint.Cap.ROUND);
-		magneticBackgroundPaint.setStrokeWidth(AndroidUtils.dpToPx(8));
+		magneticBackgroundPaint.setStrokeWidth(AndroidUtils.dpToPx(6));
 		magneticBackgroundPaint.setColor(magneticBackgroundColor);
 
 		magneticTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -111,7 +111,7 @@ public class MagneticFieldView extends View {
 
 		magneticFieldPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		magneticFieldPaint.setColor(magneticGradientColor);
-		magneticFieldPaint.setStrokeWidth(AndroidUtils.dpToPx(8));
+		magneticFieldPaint.setStrokeWidth(AndroidUtils.dpToPx(6));
 		magneticFieldPaint.setStyle(Paint.Style.STROKE);
 		magneticFieldPaint.setStrokeCap(Paint.Cap.ROUND);
 

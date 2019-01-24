@@ -22,17 +22,28 @@ import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.dimowner.airycompass.R;
 import com.dimowner.airycompass.app.widget.AccelerometerView;
+import com.dimowner.airycompass.app.widget.AccuracyView;
 import com.dimowner.airycompass.app.widget.CompassView;
 import com.dimowner.airycompass.app.widget.CompassViewCompound;
+import com.dimowner.airycompass.app.widget.MagneticFieldView;
 import com.dimowner.airycompass.sensor.SensorEventListenerImpl;
+
+import timber.log.Timber;
 
 public class MainActivity extends Activity implements SensorEventListenerImpl.SensorsListener {
 
+	private static final int UPDATE_INTERVAL_MAGNETIC = 40; //mills
+	private long magneticUpdatePrevTime = 0;
 //	private CompassView compassView;
+	private TextView txtAccuracy;
 	private CompassViewCompound compassViewCompound;
+	private MagneticFieldView magneticFieldView;
+	private AccuracyView accuracyView;
 
 	private AccelerometerView accelerometerView;
 	private SensorEventListenerImpl sensorEventListener;
@@ -44,6 +55,9 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 
 		compassViewCompound = findViewById(R.id.compass_view_compound);
 //		compassView = findViewById(R.id.compass_view);
+		magneticFieldView = findViewById(R.id.magnetic_field_view);
+		txtAccuracy = findViewById(R.id.txt_accuracy);
+		accuracyView = findViewById(R.id.accuracy_view);
 
 		accelerometerView = findViewById(R.id.accelerometer_view);
 
@@ -93,8 +107,35 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 	}
 
 	@Override
-	public void onMagneticFieldChange(float value) {
-		compassViewCompound.updateMagneticField(value);
+	public void onMagneticFieldChange(float value) { ;
 //		compassView.updateMagneticField(value);
+		long curTime = System.currentTimeMillis();
+		if (curTime - magneticUpdatePrevTime > UPDATE_INTERVAL_MAGNETIC) {
+			magneticFieldView.updateMagneticField(value);
+			magneticUpdatePrevTime = curTime;
+		}
+	}
+
+	@Override
+	public void onAccuracyChanged(int accuracy) {
+		accuracyView.updateAccuracyField(accuracy);
+		switch (accuracy) {
+			case 0:
+				Timber.v("Unreliable");
+				txtAccuracy.setVisibility(View.VISIBLE);
+				break;
+			case 1:
+				Timber.v("Low Accuracy");
+				txtAccuracy.setVisibility(View.VISIBLE);
+				break;
+			case 2:
+				Timber.v("Medium Accuracy");
+				txtAccuracy.setVisibility(View.VISIBLE);
+				break;
+			case 3:
+				Timber.v("High Accuracy");
+				txtAccuracy.setVisibility(View.INVISIBLE);
+				break;
+		}
 	}
 }

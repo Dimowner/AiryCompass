@@ -85,6 +85,25 @@ public class SensorEventListenerImpl implements SensorEventListener {
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		Timber.d("onAccuracyChanged sensor: " + sensor.getName() + " type: " + sensor.getType() + " accuracy: " + accuracy);
+		if (sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+			if (sensorsListener != null) {
+				sensorsListener.onAccuracyChanged(accuracy);
+			}
+			switch (accuracy) {
+				case 0:
+					Timber.v("Unreliable");
+					break;
+				case 1:
+					Timber.v("Low Accuracy");
+					break;
+				case 2:
+					Timber.v("Medium Accuracy");
+					break;
+				case 3:
+					Timber.v("High Accuracy");
+					break;
+			}
+		}
 	}
 
 	public void start() {
@@ -104,5 +123,7 @@ public class SensorEventListenerImpl implements SensorEventListener {
 		void onRotationChange(float azimuth, float pitch, float roll);
 
 		void onMagneticFieldChange(float value);
+
+		void onAccuracyChanged(int accuracy);
 	}
 }

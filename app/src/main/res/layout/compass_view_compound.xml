@@ -26,10 +26,10 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" />
 
-	<com.dimowner.airycompass.app.widget.MagneticFieldView
-			android:id="@+id/magnetic_field_view"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+	<!--<com.dimowner.airycompass.app.widget.MagneticFieldView-->
+			<!--android:id="@+id/magnetic_field_view"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content" />-->
 
 	<com.dimowner.airycompass.app.widget.CompassClockfaceView
 			android:id="@+id/compass_clockface_view"

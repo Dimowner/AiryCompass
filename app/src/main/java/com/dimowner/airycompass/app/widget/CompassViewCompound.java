@@ -28,13 +28,9 @@ public class CompassViewCompound extends FrameLayout {
 
 	public static final String DEGREE_SIGN = "°";
 	private static final int UPDATE_INTERVAL_DIRECTION = 120; //mills
-	private static final int UPDATE_INTERVAL_MAGNETIC = 40; //mills
 	private long directionUpdatePrevTime = 0;
-	private long magneticUpdatePrevTime = 0;
 
-//	private CompassBackgroundView compassBackgroundView;
 	private CompassClockfaceView compassClockfaceView;
-	private MagneticFieldView magneticFieldView;
 	private TextView txtDirection;
 
 	private String n;
@@ -65,9 +61,6 @@ public class CompassViewCompound extends FrameLayout {
 		inflate(context, R.layout.compass_view_compound, this);
 
 		compassClockfaceView = findViewById(R.id.compass_clockface_view);
-//		compassBackgroundView = findViewById(R.id.compass_background_view);
-		magneticFieldView = findViewById(R.id.magnetic_field_view);
-		magneticFieldView.hideCircle();
 		txtDirection = findViewById(R.id.txt_direction);
 
 		Resources res = context.getResources();
@@ -88,14 +81,6 @@ public class CompassViewCompound extends FrameLayout {
 			String str = ((int) azimuth) + DEGREE_SIGN + " " + getDirectionText(azimuth);
 			txtDirection.setText(str);
 			directionUpdatePrevTime = curTime;
-		}
-	}
-
-	public void updateMagneticField(float value) {
-		long curTime = System.currentTimeMillis();
-		if (curTime - magneticUpdatePrevTime > UPDATE_INTERVAL_MAGNETIC) {
-			magneticFieldView.updateMagneticField(value);
-			magneticUpdatePrevTime = curTime;
 		}
 	}
 
