@@ -21,6 +21,6 @@
 	<gradient
 			android:endColor="@color/colorPrimary"
 			android:gradientRadius="@dimen/gradient_radius"
-			android:startColor="@color/md_indigo_700"
+			android:startColor="@color/md_indigo_800"
 			android:type="radial"/>
 </shape>

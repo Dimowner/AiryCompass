@@ -17,19 +17,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				  android:layout_width="match_parent"
 				  android:layout_height="match_parent"
-				  xmlns:tools="http://schemas.android.com/tools"
 				  android:orientation="vertical">
 
-	<com.dimowner.airycompass.app.widget.AccelerometerView
-			android:id="@+id/accelerometer_view"
-			android:layout_width="@dimen/accelerometer_view_size"
-			android:layout_height="@dimen/accelerometer_view_size"
-			android:layout_gravity="end"
-			android:layout_marginTop="@dimen/spacing_normal"
-			android:layout_marginEnd="@dimen/spacing_normal"
-			android:layout_marginRight="@dimen/spacing_normal"
-			/>
+	<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
 
+		<com.dimowner.airycompass.app.widget.AccelerometerView
+				android:id="@+id/accelerometer_view"
+				android:layout_width="@dimen/accelerometer_view_size"
+				android:layout_height="@dimen/accelerometer_view_size"
+				android:layout_gravity="end"
+				android:layout_marginTop="@dimen/spacing_normal"
+				android:layout_marginEnd="@dimen/spacing_double"
+				android:layout_marginRight="@dimen/spacing_double"
+				/>
+
+		<com.dimowner.airycompass.app.widget.AccelerometerView
+				android:id="@+id/accelerometer_view2"
+				android:layout_width="@dimen/accelerometer_view_size"
+				android:layout_height="@dimen/accelerometer_view_size"
+				android:layout_gravity="start"
+				android:layout_marginStart="@dimen/spacing_double"
+				android:layout_marginLeft="@dimen/spacing_double"
+				android:layout_marginTop="@dimen/spacing_normal"
+				/>
+	</FrameLayout>
 	<!--<com.dimowner.airycompass.app.widget.CompassView-->
 			<!--android:id="@+id/compass_view"-->
 			<!--android:layout_width="match_parent"-->

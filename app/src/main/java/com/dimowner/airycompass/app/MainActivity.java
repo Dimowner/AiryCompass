@@ -28,7 +28,6 @@ import android.widget.TextView;
 import com.dimowner.airycompass.R;
 import com.dimowner.airycompass.app.widget.AccelerometerView;
 import com.dimowner.airycompass.app.widget.AccuracyView;
-import com.dimowner.airycompass.app.widget.CompassView;
 import com.dimowner.airycompass.app.widget.CompassViewCompound;
 import com.dimowner.airycompass.app.widget.MagneticFieldView;
 import com.dimowner.airycompass.sensor.SensorEventListenerImpl;
@@ -37,15 +36,14 @@ import timber.log.Timber;
 
 public class MainActivity extends Activity implements SensorEventListenerImpl.SensorsListener {
 
-	private static final int UPDATE_INTERVAL_MAGNETIC = 40; //mills
-	private long magneticUpdatePrevTime = 0;
 //	private CompassView compassView;
 	private TextView txtAccuracy;
 	private CompassViewCompound compassViewCompound;
 	private MagneticFieldView magneticFieldView;
 	private AccuracyView accuracyView;
 
-	private AccelerometerView accelerometerView;
+	private AccelerometerView orientationView;
+	private AccelerometerView linearAccelerationView;
 	private SensorEventListenerImpl sensorEventListener;
 
 	@Override
@@ -59,19 +57,27 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 		txtAccuracy = findViewById(R.id.txt_accuracy);
 		accuracyView = findViewById(R.id.accuracy_view);
 
-		accelerometerView = findViewById(R.id.accelerometer_view);
+		orientationView = findViewById(R.id.accelerometer_view);
+		linearAccelerationView = findViewById(R.id.accelerometer_view2);
 
 		sensorEventListener = new SensorEventListenerImpl(getApplicationContext());
 		sensorEventListener.setSensorsListener(this);
 
-
 		SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		if ((sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) == null) || (sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null)) {
+		if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) == null
+				|| sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null) {
 			noSensorsAlert();
+		}
+		//If device doesn't have a gravity sensor use accelerometer sensor instead.
+		if (sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY) == null) {
+			sensorEventListener.setHasGravitySensor(false);
+		} else {
+			sensorEventListener.setHasGravitySensor(true);
 		}
 	}
 
 	public void noSensorsAlert(){
+		//TODO: refactor dialog
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setMessage("Your device doesn't support the Compass.")
 				.setCancelable(false)
@@ -103,17 +109,18 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 	public void onRotationChange(float azimuth, float pitch, float roll) {
 		compassViewCompound.updateRotation((azimuth + 360) % 360);
 //		compassView.updateAzimuth((azimuth + 360) % 360);
-		accelerometerView.updateView(pitch, roll);
+		orientationView.updateOrientation(pitch, roll);
 	}
 
 	@Override
-	public void onMagneticFieldChange(float value) { ;
+	public void onMagneticFieldChange(float value) {
 //		compassView.updateMagneticField(value);
-		long curTime = System.currentTimeMillis();
-		if (curTime - magneticUpdatePrevTime > UPDATE_INTERVAL_MAGNETIC) {
-			magneticFieldView.updateMagneticField(value);
-			magneticUpdatePrevTime = curTime;
-		}
+		magneticFieldView.updateMagneticField(value);
+	}
+
+	@Override
+	public void onLinearAccelerationChange(float x, float y, float z) {
+		linearAccelerationView.updateLinearAcceleration(x, y);
 	}
 
 	@Override

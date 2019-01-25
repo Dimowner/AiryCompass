@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.dimowner.airycompass.R;
+import com.dimowner.airycompass.util.AndroidUtils;
 
 import timber.log.Timber;
 
@@ -25,6 +26,11 @@ public class AccelerometerView extends View {
 	private float yPos;
 
 	private Point CENTER;
+	private int MAX_ACCELERATION;
+
+	private static int MAX_MOVE = (int) AndroidUtils.dpToPx(50); //dip
+	//Converted value from pixels to coefficient used in function which describes move.
+	private float k = (float) (MAX_MOVE / (Math.PI/2));
 
 
 	public AccelerometerView(Context context) {
@@ -54,7 +60,6 @@ public class AccelerometerView extends View {
 		ballPaint.setColor(color);
 		ballPaint.setStyle(Paint.Style.FILL);
 
-//		path = new Path();
 		CENTER = new Point(0, 0);
 	}
 
@@ -82,12 +87,14 @@ public class AccelerometerView extends View {
 		super.onLayout(changed, left, top, right, bottom);
 
 		int width = getWidth();
+		MAX_MOVE = width/2;
+		k = (float) (MAX_MOVE / (Math.PI/2));
+		MAX_ACCELERATION = width/10;
 		CENTER.set(width/2, getHeight()/2);
 
 		//Layout grid
 		if (path == null) {
 			float radius = width/2f - width*0.03f;
-//			path.reset();
 			path = new Path();
 			path.moveTo(CENTER.x - radius, CENTER.y);
 			path.lineTo(CENTER.x + radius, CENTER.y);
@@ -107,8 +114,7 @@ public class AccelerometerView extends View {
 		canvas.drawCircle(CENTER.x - xPos, CENTER.y + yPos, getWidth()/10f, ballPaint);
 	}
 
-	public void updateView(float pitch, float roll) {
-//		Timber.v("updateView oldRoll = " + this.roll + " newRoll = " + roll + " oldPitch = " + this.pitch + " newPitch = " + pitch);
+	public void updateOrientation(float pitch, float roll) {
 		if ((int)this.pitch != (int)pitch || (int)this.roll != (int)roll) {
 			this.pitch = pitch;
 			this.roll = roll;
@@ -116,6 +122,19 @@ public class AccelerometerView extends View {
 			xPos = getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - roll));
 			yPos = getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - pitch));
 
+			invalidate();
+		}
+	}
+
+	public void updateLinearAcceleration(float x, float y) {
+		if ((int)pitch != (int)x*1000 || (int)roll != (int)y*1000) {
+			this.pitch = x*1000;
+			this.roll = y*1000;
+
+			xPos = (float) (k * Math.atan(x*MAX_ACCELERATION /k));
+			yPos = (float) (k * Math.atan(y*MAX_ACCELERATION /k));
+
+//			Timber.v("updateLinearAcceleration pitch = " + x + " roll = " + y + " xPos = " + xPos + " yPos = " + yPos);
 			invalidate();
 		}
 	}
