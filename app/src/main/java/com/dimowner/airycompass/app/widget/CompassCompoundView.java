@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import com.dimowner.airycompass.R;
 
-public class CompassViewCompound extends FrameLayout {
+public class CompassCompoundView extends FrameLayout {
 
 	public static final String DEGREE_SIGN = "°";
 	private static final int UPDATE_INTERVAL_DIRECTION = 120; //mills
@@ -42,17 +42,17 @@ public class CompassViewCompound extends FrameLayout {
 	private String sw;
 	private String nw;
 
-	public CompassViewCompound(Context context) {
+	public CompassCompoundView(Context context) {
 		super(context);
 		init(context);
 	}
 
-	public CompassViewCompound(Context context, AttributeSet attrs) {
+	public CompassCompoundView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context);
 	}
 
-	public CompassViewCompound(Context context, AttributeSet attrs, int defStyleAttr) {
+	public CompassCompoundView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		init(context);
 	}

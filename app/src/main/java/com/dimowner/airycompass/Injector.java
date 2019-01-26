@@ -18,16 +18,23 @@ package com.dimowner.airycompass;
 
 import android.content.Context;
 
+import com.dimowner.airycompass.app.main.MainContract;
+import com.dimowner.airycompass.app.main.MainPresenter;
 import com.dimowner.airycompass.app.settings.SettingsContract;
 import com.dimowner.airycompass.app.settings.SettingsPresenter;
 import com.dimowner.airycompass.data.Prefs;
 import com.dimowner.airycompass.data.PrefsImpl;
+import com.dimowner.airycompass.sensor.SensorsContract;
+import com.dimowner.airycompass.sensor.SensorsImpl;
 
 public class Injector {
 
 	private Context context;
 
+	private MainContract.UserActionsListener mainPresenter;
 	private SettingsContract.UserActionsListener settingsPresenter;
+
+	private SensorsContract.Sensors sensors;
 
 	public Injector(Context context) {
 		this.context = context;
@@ -41,6 +48,13 @@ public class Injector {
 		return ColorMap.getInstance(providePrefs());
 	}
 
+	public MainContract.UserActionsListener provideMainPresenter() {
+		if (mainPresenter == null) {
+			mainPresenter = new MainPresenter(providePrefs(), provideSensors());
+		}
+		return mainPresenter;
+	}
+
 	public SettingsContract.UserActionsListener provideSettingsPresenter() {
 		if (settingsPresenter == null) {
 			settingsPresenter = new SettingsPresenter(providePrefs());
@@ -48,18 +62,23 @@ public class Injector {
 		return settingsPresenter;
 	}
 
+	public SensorsContract.Sensors provideSensors() {
+		if (sensors == null) {
+			sensors = new SensorsImpl(context);
+		}
+		return sensors;
+	}
+
 	public void releaseMainPresenter() {
-//		if (mainPresenter != null) {
-//			mainPresenter.unbindView();
-//			mainPresenter.clear();
-//			mainPresenter = null;
-//		}
+		if (mainPresenter != null) {
+			mainPresenter.unbindView();
+			mainPresenter = null;
+		}
 	}
 
 	public void releaseSettingsPresenter() {
 		if (settingsPresenter != null) {
 			settingsPresenter.unbindView();
-			settingsPresenter.clear();
 			settingsPresenter = null;
 		}
 	}

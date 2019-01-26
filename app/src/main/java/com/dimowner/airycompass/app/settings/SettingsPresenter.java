@@ -32,11 +32,4 @@ public class SettingsPresenter implements SettingsContract.UserActionsListener {
 	public void unbindView() {
 		this.view = null;
 	}
-
-	@Override
-	public void clear() {
-		if (view != null) {
-			unbindView();
-		}
-	}
 }

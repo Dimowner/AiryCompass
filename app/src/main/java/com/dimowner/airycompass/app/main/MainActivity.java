@@ -19,73 +19,73 @@ package com.dimowner.airycompass.app.main;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dimowner.airycompass.ACApplication;
+import com.dimowner.airycompass.ColorMap;
 import com.dimowner.airycompass.R;
 import com.dimowner.airycompass.app.settings.SettingsActivity;
 import com.dimowner.airycompass.app.widget.AccelerometerView;
 import com.dimowner.airycompass.app.widget.AccuracyView;
-import com.dimowner.airycompass.app.widget.CompassViewCompound;
+import com.dimowner.airycompass.app.widget.CompassCompoundView;
 import com.dimowner.airycompass.app.widget.MagneticFieldView;
-import com.dimowner.airycompass.sensor.SensorEventListenerImpl;
 
-import timber.log.Timber;
+public class MainActivity extends Activity implements MainContract.View, View.OnClickListener {
 
-public class MainActivity extends Activity implements SensorEventListenerImpl.SensorsListener, View.OnClickListener {
-
-//	private CompassView compassView;
-	private TextView txtAccuracy;
-	private CompassViewCompound compassViewCompound;
+	//	private CompassView compassView;
+	private TextView txtAccuracyAlert;
+	private CompassCompoundView compassCompoundView;
 	private MagneticFieldView magneticFieldView;
 	private AccuracyView accuracyView;
 
 	private AccelerometerView orientationView;
 	private AccelerometerView linearAccelerationView;
-	private SensorEventListenerImpl sensorEventListener;
+	private MainContract.UserActionsListener presenter;
+
+	private ColorMap colorMap;
+	private ColorMap.OnThemeColorChangeListener onThemeColorChangeListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		colorMap = ACApplication.getInjector().provideColorMap();
+		setTheme(colorMap.getAppThemeResource());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		compassViewCompound = findViewById(R.id.compass_view_compound);
+		compassCompoundView = findViewById(R.id.compass_view_compound);
 //		compassView = findViewById(R.id.compass_view);
 		magneticFieldView = findViewById(R.id.magnetic_field_view);
-		txtAccuracy = findViewById(R.id.txt_accuracy);
+		txtAccuracyAlert = findViewById(R.id.txt_accuracy);
 		accuracyView = findViewById(R.id.accuracy_view);
-		ImageButton btnSettings = findViewById(R.id.btn_settings);
-		btnSettings.setOnClickListener(this);
-
 		orientationView = findViewById(R.id.accelerometer_view);
 		linearAccelerationView = findViewById(R.id.accelerometer_view2);
 
-		sensorEventListener = new SensorEventListenerImpl(getApplicationContext());
-		sensorEventListener.setSensorsListener(this);
+		ImageButton btnSettings = findViewById(R.id.btn_settings);
+		btnSettings.setOnClickListener(this);
 
-		SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) == null
-				|| sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null) {
-			noSensorsAlert();
-		}
-		//If device doesn't have a gravity sensor use accelerometer sensor instead.
-		if (sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY) == null) {
-			sensorEventListener.setHasGravitySensor(false);
-		} else {
-			sensorEventListener.setHasGravitySensor(true);
-		}
+		presenter = ACApplication.getInjector().provideMainPresenter();
+
+		onThemeColorChangeListener = new ColorMap.OnThemeColorChangeListener() {
+			@Override
+			public void onThemeColorChange(int pos) {
+				setTheme(colorMap.getAppThemeResource());
+				recreate();
+			}
+		};
+		colorMap.addOnThemeColorChangeListener(onThemeColorChangeListener);
 	}
 
-	public void noSensorsAlert(){
+	public void noSensorsAlert() {
 		//TODO: refactor dialog
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setMessage("Your device doesn't support the Compass.")
 				.setCancelable(false)
-				.setNegativeButton("Close",new DialogInterface.OnClickListener() {
+				.setNegativeButton("Close", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						finish();
 					}
@@ -96,58 +96,21 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 	@Override
 	public void onStart() {
 		super.onStart();
-		if (sensorEventListener != null) {
-			sensorEventListener.start();
-		}
+		presenter.bindView(this);
 	}
 
 	@Override
 	public void onStop() {
-		if (sensorEventListener != null) {
-			sensorEventListener.stop();
+		if (presenter != null) {
+			presenter.unbindView();
 		}
 		super.onStop();
 	}
 
 	@Override
-	public void onRotationChange(float azimuth, float pitch, float roll) {
-		compassViewCompound.updateRotation((azimuth + 360) % 360);
-//		compassView.updateAzimuth((azimuth + 360) % 360);
-		orientationView.updateOrientation(pitch, roll);
-	}
-
-	@Override
-	public void onMagneticFieldChange(float value) {
-//		compassView.updateMagneticField(value);
-		magneticFieldView.updateMagneticField(value);
-	}
-
-	@Override
-	public void onLinearAccelerationChange(float x, float y, float z) {
-		linearAccelerationView.updateLinearAcceleration(x, y);
-	}
-
-	@Override
-	public void onAccuracyChanged(int accuracy) {
-		accuracyView.updateAccuracyField(accuracy);
-		switch (accuracy) {
-			case 0:
-				Timber.v("Unreliable");
-				txtAccuracy.setVisibility(View.VISIBLE);
-				break;
-			case 1:
-				Timber.v("Low Accuracy");
-				txtAccuracy.setVisibility(View.VISIBLE);
-				break;
-			case 2:
-				Timber.v("Medium Accuracy");
-				txtAccuracy.setVisibility(View.VISIBLE);
-				break;
-			case 3:
-				Timber.v("High Accuracy");
-				txtAccuracy.setVisibility(View.INVISIBLE);
-				break;
-		}
+	protected void onDestroy() {
+		super.onDestroy();
+		colorMap.removeOnThemeColorChangeListener(onThemeColorChangeListener);
 	}
 
 	@Override
@@ -157,5 +120,72 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 				startActivity(SettingsActivity.getStartIntent(getApplicationContext()));
 				break;
 		}
+	}
+
+	@Override
+	public void keepScreenOn(boolean on) {
+		if (on) {
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		} else {
+			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		}
+	}
+
+	@Override
+	public void updateRotation(float azimuth) {
+		compassCompoundView.updateRotation((azimuth + 360) % 360);
+	}
+
+	@Override
+	public void updateOrientation(float pitch, float roll) {
+		orientationView.updateOrientation(pitch, roll);
+	}
+
+	@Override
+	public void updateMagneticField(float magneticVal) {
+		magneticFieldView.updateMagneticField(magneticVal);
+	}
+
+	@Override
+	public void updateLinearAcceleration(float x, float y) {
+		linearAccelerationView.updateLinearAcceleration(x, y);
+	}
+
+	@Override
+	public void updateAccuracy(int accuracy) {
+		accuracyView.updateAccuracyField(accuracy);
+	}
+
+	@Override
+	public void alertBadAccuracy() {
+		txtAccuracyAlert.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void hideAlertBadAccuracy() {
+		txtAccuracyAlert.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void showSensorsNotFound() {
+		noSensorsAlert();
+	}
+
+	@Override
+	public void showProgress() {
+	}
+
+	@Override
+	public void hideProgress() {
+	}
+
+	@Override
+	public void showError(String message) {
+		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	public void showError(int resId) {
+		Toast.makeText(getApplicationContext(), resId, Toast.LENGTH_LONG).show();
 	}
 }

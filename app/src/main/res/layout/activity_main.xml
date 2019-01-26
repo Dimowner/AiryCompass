@@ -87,7 +87,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content" />
 
-		<com.dimowner.airycompass.app.widget.CompassViewCompound
+		<com.dimowner.airycompass.app.widget.CompassCompoundView
 				android:id="@+id/compass_view_compound"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content" />

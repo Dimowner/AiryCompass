@@ -14,26 +14,33 @@
  * limitations under the License.
  */
 
-package com.dimowner.airycompass;
+package com.dimowner.airycompass.app.main;
 
-public interface Contract {
+import com.dimowner.airycompass.Contract;
 
-	interface View {
-		void showProgress();
+public interface MainContract {
 
-		void hideProgress();
+	interface View extends Contract.View {
 
-		void showError(String message);
+		void keepScreenOn(boolean on);
 
-		void showError(int resId);
+		void updateRotation(float azimuth);
+
+		void updateOrientation(float pitch, float roll);
+
+		void updateMagneticField(float magneticVal);
+
+		void updateLinearAcceleration(float x, float y);
+
+		void updateAccuracy(int accuracy);
+
+		void alertBadAccuracy();
+
+		void hideAlertBadAccuracy();
+
+		void showSensorsNotFound();
 	}
 
-	interface UserActionsListener<T extends View> {
-
-		void bindView(T view);
-
-		void unbindView();
-
-//		void clear();
+	interface UserActionsListener extends Contract.UserActionsListener<MainContract.View> {
 	}
 }
