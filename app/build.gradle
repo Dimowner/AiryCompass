@@ -23,7 +23,7 @@ ext.versions = [
 
 def versionMajor = 0
 def versionMinor = 2
-def versionPatch = 2
+def versionPatch = 3
 
 android {
 	compileSdkVersion versions.targetSdkVersion
@@ -34,6 +34,7 @@ android {
 		targetSdkVersion versions.targetSdkVersion
 		versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
 		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+//		vectorDrawables.useSupportLibrary = true
 	}
 
 	def keystorePropertiesFile = rootProject.file("keystore.properties")

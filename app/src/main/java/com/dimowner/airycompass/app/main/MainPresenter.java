@@ -81,6 +81,7 @@ public class MainPresenter implements MainContract.UserActionsListener {
 				}
 			};
 		}
+		sensors.setEnergySavingMode(prefs.isEnergySavingMode());
 		sensors.setSensorsCallback(sensorsCallback);
 		sensors.start();
 	}

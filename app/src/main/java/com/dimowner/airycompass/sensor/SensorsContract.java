@@ -28,6 +28,7 @@ public interface SensorsContract {
 
 	interface Sensors {
 		void setSensorsCallback(SensorsContract.SensorsCallback callback);
+		void setEnergySavingMode(boolean b);
 		void start();
 		void stop();
 	}

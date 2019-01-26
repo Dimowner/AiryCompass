@@ -22,14 +22,15 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import timber.log.Timber;
-
 public class SensorsImpl implements SensorsContract.Sensors {
 
-	private static final float ALPHA = 0.96f;
-	private static final float ALPHA2 = 0.8f;
-	private static final int UPDATE_INTERVAL = 10; //mills
-	private static final int UPDATE_INTERVAL2 = 40; //mills
+	private static float ALPHA = 0.96f;
+	private static float ALPHA2 = 0.8f;
+	private static int UPDATE_INTERVAL = 10; //mills
+	private static int UPDATE_INTERVAL2 = 40; //mills
+	private static int SAMPLING_PERIOD = SensorManager.SENSOR_DELAY_GAME;
+
+	private boolean energySavingMode;
 
 	private SensorManager sensorManager;
 	private Sensor accelerometerSensor;
@@ -49,12 +50,38 @@ public class SensorsImpl implements SensorsContract.Sensors {
 	private SensorEventListener sensorEventListener;
 	private SensorsContract.SensorsCallback callback;
 
+	@Override
+	public void setEnergySavingMode(boolean b) {
+		energySavingMode = b;
+		if (energySavingMode) {
+			ALPHA = 0.92f;
+			ALPHA2 = 0.75f;
+			UPDATE_INTERVAL = 30; //mills
+			UPDATE_INTERVAL2 = 120; //mills
+			SAMPLING_PERIOD = SensorManager.SENSOR_DELAY_UI;
+		} else {
+			ALPHA = 0.96f;
+			ALPHA2 = 0.8f;
+			UPDATE_INTERVAL = 10; //mills
+			UPDATE_INTERVAL2 = 40; //mills
+			SAMPLING_PERIOD = SensorManager.SENSOR_DELAY_GAME;
+		}
+		init();
+	}
 
 	public SensorsImpl(Context context) {
 		sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+		init();
+	}
+
+	private void init() {
 		accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		magneticSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-		gravitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+		if (energySavingMode) {
+			gravitySensor = null;
+		} else {
+			gravitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+		}
 		if (accelerometerSensor == null || magneticSensor == null) {
 			callback.onSensorsNotFound();
 		}
@@ -89,7 +116,7 @@ public class SensorsImpl implements SensorsContract.Sensors {
 						acceleration[1] = ALPHA2 * acceleration[1] + (1 - ALPHA2) * (event.values[1] - gravity[1]);
 						acceleration[2] = ALPHA2 * acceleration[2] + (1 - ALPHA2) * (event.values[2] - gravity[2]);
 
-						Timber.v("AccelerationChange a1 = " + acceleration[0] + " a2 = " + acceleration[1] + " a3 = " + acceleration[2]);
+//						Timber.v("AccelerationChange a1 = " + acceleration[0] + " a2 = " + acceleration[1] + " a3 = " + acceleration[2]);
 						if (time - linearAccelerometerPrevTime > UPDATE_INTERVAL) {
 							callback.onLinearAccelerationChange(acceleration[0], acceleration[1], acceleration[2]);
 							linearAccelerometerPrevTime = time;
@@ -113,23 +140,23 @@ public class SensorsImpl implements SensorsContract.Sensors {
 
 			@Override
 			public void onAccuracyChanged(Sensor sensor, int accuracy) {
-				Timber.d("onAccuracyChanged sensor: " + sensor.getName() + " type: " + sensor.getType() + " accuracy: " + accuracy);
+//				Timber.d("onAccuracyChanged sensor: " + sensor.getName() + " type: " + sensor.getType() + " accuracy: " + accuracy);
 				if (sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
 					if (callback != null) {
 						callback.onAccuracyChanged(accuracy);
 					}
 					switch (accuracy) {
 						case 0:
-							Timber.v("Unreliable");
+//							Timber.v("Unreliable");
 							break;
 						case 1:
-							Timber.v("Low Accuracy");
+//							Timber.v("Low Accuracy");
 							break;
 						case 2:
-							Timber.v("Medium Accuracy");
+//							Timber.v("Medium Accuracy");
 							break;
 						case 3:
-							Timber.v("High Accuracy");
+//							Timber.v("High Accuracy");
 							break;
 					}
 				}
@@ -144,9 +171,9 @@ public class SensorsImpl implements SensorsContract.Sensors {
 
 	@Override
 	public void start() {
-		sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
-		sensorManager.registerListener(sensorEventListener, magneticSensor, SensorManager.SENSOR_DELAY_GAME);
-		sensorManager.registerListener(sensorEventListener, gravitySensor, SensorManager.SENSOR_DELAY_GAME);
+		sensorManager.registerListener(sensorEventListener, accelerometerSensor, SAMPLING_PERIOD);
+		sensorManager.registerListener(sensorEventListener, magneticSensor, SAMPLING_PERIOD);
+		sensorManager.registerListener(sensorEventListener, gravitySensor, SAMPLING_PERIOD);
 	}
 
 	@Override

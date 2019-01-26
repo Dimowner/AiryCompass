@@ -50,6 +50,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 	private static final String VERSION_UNAVAILABLE = "N/A";
 
 	private Switch swKeepScreenOn;
+	private Switch swEnergySaving;
 
 	private SettingsContract.UserActionsListener presenter;
 	private ColorMap colorMap;
@@ -76,11 +77,19 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		btnBack.setOnClickListener(this);
 		btnRate.setOnClickListener(this);
 		swKeepScreenOn = findViewById(R.id.swKeepScreenOn);
+		swEnergySaving = findViewById(R.id.swEnergySaving);
 
 		swKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
 				presenter.keepScreenOn(isChecked);
+			}
+		});
+
+		swEnergySaving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
+				presenter.energySavingMode(isChecked);
 			}
 		});
 
@@ -200,6 +209,11 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 	@Override
 	public void showKeepScreenOn(boolean b) {
 		swKeepScreenOn.setChecked(b);
+	}
+
+	@Override
+	public void showEnergySavingMode(boolean b) {
+		swEnergySaving.setChecked(b);
 	}
 
 	@Override

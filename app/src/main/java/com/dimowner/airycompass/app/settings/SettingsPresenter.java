@@ -16,11 +16,17 @@ public class SettingsPresenter implements SettingsContract.UserActionsListener {
 	public void loadSettings() {
 		view.showProgress();
 		view.showKeepScreenOn(prefs.isKeepScreenOn());
+		view.showEnergySavingMode(prefs.isEnergySavingMode());
 	}
 
 	@Override
 	public void keepScreenOn(boolean keep) {
 		prefs.setKeepScreenOn(keep);
+	}
+
+	@Override
+	public void energySavingMode(boolean b) {
+		prefs.setEnergySavingMode(b);
 	}
 
 	@Override
