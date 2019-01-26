@@ -30,6 +30,12 @@ public class ACApplication extends Application {
 	public static volatile Context applicationContext;
 	public static volatile Handler applicationHandler;
 
+	public static Injector injector;
+
+	public static Injector getInjector() {
+		return injector;
+	}
+
 	@Override
 	public void onCreate() {
 		if (BuildConfig.DEBUG) {
@@ -46,5 +52,14 @@ public class ACApplication extends Application {
 
 		applicationContext = getApplicationContext();
 		applicationHandler = new Handler(applicationContext.getMainLooper());
+		injector = new Injector(getApplicationContext());
+	}
+
+	@Override
+	public void onTerminate() {
+		super.onTerminate();
+		Timber.v("onTerminate");
+		injector.releaseMainPresenter();
+		injector.closeTasks();
 	}
 }

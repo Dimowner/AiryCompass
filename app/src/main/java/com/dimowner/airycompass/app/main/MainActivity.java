@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dimowner.airycompass.app;
+package com.dimowner.airycompass.app.main;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -23,9 +23,11 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dimowner.airycompass.R;
+import com.dimowner.airycompass.app.settings.SettingsActivity;
 import com.dimowner.airycompass.app.widget.AccelerometerView;
 import com.dimowner.airycompass.app.widget.AccuracyView;
 import com.dimowner.airycompass.app.widget.CompassViewCompound;
@@ -34,7 +36,7 @@ import com.dimowner.airycompass.sensor.SensorEventListenerImpl;
 
 import timber.log.Timber;
 
-public class MainActivity extends Activity implements SensorEventListenerImpl.SensorsListener {
+public class MainActivity extends Activity implements SensorEventListenerImpl.SensorsListener, View.OnClickListener {
 
 //	private CompassView compassView;
 	private TextView txtAccuracy;
@@ -56,6 +58,8 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 		magneticFieldView = findViewById(R.id.magnetic_field_view);
 		txtAccuracy = findViewById(R.id.txt_accuracy);
 		accuracyView = findViewById(R.id.accuracy_view);
+		ImageButton btnSettings = findViewById(R.id.btn_settings);
+		btnSettings.setOnClickListener(this);
 
 		orientationView = findViewById(R.id.accelerometer_view);
 		linearAccelerationView = findViewById(R.id.accelerometer_view2);
@@ -142,6 +146,15 @@ public class MainActivity extends Activity implements SensorEventListenerImpl.Se
 			case 3:
 				Timber.v("High Accuracy");
 				txtAccuracy.setVisibility(View.INVISIBLE);
+				break;
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.btn_settings:
+				startActivity(SettingsActivity.getStartIntent(getApplicationContext()));
 				break;
 		}
 	}

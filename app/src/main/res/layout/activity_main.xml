@@ -68,19 +68,38 @@
 				android:layout_height="wrap_content" />
 	</FrameLayout>
 
-	<TextView
-			android:id="@+id/txt_accuracy"
+	<FrameLayout
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginEnd="@dimen/spacing_double"
-			android:layout_marginStart="@dimen/spacing_double"
-			android:textColor="@color/text_primary_light"
-			android:layout_gravity="center"
-			android:gravity="center"
-			android:fontFamily="sans-serif-light"
-			android:drawableTop="@drawable/all_inclusive"
-			android:textSize="@dimen/text_normal"
-			android:text="@string/need_calibration"
-			/>
+			android:layout_height="0dp"
+			android:layout_weight="1">
+		<TextView
+				android:id="@+id/txt_accuracy"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="@dimen/spacing_double"
+				android:layout_marginStart="@dimen/spacing_double"
+				android:textColor="@color/text_primary_light"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:fontFamily="sans-serif-light"
+				android:drawableTop="@drawable/all_inclusive"
+				android:textSize="@dimen/text_normal"
+				android:text="@string/need_calibration"
+				/>
 
+		<ImageButton
+				android:id="@+id/btn_settings"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_settings"
+				android:padding="@dimen/spacing_normal"
+				android:contentDescription="@string/settings"
+				android:background="?android:selectableItemBackground"
+				android:scaleType="center"
+				android:layout_marginBottom="@dimen/spacing_normal"
+				android:layout_marginEnd="@dimen/spacing_normal"
+				android:layout_marginRight="@dimen/spacing_normal"
+				android:layout_gravity="bottom|end"
+				/>
+	</FrameLayout>
 </LinearLayout>

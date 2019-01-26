@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2018 Dmitriy Ponomarenko
+  ~ Copyright 2019 Dmitriy Ponomarenko
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -29,6 +29,10 @@
 	<color name="text_primary_light">#ffffffff</color>
 	<color name="text_secondary_light">#b3ffffff</color> <!-- 70% -->
 	<color name="text_disabled_light">#4dffffff</color> <!-- 30% -->
+
+	<color name="grey">#545454</color>
+	<color name="white">#ffffff</color>
+	<color name="transparent">#00000000</color>
 
 	<color name="outer_circle_color">#7986CB</color>
 	<color name="middle_circle_color">#4559c4</color>

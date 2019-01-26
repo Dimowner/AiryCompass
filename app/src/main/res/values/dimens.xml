@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2018 Dmitriy Ponomarenko
+  ~ Copyright 2019 Dmitriy Ponomarenko
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@
 	<dimen name="spacing_xsmall">12dp</dimen>
 	<dimen name="spacing_small">8dp</dimen>
 	<dimen name="spacing_tiny">4dp</dimen>
+	<dimen name="spacing_zero">0dp</dimen>
 
 	<dimen name="text_smallest">10sp</dimen>
 	<dimen name="text_small">12sp</dimen>
@@ -39,4 +40,6 @@
 	<dimen name="gradient_radius">300dp</dimen>
 	<dimen name="accelerometer_view_size">100dp</dimen>
 
+	<dimen name="toolbar_height">56dp</dimen>
+	<dimen name="toolbar_elevation">4dp</dimen>
 </resources>
