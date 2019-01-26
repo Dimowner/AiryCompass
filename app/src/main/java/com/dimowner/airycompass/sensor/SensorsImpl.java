@@ -82,9 +82,6 @@ public class SensorsImpl implements SensorsContract.Sensors {
 		} else {
 			gravitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
 		}
-		if (accelerometerSensor == null || magneticSensor == null) {
-			callback.onSensorsNotFound();
-		}
 
 		sensorEventListener = new SensorEventListener() {
 			@Override
@@ -167,6 +164,9 @@ public class SensorsImpl implements SensorsContract.Sensors {
 	@Override
 	public void setSensorsCallback(SensorsContract.SensorsCallback callback) {
 		this.callback = callback;
+		if (accelerometerSensor == null || magneticSensor == null) {
+			this.callback.onSensorsNotFound();
+		}
 	}
 
 	@Override

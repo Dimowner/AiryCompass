@@ -80,19 +80,6 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		colorMap.addOnThemeColorChangeListener(onThemeColorChangeListener);
 	}
 
-	public void noSensorsAlert() {
-		//TODO: refactor dialog
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setMessage("Your device doesn't support the Compass.")
-				.setCancelable(false)
-				.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						finish();
-					}
-				});
-		alertDialog.show();
-	}
-
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -168,7 +155,16 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 
 	@Override
 	public void showSensorsNotFound() {
-		noSensorsAlert();
+		AlertDialog alertDialog = new AlertDialog.Builder(this)
+				.setTitle(R.string.error)
+				.setMessage(R.string.unable_to_init_sensor)
+				.setNegativeButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						finish();
+					}
+				})
+				.create();
+		alertDialog.show();
 	}
 
 	@Override

@@ -24,6 +24,8 @@
 	<string name="keep_screen_on">Keep screen ON</string>
 	<string name="energy_saving">Energy saving mode</string>
 	<string name="warning">Warning!</string>
+	<string name="error">Error</string>
+	<string name="unable_to_init_sensor">Unable to initialize sensors for Compass.</string>
 
 	<string name="btn_ok">OK</string>
 	<string name="btn_save">Save</string>
