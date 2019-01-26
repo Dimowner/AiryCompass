@@ -17,7 +17,9 @@ import com.dimowner.airycompass.util.AndroidUtils;
 
 import timber.log.Timber;
 
-
+/**
+ * @deprecated
+ **/
 public class CompassView extends View {
 
 	public static final String DEGREE_SIGN = "°";

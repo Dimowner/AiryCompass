@@ -107,7 +107,7 @@ public class AccelerometerView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		Timber.v("onDraw");
+//		Timber.v("onDraw");
 		//Draw grid
 		canvas.drawPath(path, pathPaint);
 		//Draw ball
@@ -131,8 +131,8 @@ public class AccelerometerView extends View {
 			this.pitch = x*1000;
 			this.roll = y*1000;
 
-			xPos = (float) (k * Math.atan(x*MAX_ACCELERATION /k));
-			yPos = (float) (k * Math.atan(y*MAX_ACCELERATION /k));
+			xPos = (float) (k * Math.atan(x*MAX_ACCELERATION/k));
+			yPos = (float) (k * Math.atan(y*MAX_ACCELERATION/k));
 
 //			Timber.v("updateLinearAcceleration pitch = " + x + " roll = " + y + " xPos = " + xPos + " yPos = " + yPos);
 			invalidate();

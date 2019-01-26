@@ -1,17 +1,47 @@
 apply plugin: 'com.android.application'
 
+ext.versions = [
+		// Android
+		targetSdkVersion: 28,
+		minSdkVersion   : 16,
+		buildtools      : "28.0.3",
+
+		//Timber
+		timber          : "4.6.1",
+]
+
 def versionMajor = 0
 def versionMinor = 1
 def versionPatch = 4
 
 android {
-	compileSdkVersion 28
+	compileSdkVersion versions.targetSdkVersion
+	buildToolsVersion versions.buildtools
 	defaultConfig {
 		applicationId "com.dimowner.airycompass"
-		minSdkVersion 16
-		targetSdkVersion 28
+		minSdkVersion versions.minSdkVersion
+		targetSdkVersion versions.targetSdkVersion
 		versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
 		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+	}
+
+	def keystorePropertiesFile = rootProject.file("keystore.properties")
+	def keystoreProperties = new Properties()
+	keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+	signingConfigs {
+		dev {
+			storeFile file(keystoreProperties['storeFile'])
+			storePassword keystoreProperties['storePassword']
+			keyAlias keystoreProperties['keyAlias']
+			keyPassword keystoreProperties['keyPassword']
+		}
+		release {
+			storeFile file(keystoreProperties['prodStoreFile'])
+			storePassword keystoreProperties['prodStorePassword']
+			keyAlias keystoreProperties['prodKeyAlias']
+			keyPassword keystoreProperties['prodKeyPassword']
+		}
 	}
 
 	buildTypes {
@@ -23,6 +53,25 @@ android {
 		}
 		debug {
 			minifyEnabled false
+		}
+	}
+
+	flavorDimensions "default"
+
+	productFlavors {
+		debugConfig {
+			dimension "default"
+			applicationId "com.dimowner.airycompass.debug"
+			minSdkVersion versions.minSdkVersion
+			targetSdkVersion versions.targetSdkVersion
+			signingConfig = signingConfigs.dev
+		}
+		releaseConfig {
+			dimension "default"
+			signingConfig = signingConfigs.release
+			applicationId "com.dimowner.airycompass"
+			minSdkVersion versions.minSdkVersion
+			targetSdkVersion versions.targetSdkVersion
 		}
 	}
 
@@ -38,10 +87,21 @@ android {
 		abortOnError false
 	}
 
-	dependencies {
+	// Remove not needed buildVariants.
+	android.variantFilter { variant ->
+		if (variant.buildType.name == 'release'
+				&& variant.getFlavors().get(0).name == 'debugConfig') {
+			variant.setIgnore(true)
+		}
+		if (variant.buildType.name == 'debug'
+				&& variant.getFlavors().get(0).name == 'releaseConfig') {
+			variant.setIgnore(true)
+		}
+	}
 
+	dependencies {
 		//Timber
-		implementation 'com.jakewharton.timber:timber:4.6.1'
+		implementation "com.jakewharton.timber:timber:$versions.timber"
 	}
 
 }
