@@ -17,6 +17,8 @@
 <resources>
 	<string name="app_name">Airy Compass</string>
 
+	<string name="acceleration">acceleration</string>
+	<string name="orientation">orientation</string>
 	<string name="settings">Settings</string>
 	<string name="open_source_licences">Open source licences</string>
 	<string name="rate_app">Rate app</string>

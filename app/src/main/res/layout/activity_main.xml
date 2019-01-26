@@ -14,21 +14,45 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				  android:layout_width="match_parent"
-				  android:layout_height="match_parent"
-				  android:orientation="vertical">
+				  android:layout_height="match_parent">
 
 	<FrameLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
+			android:layout_height="wrap_content"
+			android:layout_gravity="top">
 
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="52dp"
+				android:layout_marginLeft="52dp"
+				android:text="@string/acceleration"
+				android:layout_gravity="top|start"
+				android:layout_marginTop="@dimen/spacing_small"
+				android:textColor="@color/text_primary_light"
+				android:textSize="@dimen/text_small"
+				android:fontFamily="sans-serif-light"
+				/>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="52dp"
+				android:layout_marginRight="52dp"
+				android:text="@string/orientation"
+				android:layout_gravity="top|end"
+				android:layout_marginTop="@dimen/spacing_small"
+				android:textColor="@color/text_primary_light"
+				android:textSize="@dimen/text_small"
+				android:fontFamily="sans-serif-light"
+				/>
 		<com.dimowner.airycompass.app.widget.AccelerometerView
 				android:id="@+id/accelerometer_view"
 				android:layout_width="@dimen/accelerometer_view_size"
 				android:layout_height="@dimen/accelerometer_view_size"
 				android:layout_gravity="end"
-				android:layout_marginTop="@dimen/spacing_normal"
+				android:layout_marginTop="@dimen/spacing_double"
 				android:layout_marginEnd="@dimen/spacing_double"
 				android:layout_marginRight="@dimen/spacing_double"
 				/>
@@ -40,7 +64,7 @@
 				android:layout_gravity="start"
 				android:layout_marginStart="@dimen/spacing_double"
 				android:layout_marginLeft="@dimen/spacing_double"
-				android:layout_marginTop="@dimen/spacing_normal"
+				android:layout_marginTop="@dimen/spacing_double"
 				/>
 	</FrameLayout>
 	<!--<com.dimowner.airycompass.app.widget.CompassView-->
@@ -50,7 +74,8 @@
 
 	<FrameLayout
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
+			android:layout_height="wrap_content"
+			android:layout_gravity="center">
 
 		<com.dimowner.airycompass.app.widget.AccuracyView
 				android:id="@+id/accuracy_view"
@@ -66,26 +91,6 @@
 				android:id="@+id/compass_view_compound"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content" />
-	</FrameLayout>
-
-	<FrameLayout
-			android:layout_width="wrap_content"
-			android:layout_height="0dp"
-			android:layout_weight="1">
-		<TextView
-				android:id="@+id/txt_accuracy"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="@dimen/spacing_double"
-				android:layout_marginStart="@dimen/spacing_double"
-				android:textColor="@color/text_primary_light"
-				android:layout_gravity="center"
-				android:gravity="center"
-				android:fontFamily="sans-serif-light"
-				android:drawableTop="@drawable/all_inclusive"
-				android:textSize="@dimen/text_normal"
-				android:text="@string/need_calibration"
-				/>
 
 		<ImageButton
 				android:id="@+id/btn_settings"
@@ -94,12 +99,28 @@
 				android:src="@drawable/ic_settings"
 				android:padding="@dimen/spacing_normal"
 				android:contentDescription="@string/settings"
-				android:background="?android:selectableItemBackground"
+				android:background="@null"
 				android:scaleType="center"
-				android:layout_marginBottom="@dimen/spacing_normal"
-				android:layout_marginEnd="@dimen/spacing_normal"
-				android:layout_marginRight="@dimen/spacing_normal"
+				android:layout_marginBottom="@dimen/spacing_small"
+				android:layout_marginEnd="@dimen/spacing_xnormal"
+				android:layout_marginRight="@dimen/spacing_xnormal"
 				android:layout_gravity="bottom|end"
 				/>
 	</FrameLayout>
-</LinearLayout>
+
+	<TextView
+			android:id="@+id/txt_accuracy"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/spacing_double"
+			android:layout_marginStart="@dimen/spacing_double"
+			android:layout_marginBottom="@dimen/text_normal"
+			android:textColor="@color/text_primary_light"
+			android:layout_gravity="bottom|center"
+			android:gravity="center"
+			android:fontFamily="sans-serif-light"
+			android:drawableTop="@drawable/all_inclusive"
+			android:textSize="@dimen/text_normal"
+			android:text="@string/need_calibration"
+			/>
+</FrameLayout>
