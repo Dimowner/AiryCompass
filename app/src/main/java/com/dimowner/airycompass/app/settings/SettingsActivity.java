@@ -37,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dimowner.airycompass.ACApplication;
+import com.dimowner.airycompass.AppConstants;
 import com.dimowner.airycompass.ColorMap;
 import com.dimowner.airycompass.R;
 
@@ -72,10 +73,12 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 
 		ImageButton btnBack = findViewById(R.id.btn_back);
 		TextView btnRate = findViewById(R.id.btnRate);
+		TextView btnRequest = findViewById(R.id.btnRequest);
 		TextView txtAbout = findViewById(R.id.txtAbout);
 		txtAbout.setText(getAboutContent());
 		btnBack.setOnClickListener(this);
 		btnRate.setOnClickListener(this);
+		btnRequest.setOnClickListener(this);
 		swKeepScreenOn = findViewById(R.id.swKeepScreenOn);
 		swEnergySaving = findViewById(R.id.swEnergySaving);
 
@@ -158,6 +161,9 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 			case R.id.btnRate:
 				rateApp();
 				break;
+			case R.id.btnRequest:
+				requestFeature();
+				break;
 		}
 	}
 
@@ -167,13 +173,27 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		ACApplication.getInjector().releaseSettingsPresenter();
 	}
 
-	public void rateApp() {
+	private void rateApp() {
 		try {
 			Intent rateIntent = rateIntentForUrl("market://details");
 			startActivity(rateIntent);
 		} catch (ActivityNotFoundException e) {
 			Intent rateIntent = rateIntentForUrl("https://play.google.com/store/apps/details");
 			startActivity(rateIntent);
+		}
+	}
+
+	private void requestFeature() {
+		Intent i = new Intent(Intent.ACTION_SEND);
+		i.setType("message/rfc822");
+		i.putExtra(Intent.EXTRA_EMAIL, new String[]{AppConstants.REQUESTS_RECEIVER});
+		i.putExtra(Intent.EXTRA_SUBJECT,
+				"[" + getResources().getString(R.string.app_name) + "] - " + getResources().getString(R.string.request)
+		);
+		try {
+			startActivity(Intent.createChooser(i, getResources().getString(R.string.send_email)));
+		} catch (android.content.ActivityNotFoundException ex) {
+			showError(R.string.email_clients_not_found);
 		}
 	}
 

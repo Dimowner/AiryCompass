@@ -22,5 +22,6 @@ package com.dimowner.airycompass;
 public class AppConstants {
 
 	public static final String APPLICATION_NAME = "AiryCompass";
+	public static final String REQUESTS_RECEIVER = "dimmony@gmail.com";
 
 }

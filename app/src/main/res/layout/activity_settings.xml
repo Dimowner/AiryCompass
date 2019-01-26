@@ -140,6 +140,19 @@
 				/>
 
 		<TextView
+				android:id="@+id/btnRequest"
+				style="@style/Text.NormalLabel"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/request"
+				android:drawableStart="@drawable/ic_chat_bubble"
+				android:drawableLeft="@drawable/ic_chat_bubble"
+				android:background="?android:selectableItemBackground"
+				android:padding="@dimen/spacing_normal"
+				android:drawablePadding="@dimen/spacing_double"
+				/>
+
+		<TextView
 				android:id="@+id/txtAbout"
 				style="@style/Text.NormalLabel"
 				android:layout_width="match_parent"
