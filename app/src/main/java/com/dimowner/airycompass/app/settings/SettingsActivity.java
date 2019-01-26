@@ -39,7 +39,6 @@ import android.widget.Toast;
 import com.dimowner.airycompass.ACApplication;
 import com.dimowner.airycompass.ColorMap;
 import com.dimowner.airycompass.R;
-import com.dimowner.airycompass.app.licences.LicenceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,12 +70,10 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		setContentView(R.layout.activity_settings);
 
 		ImageButton btnBack = findViewById(R.id.btn_back);
-		TextView btnLicences = findViewById(R.id.btnLicences);
 		TextView btnRate = findViewById(R.id.btnRate);
 		TextView txtAbout = findViewById(R.id.txtAbout);
 		txtAbout.setText(getAboutContent());
 		btnBack.setOnClickListener(this);
-		btnLicences.setOnClickListener(this);
 		btnRate.setOnClickListener(this);
 		swKeepScreenOn = findViewById(R.id.swKeepScreenOn);
 
@@ -148,9 +145,6 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 			case R.id.btn_back:
 				ACApplication.getInjector().releaseSettingsPresenter();
 				finish();
-				break;
-			case R.id.btnLicences:
-				startActivity(new Intent(getApplicationContext(), LicenceActivity.class));
 				break;
 			case R.id.btnRate:
 				rateApp();

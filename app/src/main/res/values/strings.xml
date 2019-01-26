@@ -20,7 +20,6 @@
 	<string name="acceleration">acceleration</string>
 	<string name="orientation">orientation</string>
 	<string name="settings">Settings</string>
-	<string name="open_source_licences">Open source licences</string>
 	<string name="rate_app">Rate app</string>
 	<string name="keep_screen_on">Keep screen ON</string>
 	<string name="warning">Warning!</string>
@@ -55,8 +54,6 @@
 		Version %s
 	]]></string>
 	<!--<a href="http://#/">Application site</a>-->
-
-	<string name="licences_description">This application makes use of the following third party libraries.</string>
 
 	<string-array name="theme_colors">
 		<item>Theme Not selected</item>

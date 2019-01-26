@@ -47,15 +47,9 @@
 		</activity>
 		<activity android:name="com.dimowner.airycompass.app.settings.SettingsActivity"
 					 android:screenOrientation="portrait"/>
-
-		<activity android:name=".app.licences.LicenceActivity"
-					 android:label="@string/open_source_licences"
-					 android:screenOrientation="portrait"/>
-		<activity android:name=".app.licences.LicenceDetail"
-					 android:screenOrientation="portrait"/>
-	    <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="a911efb38fc3ed01944c7ea4410acde51d847864" />
+	    <!--<meta-data-->
+            <!--android:name="io.fabric.ApiKey"-->
+            <!--android:value="a911efb38fc3ed01944c7ea4410acde51d847864" />-->
     </application>
 
 </manifest>
