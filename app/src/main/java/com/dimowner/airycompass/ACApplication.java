@@ -20,6 +20,8 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class ACApplication extends Application {
@@ -40,6 +42,7 @@ public class ACApplication extends Application {
 			});
 		}
 		super.onCreate();
+		Fabric.with(this, new Crashlytics());
 
 		applicationContext = getApplicationContext();
 		applicationHandler = new Handler(applicationContext.getMainLooper());

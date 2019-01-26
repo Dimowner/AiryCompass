@@ -1,4 +1,15 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 ext.versions = [
 		// Android
@@ -86,22 +97,29 @@ android {
 		// but continue the build even when errors are found:
 		abortOnError false
 	}
-
-	// Remove not needed buildVariants.
-	android.variantFilter { variant ->
-		if (variant.buildType.name == 'release'
-				&& variant.getFlavors().get(0).name == 'debugConfig') {
-			variant.setIgnore(true)
-		}
-		if (variant.buildType.name == 'debug'
-				&& variant.getFlavors().get(0).name == 'releaseConfig') {
-			variant.setIgnore(true)
-		}
-	}
-
-	dependencies {
-		//Timber
-		implementation "com.jakewharton.timber:timber:$versions.timber"
-	}
-
 }
+
+repositories {
+	maven { url 'https://maven.fabric.io/public' }
+}
+// Remove not needed buildVariants.
+android.variantFilter { variant ->
+	if (variant.buildType.name == 'release'
+			&& variant.getFlavors().get(0).name == 'debugConfig') {
+		variant.setIgnore(true)
+	}
+	if (variant.buildType.name == 'debug'
+			&& variant.getFlavors().get(0).name == 'releaseConfig') {
+		variant.setIgnore(true)
+	}
+}
+
+dependencies {
+	//Timber
+	implementation "com.jakewharton.timber:timber:$versions.timber"
+
+	implementation('com.crashlytics.sdk.android:crashlytics:2.9.8@aar') {
+		transitive = true
+	}
+}
+

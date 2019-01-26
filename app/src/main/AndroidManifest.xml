@@ -21,6 +21,7 @@
 	<!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
 	<!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
 
+	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-feature android:name="android.hardware.screen.portrait" android:required="false" />
 	<uses-feature android:name="android.hardware.telephony" android:required="false" />
 	<!--<uses-feature android:name="android.hardware.location" android:required="false" />-->
@@ -44,6 +45,9 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-	</application>
+	    <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a911efb38fc3ed01944c7ea4410acde51d847864" />
+    </application>
 
 </manifest>
