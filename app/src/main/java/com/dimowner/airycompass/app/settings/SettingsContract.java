@@ -7,9 +7,11 @@ public class SettingsContract {
 
 	interface View extends Contract.View {
 
-		void showKeepScreenOn(boolean b);
+		void showKeepScreenOnSetting(boolean b);
 
-		void showEnergySavingMode(boolean b);
+		void showSimpleModeSetting(boolean b);
+
+		void showEnergySavingModeSetting(boolean b);
 	}
 
 	public interface UserActionsListener extends Contract.UserActionsListener<SettingsContract.View> {
@@ -17,6 +19,8 @@ public class SettingsContract {
 		void loadSettings();
 
 		void keepScreenOn(boolean b);
+
+		void simpleMode(boolean b);
 
 		void energySavingMode(boolean b);
 	}

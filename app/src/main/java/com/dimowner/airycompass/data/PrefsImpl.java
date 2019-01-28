@@ -29,6 +29,7 @@ public class PrefsImpl implements Prefs {
 	private static final String PREF_KEY_IS_FIRST_RUN = "is_first_run";
 	private static final String PREF_KEY_THEME_COLORMAP_POSITION = "theme_color";
 	private static final String PREF_KEY_KEEP_SCREEN_ON = "keep_screen_on";
+	private static final String PREF_KEY_SIMPLE_MODE = "is_simple_mode";
 	private static final String PREF_KEY_ENERGY_SAVING_MODE = "is_energy_saving_mode";
 
 	private SharedPreferences sharedPreferences;
@@ -84,6 +85,18 @@ public class PrefsImpl implements Prefs {
 	@Override
 	public boolean isKeepScreenOn() {
 		return sharedPreferences.getBoolean(PREF_KEY_KEEP_SCREEN_ON, false);
+	}
+
+	@Override
+	public void setSimpleMode(boolean on) {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putBoolean(PREF_KEY_SIMPLE_MODE, on);
+		editor.apply();
+	}
+
+	@Override
+	public boolean isSimpleMode() {
+		return sharedPreferences.getBoolean(PREF_KEY_SIMPLE_MODE, false);
 	}
 
 	@Override

@@ -16,19 +16,12 @@
 
 package com.dimowner.airycompass;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
-import android.content.Context;
-import android.os.Handler;
 //import com.crashlytics.android.Crashlytics;
 //import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class ACApplication extends Application {
-
-	@SuppressLint("StaticFieldLeak")
-	public static volatile Context applicationContext;
-	public static volatile Handler applicationHandler;
 
 	public static Injector injector;
 
@@ -50,8 +43,6 @@ public class ACApplication extends Application {
 		super.onCreate();
 //		Fabric.with(this, new Crashlytics());
 
-		applicationContext = getApplicationContext();
-		applicationHandler = new Handler(applicationContext.getMainLooper());
 		injector = new Injector(getApplicationContext());
 	}
 

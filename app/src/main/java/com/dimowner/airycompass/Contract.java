@@ -33,7 +33,5 @@ public interface Contract {
 		void bindView(T view);
 
 		void unbindView();
-
-//		void clear();
 	}
 }

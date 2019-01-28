@@ -52,6 +52,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 
 	private Switch swKeepScreenOn;
 	private Switch swEnergySaving;
+	private Switch swSimpleMode;
 
 	private SettingsContract.UserActionsListener presenter;
 	private ColorMap colorMap;
@@ -81,6 +82,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		btnRequest.setOnClickListener(this);
 		swKeepScreenOn = findViewById(R.id.swKeepScreenOn);
 		swEnergySaving = findViewById(R.id.swEnergySaving);
+		swSimpleMode = findViewById(R.id.swSimpleMode);
 
 		swKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
@@ -93,6 +95,13 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 			@Override
 			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
 				presenter.energySavingMode(isChecked);
+			}
+		});
+
+		swSimpleMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
+				presenter.simpleMode(isChecked);
 			}
 		});
 
@@ -227,12 +236,17 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 	}
 
 	@Override
-	public void showKeepScreenOn(boolean b) {
+	public void showKeepScreenOnSetting(boolean b) {
 		swKeepScreenOn.setChecked(b);
 	}
 
 	@Override
-	public void showEnergySavingMode(boolean b) {
+	public void showSimpleModeSetting(boolean b) {
+		swSimpleMode.setChecked(b);
+	}
+
+	@Override
+	public void showEnergySavingModeSetting(boolean b) {
 		swEnergySaving.setChecked(b);
 	}
 

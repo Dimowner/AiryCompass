@@ -101,6 +101,37 @@
 				android:orientation="horizontal">
 
 			<TextView
+					android:id="@+id/txtSimpleMode"
+					style="@style/Text.NormalLabel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/simple_mode"
+					android:layout_marginTop="@dimen/spacing_normal"
+					android:layout_marginBottom="@dimen/spacing_normal"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					android:layout_marginStart="@dimen/spacing_normal"
+					android:drawableStart="@drawable/ic_compass"
+					android:drawableLeft="@drawable/ic_compass"
+					android:drawablePadding="@dimen/spacing_double"
+					/>
+
+			<Switch
+					android:id="@+id/swSimpleMode"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="@dimen/spacing_normal"
+					android:layout_gravity="top"
+					/>
+		</LinearLayout>
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
 					android:id="@+id/txtEnergySaving"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"

@@ -27,6 +27,9 @@ public interface Prefs {
 	void setKeepScreenOn(boolean on);
 	boolean isKeepScreenOn();
 
+	void setSimpleMode(boolean on);
+	boolean isSimpleMode();
+
 	void setEnergySavingMode(boolean on);
 	boolean isEnergySavingMode();
 }

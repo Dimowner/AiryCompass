@@ -16,25 +16,7 @@
 
 package com.dimowner.airycompass.util;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.os.Build;
-import android.view.Display;
-import android.view.Window;
-import android.view.WindowManager;
-
-import com.dimowner.airycompass.ACApplication;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-
-import timber.log.Timber;
 
 /**
  * Android related utilities methods.
@@ -83,42 +65,5 @@ public class AndroidUtils {
 	 */
 	public static float pxToDp(float px) {
 		return (px / Resources.getSystem().getDisplayMetrics().density);
-	}
-
-	// A method to find height of the status bar
-	public static int getStatusBarHeight(Context context) {
-		int result = 0;
-		int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-		if (resourceId > 0) {
-			result = context.getResources().getDimensionPixelSize(resourceId);
-		}
-		return result;
-	}
-
-	public static void setTranslucent(Activity activity, boolean translucent) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			Window w = activity.getWindow();
-			if (translucent) {
-				w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			} else {
-				w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			}
-		}
-	}
-
-	public static void runOnUIThread(Runnable runnable) {
-		runOnUIThread(runnable, 0);
-	}
-
-	public static void runOnUIThread(Runnable runnable, long delay) {
-		if (delay == 0) {
-			ACApplication.applicationHandler.post(runnable);
-		} else {
-			ACApplication.applicationHandler.postDelayed(runnable, delay);
-		}
-	}
-
-	public static void cancelRunOnUIThread(Runnable runnable) {
-		ACApplication.applicationHandler.removeCallbacks(runnable);
 	}
 }
