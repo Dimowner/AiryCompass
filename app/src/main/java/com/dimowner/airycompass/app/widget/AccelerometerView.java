@@ -31,8 +31,7 @@ public class AccelerometerView extends View {
 	private float roll = 0f;
 	private float pitch = 0f;
 
-	private float xPos;
-	private float yPos;
+	private PointF point;
 
 	private int MAX_ACCELERATION;
 
@@ -40,31 +39,31 @@ public class AccelerometerView extends View {
 	//Converted value from pixels to coefficient used in function which describes move.
 	private float k = (float) (MAX_MOVE / (Math.PI/2));
 
-	private ViewDrawer<PointF> drawer;
+//	private ViewDrawer<PointF> drawer;
+	private AccelerometerDrawer drawer;
 	private boolean isSimple = false;
-	private AttributeSet attributeSet;
 
 	public AccelerometerView(Context context) {
 		super(context);
-		init(context, null);
+		init(context);
 	}
 
 	public AccelerometerView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context, attrs);
+		init(context);
 	}
 
 	public AccelerometerView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context, attrs);
+		init(context);
 	}
 
-	private void init(Context context, AttributeSet attrs) {
-		attributeSet = attrs;
+	private void init(Context context) {
+		point = new PointF(0, 0);
 //		if (isSimple) {
-//			drawer = new AccelerometerDrawerSimple(context, attributeSet);
+//			drawer = new AccelerometerDrawerSimple(context);
 //		} else {
-			drawer = new AccelerometerDrawer(context, attributeSet, isSimple);
+			drawer = new AccelerometerDrawer(context, isSimple);
 //		}
 	}
 
@@ -110,10 +109,12 @@ public class AccelerometerView extends View {
 			this.pitch = pitch;
 			this.roll = roll;
 
-			xPos = getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - roll));
-			yPos = getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - pitch));
+			point.set(
+					getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - roll)),
+					getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - pitch))
+				);
 
-			drawer.update(new PointF(xPos, yPos));
+			drawer.update(point);
 			invalidate();
 		}
 	}
@@ -123,11 +124,13 @@ public class AccelerometerView extends View {
 			this.pitch = x*1000;
 			this.roll = y*1000;
 
-			xPos = (float) (k * Math.atan(x*MAX_ACCELERATION/k));
-			yPos = (float) (k * Math.atan(y*MAX_ACCELERATION/k));
+			point.set(
+					(float) (k * Math.atan(x*MAX_ACCELERATION/k)),
+					(float) (k * Math.atan(y*MAX_ACCELERATION/k))
+				);
 
 //			Timber.v("updateLinearAcceleration pitch = " + x + " roll = " + y + " xPos = " + xPos + " yPos = " + yPos);
-			drawer.update(new PointF(xPos, yPos));
+			drawer.update(point);
 			invalidate();
 		}
 	}
@@ -136,10 +139,12 @@ public class AccelerometerView extends View {
 		if (isSimple != mode) {
 			isSimple = mode;
 //			if (isSimple) {
-//				drawer = new AccelerometerDrawerSimple(getContext(), attributeSet);
+//				drawer = new AccelerometerDrawerSimple(getContext());
 //			} else {
-				drawer = new AccelerometerDrawer(getContext(), attributeSet, isSimple);
+//				drawer = new AccelerometerDrawer(getContext(), isSimple);
 //			}
+			drawer.setSimple(isSimple);
+			drawer.update(point);
 			requestLayout();
 		}
 	}

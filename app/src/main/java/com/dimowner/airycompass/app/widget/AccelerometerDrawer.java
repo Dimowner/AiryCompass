@@ -18,13 +18,11 @@ package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.util.AttributeSet;
 import android.util.TypedValue;
 
 import com.dimowner.airycompass.R;
@@ -44,28 +42,34 @@ public class AccelerometerDrawer implements ViewDrawer<PointF> {
 	private boolean isSimple;
 
 
-	public AccelerometerDrawer(Context context, AttributeSet attrs, boolean isSimple) {
+	public AccelerometerDrawer(Context context, boolean isSimple) {
 		this.isSimple = isSimple;
-		int gridColor = context.getResources().getColor(R.color.md_white_1000);
-		int ballColor = context.getResources().getColor(R.color.md_white_1000);
+		int gridColor;
+		int ballColor;
 
-		if (attrs != null) {
-			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AccelerometerView);
-			if (ta != null) {
-				//Read View custom attributes
-				gridColor = ta.getColor(R.styleable.AccelerometerView_gridColor, context.getResources().getColor(R.color.md_white_1000));
-				ballColor = ta.getColor(R.styleable.AccelerometerView_ballColor, context.getResources().getColor(R.color.md_white_1000));
-				ta.recycle();
-			} else {
+//		if (attrs != null) {
+//			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AccelerometerView);
+//			if (ta != null) {
+//				//Read View custom attributes
+//				gridColor = ta.getColor(R.styleable.AccelerometerView_gridColor, context.getResources().getColor(R.color.md_red_600));
+//				ballColor = ta.getColor(R.styleable.AccelerometerView_ballColor, context.getResources().getColor(R.color.md_red_600));
+//				ta.recycle();
+//			} else {
 				//If failed to read View attributes, then read app theme attributes for for view colors.
 				TypedValue typedValue = new TypedValue();
 				Resources.Theme theme = context.getTheme();
-				theme.resolveAttribute(R.attr.accelerometerGridColor, typedValue, true);
-				gridColor = typedValue.data;
-				theme.resolveAttribute(R.attr.accelerometerBallColor, typedValue, true);
-				ballColor = typedValue.data;
-			}
-		}
+				if (theme.resolveAttribute(R.attr.accelerometerGridColor, typedValue, true)) {
+					gridColor = typedValue.data;
+				} else {
+					gridColor = context.getResources().getColor(R.color.md_white_1000);
+				}
+				if (theme.resolveAttribute(R.attr.accelerometerBallColor, typedValue, true)) {
+					ballColor = typedValue.data;
+				} else {
+					ballColor = context.getResources().getColor(R.color.md_white_1000);
+				}
+//			}
+//		}
 
 		pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		pathPaint.setStrokeWidth(1);
@@ -110,5 +114,9 @@ public class AccelerometerDrawer implements ViewDrawer<PointF> {
 	public void update(PointF p) {
 		this.xPos = p.x;
 		this.yPos = p.y;
+	}
+
+	public void setSimple(boolean simple) {
+		isSimple = simple;
 	}
 }

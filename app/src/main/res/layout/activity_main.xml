@@ -56,8 +56,6 @@
 				android:layout_marginTop="@dimen/spacing_double"
 				android:layout_marginEnd="@dimen/spacing_double"
 				android:layout_marginRight="@dimen/spacing_double"
-				app:gridColor="?attr/accelerometerGridColor"
-				app:ballColor="?attr/accelerometerBallColor"
 				/>
 
 		<com.dimowner.airycompass.app.widget.AccelerometerView
@@ -68,8 +66,6 @@
 				android:layout_marginStart="@dimen/spacing_double"
 				android:layout_marginLeft="@dimen/spacing_double"
 				android:layout_marginTop="@dimen/spacing_double"
-				app:gridColor="?attr/accelerometerGridColor"
-				app:ballColor="?attr/accelerometerBallColor"
 				/>
 	</FrameLayout>
 	<!--<com.dimowner.airycompass.app.widget.CompassView-->
@@ -86,9 +82,6 @@
 				android:id="@+id/accuracy_view"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				app:accuracyBackground="?attr/indicatorBackgroundColor"
-				app:accuracyText="?attr/indicatorTextColor"
-				app:accuracyIndicator="?attr/indicatorFieldColor"
 				/>
 
 		<com.dimowner.airycompass.app.widget.MagneticFieldView

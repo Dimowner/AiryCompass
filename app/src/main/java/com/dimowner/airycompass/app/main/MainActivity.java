@@ -171,6 +171,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	public void showSimpleMode(boolean isSimple) {
 		linearAccelerationView.setSimpleMode(isSimple);
 		orientationView.setSimpleMode(isSimple);
+		accuracyView.setSimpleMode(isSimple);
 	}
 
 	@Override
