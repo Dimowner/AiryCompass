@@ -39,6 +39,7 @@ public class MainPresenter implements MainContract.UserActionsListener {
 		this.view = v;
 
 		view.keepScreenOn(prefs.isKeepScreenOn());
+		view.showSimpleMode(prefs.isSimpleMode());
 
 		if (sensorsCallback == null) {
 			sensorsCallback = new SensorsContract.SensorsCallback() {

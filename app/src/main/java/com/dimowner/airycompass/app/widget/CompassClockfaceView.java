@@ -140,6 +140,7 @@ public class CompassClockfaceView extends View {
 		if (attrs != null) {
 			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassClockfaceView);
 			if (ta != null) {
+				//Read View custom attributes
 				smallMarkColor  = ta.getColor(R.styleable.CompassClockfaceView_smallMark, res.getColor(R.color.small_mark_color));
 				bigMarkColor = ta.getColor(R.styleable.CompassClockfaceView_bigMark, res.getColor(R.color.big_mark_color));
 				northMarkColor = ta.getColor(R.styleable.CompassClockfaceView_northMark,  res.getColor(R.color.north_mark_color));
@@ -147,17 +148,18 @@ public class CompassClockfaceView extends View {
 				secondaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_secondaryText,  res.getColor(R.color.secondary_text));
 				ta.recycle();
 			} else {
+				//If failed to read View attributes, then read app theme attributes for for view colors.
 				TypedValue typedValue = new TypedValue();
 				Resources.Theme theme = context.getTheme();
-				theme.resolveAttribute(R.attr.smallMark, typedValue, true);
+				theme.resolveAttribute(R.attr.smallMarkColor, typedValue, true);
 				smallMarkColor = typedValue.data;
-				theme.resolveAttribute(R.attr.bigMark, typedValue, true);
+				theme.resolveAttribute(R.attr.bigMarkColor, typedValue, true);
 				bigMarkColor = typedValue.data;
-				theme.resolveAttribute(R.attr.northMark, typedValue, true);
+				theme.resolveAttribute(R.attr.northMarkColor, typedValue, true);
 				northMarkColor = typedValue.data;
-				theme.resolveAttribute(R.attr.primaryText, typedValue, true);
+				theme.resolveAttribute(R.attr.primaryTextColor, typedValue, true);
 				primaryTextColor = typedValue.data;
-				theme.resolveAttribute(R.attr.secondaryText, typedValue, true);
+				theme.resolveAttribute(R.attr.secondaryTextColor, typedValue, true);
 				secondaryTextColor = typedValue.data;
 			}
 		}

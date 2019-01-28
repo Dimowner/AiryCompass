@@ -39,6 +39,8 @@ public interface MainContract {
 		void hideAlertBadAccuracy();
 
 		void showSensorsNotFound();
+
+		void showSimpleMode(boolean isSimple);
 	}
 
 	interface UserActionsListener extends Contract.UserActionsListener<MainContract.View> {

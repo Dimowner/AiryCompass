@@ -1,26 +1,32 @@
+/*
+ * Copyright 2019 Dmitriy Ponomarenko
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain prevDegree copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Point;
+import android.graphics.PointF;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 
-import com.dimowner.airycompass.R;
 import com.dimowner.airycompass.util.AndroidUtils;
 
 import timber.log.Timber;
 
 public class AccelerometerView extends View {
-
-	private Paint pathPaint;
-	private Paint ballPaint;
-	private Path path;
 
 	private float roll = 0f;
 	private float pitch = 0f;
@@ -28,13 +34,15 @@ public class AccelerometerView extends View {
 	private float xPos;
 	private float yPos;
 
-	private Point CENTER;
 	private int MAX_ACCELERATION;
 
-	private static int MAX_MOVE = (int) AndroidUtils.dpToPx(50); //dip
+	private int MAX_MOVE = (int) AndroidUtils.dpToPx(50); //dip
 	//Converted value from pixels to coefficient used in function which describes move.
 	private float k = (float) (MAX_MOVE / (Math.PI/2));
 
+	private ViewDrawer<PointF> drawer;
+	private boolean isSimple = false;
+	private AttributeSet attributeSet;
 
 	public AccelerometerView(Context context) {
 		super(context);
@@ -52,35 +60,12 @@ public class AccelerometerView extends View {
 	}
 
 	private void init(Context context, AttributeSet attrs) {
-		int gridColor = context.getResources().getColor(R.color.md_white_1000);
-		int ballColor = context.getResources().getColor(R.color.md_white_1000);
-
-		if (attrs != null) {
-			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AccelerometerView);
-			if (ta != null) {
-				gridColor = ta.getColor(R.styleable.AccelerometerView_gridColor, context.getResources().getColor(R.color.md_white_1000));
-				ballColor = ta.getColor(R.styleable.AccelerometerView_ballColor, context.getResources().getColor(R.color.md_white_1000));
-				ta.recycle();
-			} else {
-				TypedValue typedValue = new TypedValue();
-				Resources.Theme theme = context.getTheme();
-				theme.resolveAttribute(R.attr.gridColor, typedValue, true);
-				gridColor = typedValue.data;
-				theme.resolveAttribute(R.attr.ballColor, typedValue, true);
-				ballColor = typedValue.data;
-			}
-		}
-
-		pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		pathPaint.setColor(gridColor);
-		pathPaint.setStrokeWidth(1);
-		pathPaint.setStyle(Paint.Style.STROKE);
-
-		ballPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		ballPaint.setColor(ballColor);
-		ballPaint.setStyle(Paint.Style.FILL);
-
-		CENTER = new Point(0, 0);
+		attributeSet = attrs;
+//		if (isSimple) {
+//			drawer = new AccelerometerDrawerSimple(context, attributeSet);
+//		} else {
+			drawer = new AccelerometerDrawer(context, attributeSet, isSimple);
+//		}
 	}
 
 	@Override
@@ -110,28 +95,14 @@ public class AccelerometerView extends View {
 		MAX_MOVE = width/2;
 		k = (float) (MAX_MOVE / (Math.PI/2));
 		MAX_ACCELERATION = width/10;
-		CENTER.set(width/2, getHeight()/2);
 
-		//Layout grid
-		if (path == null) {
-			float radius = width/2f - width*0.03f;
-			path = new Path();
-			path.moveTo(CENTER.x - radius, CENTER.y);
-			path.lineTo(CENTER.x + radius, CENTER.y);
-			path.moveTo(CENTER.x, CENTER.y - radius);
-			path.lineTo(CENTER.x, CENTER.y + radius);
-			path.addCircle(CENTER.x, CENTER.y, radius, Path.Direction.CCW);
-		}
+		drawer.layout(getWidth(), getHeight());
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-//		Timber.v("onDraw");
-		//Draw grid
-		canvas.drawPath(path, pathPaint);
-		//Draw ball
-		canvas.drawCircle(CENTER.x - xPos, CENTER.y + yPos, getWidth()/10f, ballPaint);
+		drawer.draw(canvas);
 	}
 
 	public void updateOrientation(float pitch, float roll) {
@@ -142,6 +113,7 @@ public class AccelerometerView extends View {
 			xPos = getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - roll));
 			yPos = getWidth() * 0.37f * (float) Math.cos(Math.toRadians(90 - pitch));
 
+			drawer.update(new PointF(xPos, yPos));
 			invalidate();
 		}
 	}
@@ -155,7 +127,20 @@ public class AccelerometerView extends View {
 			yPos = (float) (k * Math.atan(y*MAX_ACCELERATION/k));
 
 //			Timber.v("updateLinearAcceleration pitch = " + x + " roll = " + y + " xPos = " + xPos + " yPos = " + yPos);
+			drawer.update(new PointF(xPos, yPos));
 			invalidate();
+		}
+	}
+
+	public void setSimpleMode(boolean mode) {
+		if (isSimple != mode) {
+			isSimple = mode;
+//			if (isSimple) {
+//				drawer = new AccelerometerDrawerSimple(getContext(), attributeSet);
+//			} else {
+				drawer = new AccelerometerDrawer(getContext(), attributeSet, isSimple);
+//			}
+			requestLayout();
 		}
 	}
 }

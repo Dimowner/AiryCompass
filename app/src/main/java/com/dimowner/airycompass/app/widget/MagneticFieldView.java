@@ -92,11 +92,13 @@ public class MagneticFieldView extends View {
 		if (attrs != null) {
 			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MagneticFieldView);
 			if (ta != null) {
+				//Read View custom attributes
 				magneticBackgroundColor  = ta.getColor(R.styleable.MagneticFieldView_magneticBackground, res.getColor(R.color.magnetic_background));
 				magneticTextColor = ta.getColor(R.styleable.MagneticFieldView_magneticText, res.getColor(R.color.magnetic_text_color));
 				magneticFieldColor = ta.getColor(R.styleable.MagneticFieldView_magneticIndicator,  res.getColor(R.color.magnetic_field_color));
 				ta.recycle();
 			} else {
+				//If failed to read View attributes, then read app theme attributes for for view colors.
 				TypedValue typedValue = new TypedValue();
 				Resources.Theme theme = context.getTheme();
 				theme.resolveAttribute(R.attr.magneticBackground, typedValue, true);

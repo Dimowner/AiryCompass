@@ -84,18 +84,20 @@ public class AccuracyView extends View {
 		if (attrs != null) {
 			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AccuracyView);
 			if (ta != null) {
+				//Read View custom attributes
 				accuracyBackgroundColor  = ta.getColor(R.styleable.AccuracyView_accuracyBackground, res.getColor(R.color.magnetic_background));
 				accuracyTextColor = ta.getColor(R.styleable.AccuracyView_accuracyText, res.getColor(R.color.magnetic_text_color));
 				accuracyColor = ta.getColor(R.styleable.AccuracyView_accuracyIndicator, res.getColor(R.color.accuracy_color));
 				ta.recycle();
 			} else {
+				//If failed to read View attributes, then read app theme attributes for for view colors.
 				TypedValue typedValue = new TypedValue();
 				Resources.Theme theme = context.getTheme();
-				theme.resolveAttribute(R.attr.accuracyBackground, typedValue, true);
+				theme.resolveAttribute(R.attr.indicatorBackgroundColor, typedValue, true);
 				accuracyBackgroundColor = typedValue.data;
-				theme.resolveAttribute(R.attr.accuracyText, typedValue, true);
+				theme.resolveAttribute(R.attr.indicatorTextColor, typedValue, true);
 				accuracyTextColor = typedValue.data;
-				theme.resolveAttribute(R.attr.accuracyIndicator, typedValue, true);
+				theme.resolveAttribute(R.attr.indicatorFieldColor, typedValue, true);
 				accuracyColor = typedValue.data;
 			}
 		}

@@ -133,21 +133,23 @@ public class CompassBackgroundView extends View {
 			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassBackgroundView);
 
 			if (ta != null) {
+				//Read View custom attributes
 				outerCircleColor  = ta.getColor(R.styleable.CompassBackgroundView_outerCircle, res.getColor(R.color.outer_circle_color));
 				middleCircleColor = ta.getColor(R.styleable.CompassBackgroundView_middleCircle, res.getColor(R.color.middle_circle_color));
 				innerCircleColor = ta.getColor(R.styleable.CompassBackgroundView_innerCircle, res.getColor(R.color.inner_circle_color));
 				northMarkColor = ta.getColor(R.styleable.CompassBackgroundView_northMarkArrow, res.getColor(R.color.north_mark_color));
 				ta.recycle();
 			} else {
+				//If failed to read View attributes, then read app theme attributes for for view colors.
 				TypedValue typedValue = new TypedValue();
 				Resources.Theme theme = context.getTheme();
-				theme.resolveAttribute(R.attr.outerCircle, typedValue, true);
+				theme.resolveAttribute(R.attr.outerCircleColor, typedValue, true);
 				outerCircleColor = typedValue.data;
-				theme.resolveAttribute(R.attr.middleCircle, typedValue, true);
+				theme.resolveAttribute(R.attr.middleCircleColor, typedValue, true);
 				middleCircleColor = typedValue.data;
-				theme.resolveAttribute(R.attr.innerCircle, typedValue, true);
+				theme.resolveAttribute(R.attr.innerCircleColor, typedValue, true);
 				innerCircleColor = typedValue.data;
-				theme.resolveAttribute(R.attr.northMarkArrow, typedValue, true);
+				theme.resolveAttribute(R.attr.northMarkColor, typedValue, true);
 				northMarkColor = typedValue.data;
 			}
 		}
