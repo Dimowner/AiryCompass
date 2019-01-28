@@ -1,11 +1,14 @@
 package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.dimowner.airycompass.R;
@@ -35,29 +38,46 @@ public class AccelerometerView extends View {
 
 	public AccelerometerView(Context context) {
 		super(context);
-		init(context);
+		init(context, null);
 	}
 
 	public AccelerometerView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context);
+		init(context, attrs);
 	}
 
 	public AccelerometerView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		init(context, attrs);
 	}
 
-	private void init(Context context) {
-		int color = context.getResources().getColor(R.color.md_white_1000);
+	private void init(Context context, AttributeSet attrs) {
+		int gridColor = context.getResources().getColor(R.color.md_white_1000);
+		int ballColor = context.getResources().getColor(R.color.md_white_1000);
+
+		if (attrs != null) {
+			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AccelerometerView);
+			if (ta != null) {
+				gridColor = ta.getColor(R.styleable.AccelerometerView_gridColor, context.getResources().getColor(R.color.md_white_1000));
+				ballColor = ta.getColor(R.styleable.AccelerometerView_ballColor, context.getResources().getColor(R.color.md_white_1000));
+				ta.recycle();
+			} else {
+				TypedValue typedValue = new TypedValue();
+				Resources.Theme theme = context.getTheme();
+				theme.resolveAttribute(R.attr.gridColor, typedValue, true);
+				gridColor = typedValue.data;
+				theme.resolveAttribute(R.attr.ballColor, typedValue, true);
+				ballColor = typedValue.data;
+			}
+		}
 
 		pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		pathPaint.setColor(color);
+		pathPaint.setColor(gridColor);
 		pathPaint.setStrokeWidth(1);
 		pathPaint.setStyle(Paint.Style.STROKE);
 
 		ballPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		ballPaint.setColor(color);
+		ballPaint.setColor(ballColor);
 		ballPaint.setStyle(Paint.Style.FILL);
 
 		CENTER = new Point(0, 0);

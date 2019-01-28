@@ -19,12 +19,18 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<com.dimowner.airycompass.app.widget.CompassBackgroundView
 			android:id="@+id/compass_background_view"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+			android:layout_height="wrap_content"
+			app:outerCircle="?attr/outerCircleColor"
+			app:middleCircle="?attr/middleCircleColor"
+			app:innerCircle="?attr/innerCircleColor"
+			app:northMarkArrow="?attr/northMarkColor"
+			/>
 
 	<!--<com.dimowner.airycompass.app.widget.MagneticFieldView-->
 			<!--android:id="@+id/magnetic_field_view"-->
@@ -34,7 +40,13 @@
 	<com.dimowner.airycompass.app.widget.CompassClockfaceView
 			android:id="@+id/compass_clockface_view"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
+			android:layout_height="wrap_content"
+			app:smallMark="?attr/smallMarkColor"
+			app:bigMark="?attr/bigMarkColor"
+			app:northMark="?attr/northMarkColor"
+			app:primaryText="?attr/primaryTextColor"
+			app:secondaryText="?attr/secondaryTextColor"
+			/>
 
 	<TextView
 			android:id="@+id/txt_direction"
@@ -42,7 +54,7 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:textSize="36sp"
-			android:textColor="@color/primary_text"
+			android:textColor="?attr/primaryTextColor"
 			tools:text="234°NE"/>
 
 </FrameLayout>

@@ -18,11 +18,13 @@ package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.dimowner.airycompass.R;
@@ -92,21 +94,21 @@ public class CompassBackgroundView extends View {
 
 	public CompassBackgroundView(Context context) {
 		super(context);
-		init(context);
+		init(context, null);
 	}
 
 	public CompassBackgroundView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context);
+		init(context, attrs);
 	}
 
 
 	public CompassBackgroundView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		init(context, attrs);
 	}
 
-	private void init(Context context) {
+	private void init(Context context, AttributeSet attrs) {
 //		Typeface typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
 //		Typeface typeface2 = Typeface.create("sans-serif-medium", Typeface.NORMAL);
 
@@ -125,14 +127,50 @@ public class CompassBackgroundView extends View {
 		int outerCircleColor= res.getColor(R.color.outer_circle_color);
 		int middleCircleColor = res.getColor(R.color.middle_circle_color);
 		int innerCircleColor = res.getColor(R.color.inner_circle_color);
-//		int magneticBackgroundColor = res.getColor(R.color.magnetic_background);
-//		int magneticTextColor = res.getColor(R.color.magnetic_text_color);
-//		int magneticGradientColor = res.getColor(R.color.magnetic_field_color);
-//		int smallMarkColor = res.getColor(R.color.small_mark_color);
-//		int bigMarkColor = res.getColor(R.color.big_mark_color);
 		int northMarkColor = res.getColor(R.color.north_mark_color);
-		int primaryTextColor = res.getColor(R.color.primary_text);
-//		int secondaryTextColor = res.getColor(R.color.secondary_text);
+
+		if (attrs != null) {
+			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassBackgroundView);
+
+			if (ta != null) {
+				outerCircleColor  = ta.getColor(R.styleable.CompassBackgroundView_outerCircle, res.getColor(R.color.outer_circle_color));
+				middleCircleColor = ta.getColor(R.styleable.CompassBackgroundView_middleCircle, res.getColor(R.color.middle_circle_color));
+				innerCircleColor = ta.getColor(R.styleable.CompassBackgroundView_innerCircle, res.getColor(R.color.inner_circle_color));
+				northMarkColor = ta.getColor(R.styleable.CompassBackgroundView_northMarkArrow, res.getColor(R.color.north_mark_color));
+				ta.recycle();
+			} else {
+				TypedValue typedValue = new TypedValue();
+				Resources.Theme theme = context.getTheme();
+				theme.resolveAttribute(R.attr.outerCircle, typedValue, true);
+				outerCircleColor = typedValue.data;
+				theme.resolveAttribute(R.attr.middleCircle, typedValue, true);
+				middleCircleColor = typedValue.data;
+				theme.resolveAttribute(R.attr.innerCircle, typedValue, true);
+				innerCircleColor = typedValue.data;
+				theme.resolveAttribute(R.attr.northMarkArrow, typedValue, true);
+				northMarkColor = typedValue.data;
+			}
+		}
+
+//		outerCircleColor = res.getColor(r);
+//		theme.resolveAttribute(R.attr.expandableListItemColor, typedValue, true);
+//		itemColor = typedValue.data;
+//		theme.resolveAttribute(R.attr.selectedItemBackground, typedValue, true);
+//		selectedItemColor = typedValue.data;
+//		theme.resolveAttribute(R.attr.selectedItemTextColor, typedValue, true);
+//		selectedItemTextColor = typedValue.data;
+//		theme.resolveAttribute(R.attr.primaryTextColor, typedValue, true);
+//		textColor = typedValue.data;
+
+//		TypedArray a = context.getTheme().obtainStyledAttributes(
+//		new int[] {R.attr.expandableListViewBackground, R.attr.expandableListItemColor,
+//				R.attr.selectedItemBackground, R.attr.selectedItemTextColor,
+//				R.attr.primaryTextColor});
+//		backgroundColor = a.getColor(0, 0);
+//		itemColor = a.getColor(1, 0);
+//		selectedItemColor = a.getColor(2, 0);
+//		selectedItemTextColor = a.getColor(3, 0);
+//		textColor = a.getColor(4, 0);
 
 //		magneticPath = new Path();
 		CENTER = new Point(0, 0);

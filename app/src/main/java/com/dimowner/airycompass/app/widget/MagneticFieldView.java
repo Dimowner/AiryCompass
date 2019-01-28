@@ -18,6 +18,7 @@ package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -25,6 +26,7 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.dimowner.airycompass.R;
@@ -61,20 +63,20 @@ public class MagneticFieldView extends View {
 
 	public MagneticFieldView(Context context) {
 		super(context);
-		init(context);
+		init(context, null);
 	}
 
 	public MagneticFieldView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context);
+		init(context, attrs);
 	}
 
 	public MagneticFieldView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		init(context, attrs);
 	}
 
-	private void init(Context context) {
+	private void init(Context context, AttributeSet attrs) {
 		Typeface typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
 
 		Resources res = context.getResources();
@@ -84,8 +86,27 @@ public class MagneticFieldView extends View {
 		int outerCircleColor= res.getColor(R.color.outer_circle_color);
 		int magneticBackgroundColor = res.getColor(R.color.magnetic_background);
 		int magneticTextColor = res.getColor(R.color.magnetic_text_color);
-		int magneticGradientColor = res.getColor(R.color.magnetic_field_color);
+		int magneticFieldColor = res.getColor(R.color.magnetic_field_color);
 		int northMarkColor = res.getColor(R.color.north_mark_color);
+
+		if (attrs != null) {
+			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MagneticFieldView);
+			if (ta != null) {
+				magneticBackgroundColor  = ta.getColor(R.styleable.MagneticFieldView_magneticBackground, res.getColor(R.color.magnetic_background));
+				magneticTextColor = ta.getColor(R.styleable.MagneticFieldView_magneticText, res.getColor(R.color.magnetic_text_color));
+				magneticFieldColor = ta.getColor(R.styleable.MagneticFieldView_magneticIndicator,  res.getColor(R.color.magnetic_field_color));
+				ta.recycle();
+			} else {
+				TypedValue typedValue = new TypedValue();
+				Resources.Theme theme = context.getTheme();
+				theme.resolveAttribute(R.attr.magneticBackground, typedValue, true);
+				magneticBackgroundColor = typedValue.data;
+				theme.resolveAttribute(R.attr.magneticText, typedValue, true);
+				magneticTextColor = typedValue.data;
+				theme.resolveAttribute(R.attr.magneticIndicator, typedValue, true);
+				magneticFieldColor = typedValue.data;
+			}
+		}
 
 		magneticPath = new Path();
 		CENTER = new Point(0, 0);
@@ -110,7 +131,7 @@ public class MagneticFieldView extends View {
 		magneticTextPaint.setTextAlign(Paint.Align.CENTER);
 
 		magneticFieldPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		magneticFieldPaint.setColor(magneticGradientColor);
+		magneticFieldPaint.setColor(magneticFieldColor);
 		magneticFieldPaint.setStrokeWidth(AndroidUtils.dpToPx(6));
 		magneticFieldPaint.setStyle(Paint.Style.STROKE);
 		magneticFieldPaint.setStrokeCap(Paint.Cap.ROUND);

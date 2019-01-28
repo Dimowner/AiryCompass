@@ -18,6 +18,7 @@ package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -25,6 +26,7 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.dimowner.airycompass.R;
@@ -55,20 +57,20 @@ public class AccuracyView extends View {
 
 	public AccuracyView(Context context) {
 		super(context);
-		init(context);
+		init(context, null);
 	}
 
 	public AccuracyView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context);
+		init(context, attrs);
 	}
 
 	public AccuracyView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		init(context, attrs);
 	}
 
-	private void init(Context context) {
+	private void init(Context context, AttributeSet attrs) {
 		Typeface typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
 
 		Resources res = context.getResources();
@@ -77,7 +79,26 @@ public class AccuracyView extends View {
 
 		int accuracyBackgroundColor = res.getColor(R.color.magnetic_background);
 		int accuracyTextColor = res.getColor(R.color.magnetic_text_color);
-		int accuracyGradientColor = res.getColor(R.color.accuracy_color);
+		int accuracyColor = res.getColor(R.color.accuracy_color);
+
+		if (attrs != null) {
+			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AccuracyView);
+			if (ta != null) {
+				accuracyBackgroundColor  = ta.getColor(R.styleable.AccuracyView_accuracyBackground, res.getColor(R.color.magnetic_background));
+				accuracyTextColor = ta.getColor(R.styleable.AccuracyView_accuracyText, res.getColor(R.color.magnetic_text_color));
+				accuracyColor = ta.getColor(R.styleable.AccuracyView_accuracyIndicator, res.getColor(R.color.accuracy_color));
+				ta.recycle();
+			} else {
+				TypedValue typedValue = new TypedValue();
+				Resources.Theme theme = context.getTheme();
+				theme.resolveAttribute(R.attr.accuracyBackground, typedValue, true);
+				accuracyBackgroundColor = typedValue.data;
+				theme.resolveAttribute(R.attr.accuracyText, typedValue, true);
+				accuracyTextColor = typedValue.data;
+				theme.resolveAttribute(R.attr.accuracyIndicator, typedValue, true);
+				accuracyColor = typedValue.data;
+			}
+		}
 
 		accuracyPath = new Path();
 		CENTER = new Point(0, 0);
@@ -96,7 +117,7 @@ public class AccuracyView extends View {
 		accuracyTextPaint.setTextAlign(Paint.Align.CENTER);
 
 		accuracyFieldPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		accuracyFieldPaint.setColor(accuracyGradientColor);
+		accuracyFieldPaint.setColor(accuracyColor);
 		accuracyFieldPaint.setStrokeWidth(AndroidUtils.dpToPx(6));
 		accuracyFieldPaint.setStyle(Paint.Style.STROKE);
 		accuracyFieldPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -168,7 +189,7 @@ public class AccuracyView extends View {
 		canvas.drawPath(accuracyPath, accuracyFieldPaint);
 
 		drawTextInverted(canvas, 143, accName, WIDTH*ACCURACY_NAME_RADIUS, accuracyTextPaint);
-		drawText(canvas, 209, accValue, WIDTH*ACCURACY_VAL_RADIUS, accuracyTextPaint);
+		drawText(canvas, 2010, accValue, WIDTH*ACCURACY_VAL_RADIUS, accuracyTextPaint);
 	}
 
 	private void drawText(Canvas canvas, float degree, String text, float radius, Paint paint) {

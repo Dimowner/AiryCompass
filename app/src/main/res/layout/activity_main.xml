@@ -15,8 +15,9 @@
   ~ limitations under the License.
   -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				  android:layout_width="match_parent"
-				  android:layout_height="match_parent">
+				 android:layout_width="match_parent"
+				 android:layout_height="match_parent"
+				 xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<FrameLayout
 			android:layout_width="match_parent"
@@ -31,7 +32,7 @@
 				android:text="@string/acceleration"
 				android:layout_gravity="top|start"
 				android:layout_marginTop="@dimen/spacing_small"
-				android:textColor="@color/text_primary_light"
+				android:textColor="?attr/accelerometerGridColor"
 				android:textSize="@dimen/text_small"
 				android:fontFamily="sans-serif-light"
 				/>
@@ -43,7 +44,7 @@
 				android:text="@string/orientation"
 				android:layout_gravity="top|end"
 				android:layout_marginTop="@dimen/spacing_small"
-				android:textColor="@color/text_primary_light"
+				android:textColor="?attr/accelerometerGridColor"
 				android:textSize="@dimen/text_small"
 				android:fontFamily="sans-serif-light"
 				/>
@@ -55,6 +56,8 @@
 				android:layout_marginTop="@dimen/spacing_double"
 				android:layout_marginEnd="@dimen/spacing_double"
 				android:layout_marginRight="@dimen/spacing_double"
+				app:gridColor="?attr/accelerometerGridColor"
+				app:ballColor="?attr/accelerometerBallColor"
 				/>
 
 		<com.dimowner.airycompass.app.widget.AccelerometerView
@@ -65,6 +68,8 @@
 				android:layout_marginStart="@dimen/spacing_double"
 				android:layout_marginLeft="@dimen/spacing_double"
 				android:layout_marginTop="@dimen/spacing_double"
+				app:gridColor="?attr/accelerometerGridColor"
+				app:ballColor="?attr/accelerometerBallColor"
 				/>
 	</FrameLayout>
 	<!--<com.dimowner.airycompass.app.widget.CompassView-->
@@ -80,12 +85,20 @@
 		<com.dimowner.airycompass.app.widget.AccuracyView
 				android:id="@+id/accuracy_view"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+				android:layout_height="wrap_content"
+				app:accuracyBackground="?attr/indicatorBackgroundColor"
+				app:accuracyText="?attr/indicatorTextColor"
+				app:accuracyIndicator="?attr/indicatorFieldColor"
+				/>
 
 		<com.dimowner.airycompass.app.widget.MagneticFieldView
 				android:id="@+id/magnetic_field_view"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+				android:layout_height="wrap_content"
+				app:magneticBackground="?attr/indicatorBackgroundColor"
+				app:magneticText="?attr/indicatorTextColor"
+				app:magneticIndicator="?attr/indicatorFieldColor"
+				/>
 
 		<com.dimowner.airycompass.app.widget.CompassCompoundView
 				android:id="@+id/compass_view_compound"
@@ -115,7 +128,7 @@
 			android:layout_marginEnd="@dimen/spacing_double"
 			android:layout_marginStart="@dimen/spacing_double"
 			android:layout_marginBottom="@dimen/text_normal"
-			android:textColor="@color/text_primary_light"
+			android:textColor="?attr/accelerometerGridColor"
 			android:layout_gravity="bottom|center"
 			android:gravity="center"
 			android:fontFamily="sans-serif-light"

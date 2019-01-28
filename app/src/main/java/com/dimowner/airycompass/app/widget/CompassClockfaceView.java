@@ -18,12 +18,14 @@ package com.dimowner.airycompass.app.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.dimowner.airycompass.R;
@@ -93,21 +95,21 @@ public class CompassClockfaceView extends View {
 
 	public CompassClockfaceView(Context context) {
 		super(context);
-		init(context);
+		init(context, null);
 	}
 
 	public CompassClockfaceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context);
+		init(context, attrs);
 	}
 
 
 	public CompassClockfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		init(context, attrs);
 	}
 
-	private void init(Context context) {
+	private void init(Context context, AttributeSet attrs) {
 		Typeface typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
 		Typeface typeface2 = Typeface.create("sans-serif-medium", Typeface.NORMAL);
 
@@ -134,6 +136,31 @@ public class CompassClockfaceView extends View {
 		int northMarkColor = res.getColor(R.color.north_mark_color);
 		int primaryTextColor = res.getColor(R.color.primary_text);
 		int secondaryTextColor = res.getColor(R.color.secondary_text);
+
+		if (attrs != null) {
+			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassClockfaceView);
+			if (ta != null) {
+				smallMarkColor  = ta.getColor(R.styleable.CompassClockfaceView_smallMark, res.getColor(R.color.small_mark_color));
+				bigMarkColor = ta.getColor(R.styleable.CompassClockfaceView_bigMark, res.getColor(R.color.big_mark_color));
+				northMarkColor = ta.getColor(R.styleable.CompassClockfaceView_northMark,  res.getColor(R.color.north_mark_color));
+				primaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_primaryText,  res.getColor(R.color.primary_text));
+				secondaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_secondaryText,  res.getColor(R.color.secondary_text));
+				ta.recycle();
+			} else {
+				TypedValue typedValue = new TypedValue();
+				Resources.Theme theme = context.getTheme();
+				theme.resolveAttribute(R.attr.smallMark, typedValue, true);
+				smallMarkColor = typedValue.data;
+				theme.resolveAttribute(R.attr.bigMark, typedValue, true);
+				bigMarkColor = typedValue.data;
+				theme.resolveAttribute(R.attr.northMark, typedValue, true);
+				northMarkColor = typedValue.data;
+				theme.resolveAttribute(R.attr.primaryText, typedValue, true);
+				primaryTextColor = typedValue.data;
+				theme.resolveAttribute(R.attr.secondaryText, typedValue, true);
+				secondaryTextColor = typedValue.data;
+			}
+		}
 
 //		magneticPath = new Path();
 		CENTER = new Point(0, 0);

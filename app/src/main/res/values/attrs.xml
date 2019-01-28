@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<attr name="outerCircleColor" format="color" />
+	<attr name="middleCircleColor" format="color" />
+	<attr name="innerCircleColor" format="color" />
+
+	<attr name="indicatorBackgroundColor" format="color" />
+	<attr name="indicatorTextColor" format="color" />
+	<attr name="indicatorFieldColor" format="color" />
+
+	<attr name="smallMarkColor" format="color" />
+	<attr name="bigMarkColor" format="color" />
+	<attr name="primaryTextColor" format="color" />
+	<attr name="secondaryTextColor" format="color" />
+	<attr name="northMarkColor" format="color" />
+
+	<attr name="accelerometerGridColor" format="color" />
+	<attr name="accelerometerBallColor" format="color" />
+
+	<declare-styleable name="CompassBackgroundView">
+		<attr name="outerCircle" format="color" />
+		<attr name="middleCircle" format="color" />
+		<attr name="innerCircle" format="color" />
+		<attr name="northMarkArrow" format="color" />
+	</declare-styleable>
+
+	<declare-styleable name="CompassClockfaceView">
+		<attr name="smallMark" format="color" />
+		<attr name="bigMark" format="color" />
+		<attr name="northMark" format="color" />
+		<attr name="primaryText" format="color" />
+		<attr name="secondaryText" format="color" />
+	</declare-styleable>
+
+	<declare-styleable name="AccuracyView">
+		<attr name="accuracyBackground" format="color" />
+		<attr name="accuracyText" format="color" />
+		<attr name="accuracyIndicator" format="color" />
+	</declare-styleable>
+
+	<declare-styleable name="MagneticFieldView">
+		<attr name="magneticBackground" format="color" />
+		<attr name="magneticText" format="color" />
+		<attr name="magneticIndicator" format="color" />
+	</declare-styleable>
+
+	<declare-styleable name="AccelerometerView">
+		<attr name="gridColor" format="color" />
+		<attr name="ballColor" format="color" />
+	</declare-styleable>
+
+</resources>

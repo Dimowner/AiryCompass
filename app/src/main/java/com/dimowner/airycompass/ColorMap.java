@@ -30,29 +30,22 @@ public class ColorMap {
 	}
 
 	private void init(int color) {
-		if (color < 1 || color > 7) {
-			color = new Random().nextInt(7);
+		if (color < 0 || color > 3) {
+			color = new Random().nextInt(3);
 		}
 		switch (color) {
-			case 2:
-				appThemeResource = R.style.AppTheme;
-				break;
-			case 3:
-				appThemeResource = R.style.AppTheme;
-				break;
-			case 4:
-				appThemeResource = R.style.AppTheme;
-				break;
-			case 5:
-				appThemeResource = R.style.AppTheme;
-				break;
-			case 6:
-				appThemeResource = R.style.AppTheme;
-				break;
-			case 7:
+			case 0:
 				appThemeResource = R.style.AppTheme;
 				break;
 			case 1:
+				appThemeResource = R.style.AppTheme_Black;
+				break;
+			case 2:
+				appThemeResource = R.style.AppTheme_Grey;
+				break;
+			case 3:
+				appThemeResource = R.style.AppTheme_Brown;
+				break;
 			default:
 				appThemeResource = R.style.AppTheme;
 		}
@@ -78,14 +71,10 @@ public class ColorMap {
 
 	public int[] getColorResources() {
 		return new int[] {
-				R.color.transparent,
-				R.color.md_blue_700,
+				R.color.colorPrimary,
+				R.color.md_black_1000,
+				R.color.md_grey_800,
 				R.color.md_brown_700,
-				R.color.md_deep_orange_800,
-				R.color.md_pink_800,
-				R.color.md_deep_purple_700,
-				R.color.md_red_700,
-				R.color.md_teal_700
 		};
 	}
 

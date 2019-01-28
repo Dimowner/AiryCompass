@@ -62,13 +62,9 @@
 	<!--<a href="http://#/">Application site</a>-->
 
 	<string-array name="theme_colors">
-		<item>Theme Not selected</item>
-		<item>Theme Blue</item>
+		<item>Theme Indigo</item>
+		<item>Theme Black</item>
+		<item>Theme Grey</item>
 		<item>Theme Brown</item>
-		<item>Theme Deep Orange</item>
-		<item>Theme Pink</item>
-		<item>Theme Deep Purple</item>
-		<item>Theme Red</item>
-		<item>Theme Teal</item>
 	</string-array>
 </resources>
