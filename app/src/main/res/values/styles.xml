@@ -28,7 +28,7 @@
 		<item name="middleCircleColor">@color/md_indigo_400x</item>
 		<item name="innerCircleColor">@color/md_indigo_500x</item>
 		<item name="indicatorBackgroundColor">@color/md_indigo_800x</item>
-		<item name="indicatorTextColor">@color/md_indigo_50</item>
+		<item name="indicatorTextColor">@color/md_indigo_100</item>
 		<item name="indicatorFieldColor">@color/md_green_400</item>
 		<item name="smallMarkColor">@color/md_indigo_200</item>
 		<item name="bigMarkColor">@color/md_white_1000</item>
@@ -42,11 +42,11 @@
 	<style name="AppTheme.Black" parent="AppTheme">
 		<item name="android:windowBackground">@drawable/gradient_black</item>
 
-		<item name="outerCircleColor">@color/md_grey_500</item>
+		<item name="outerCircleColor">@color/md_grey_600</item>
 		<item name="middleCircleColor">@color/md_black_1000</item>
 		<item name="innerCircleColor">@color/md_black_1000</item>
 		<item name="indicatorBackgroundColor">@color/md_grey_800x</item>
-		<item name="indicatorTextColor">@color/md_grey_100</item>
+		<item name="indicatorTextColor">@color/md_grey_400</item>
 		<item name="indicatorFieldColor">@color/md_green_700</item>
 		<item name="smallMarkColor">@color/md_grey_600</item>
 		<item name="bigMarkColor">@color/md_grey_300</item>
@@ -60,11 +60,11 @@
 	<style name="AppTheme.Grey" parent="AppTheme">
 		<item name="android:windowBackground">@drawable/gradient_grey</item>
 
-		<item name="outerCircleColor">@color/md_grey_500</item>
+		<item name="outerCircleColor">@color/md_grey_600</item>
 		<item name="middleCircleColor">@color/md_grey_800</item>
 		<item name="innerCircleColor">@color/md_grey_800x</item>
 		<item name="indicatorBackgroundColor">@color/md_grey_900x</item>
-		<item name="indicatorTextColor">@color/md_grey_100</item>
+		<item name="indicatorTextColor">@color/md_grey_400</item>
 		<item name="indicatorFieldColor">@color/md_green_700</item>
 		<item name="smallMarkColor">@color/md_grey_400</item>
 		<item name="bigMarkColor">@color/md_grey_100</item>
@@ -82,7 +82,7 @@
 		<item name="middleCircleColor">@color/md_brown_500</item>
 		<item name="innerCircleColor">@color/md_brown_600</item>
 		<item name="indicatorBackgroundColor">@color/md_brown_800</item>
-		<item name="indicatorTextColor">@color/md_brown_50</item>
+		<item name="indicatorTextColor">@color/md_brown_100</item>
 		<item name="indicatorFieldColor">@color/md_green_600</item>
 		<item name="smallMarkColor">@color/md_brown_200</item>
 		<item name="bigMarkColor">@color/md_brown_50</item>

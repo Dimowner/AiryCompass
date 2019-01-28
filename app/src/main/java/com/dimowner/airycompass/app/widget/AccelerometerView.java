@@ -141,9 +141,9 @@ public class AccelerometerView extends View {
 //			if (isSimple) {
 //				drawer = new AccelerometerDrawerSimple(getContext());
 //			} else {
-//				drawer = new AccelerometerDrawer(getContext(), isSimple);
+				drawer = new AccelerometerDrawer(getContext(), isSimple);
 //			}
-			drawer.setSimple(isSimple);
+//			drawer.setSimpleMode(isSimple);
 			drawer.update(point);
 			requestLayout();
 		}

@@ -85,7 +85,7 @@ public class AccelerometerDrawer implements ViewDrawer<PointF> {
 
 	@Override
 	public void layout(int width, int height) {
-		RADIUS = width/10;
+		RADIUS = width/8;
 		CENTER.set(width/2, height/2);
 
 		//Layout grid
@@ -114,9 +114,5 @@ public class AccelerometerDrawer implements ViewDrawer<PointF> {
 	public void update(PointF p) {
 		this.xPos = p.x;
 		this.yPos = p.y;
-	}
-
-	public void setSimple(boolean simple) {
-		isSimple = simple;
 	}
 }

@@ -45,7 +45,7 @@ public class MagneticFieldView extends View {
 
 	private void init(Context context) {
 		if (isSimple) {
-			drawer = new MagneticFieldDrawerSimple(context);
+			drawer = new MagneticFieldDrawerSimple2(context);
 		} else {
 			drawer = new MagneticFieldDrawer(context);
 		}
@@ -94,7 +94,7 @@ public class MagneticFieldView extends View {
 		if (isSimple != mode) {
 			isSimple = mode;
 			if (isSimple) {
-				drawer = new MagneticFieldDrawerSimple(getContext());
+				drawer = new MagneticFieldDrawerSimple2(getContext());
 			} else {
 				drawer = new MagneticFieldDrawer(getContext());
 			}

@@ -39,6 +39,9 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 
 	//	private CompassView compassView;
 	private TextView txtAccuracyAlert;
+	private TextView txtAcceleration;
+	private TextView txtOrientation;
+
 	private CompassCompoundView compassCompoundView;
 	private MagneticFieldView magneticFieldView;
 	private AccuracyView accuracyView;
@@ -61,6 +64,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 //		compassView = findViewById(R.id.compass_view);
 		magneticFieldView = findViewById(R.id.magnetic_field_view);
 		txtAccuracyAlert = findViewById(R.id.txt_accuracy);
+		txtAcceleration = findViewById(R.id.txt_acceleration);
+		txtOrientation = findViewById(R.id.txt_orientation);
 		accuracyView = findViewById(R.id.accuracy_view);
 		orientationView = findViewById(R.id.accelerometer_view);
 		linearAccelerationView = findViewById(R.id.accelerometer_view2);
@@ -173,6 +178,14 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		orientationView.setSimpleMode(isSimple);
 		accuracyView.setSimpleMode(isSimple);
 		magneticFieldView.setSimpleMode(isSimple);
+		compassCompoundView.setSimpleMode(isSimple);
+		if (isSimple) {
+			txtOrientation.setVisibility(View.GONE);
+			txtAcceleration.setVisibility(View.GONE);
+		} else {
+			txtOrientation.setVisibility(View.VISIBLE);
+			txtAcceleration.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override

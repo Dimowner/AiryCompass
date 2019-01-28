@@ -45,7 +45,7 @@ public class AccuracyView extends View {
 
 	private void init(Context context) {
 		if (isSimple) {
-			drawer = new AccuracyDrawerSimple(context);
+			drawer = new AccuracyDrawerSimple2(context);
 		} else {
 			drawer = new AccuracyDrawer(context);
 		}
@@ -93,7 +93,7 @@ public class AccuracyView extends View {
 		if (isSimple != mode) {
 			isSimple = mode;
 			if (isSimple) {
-				drawer = new AccuracyDrawerSimple(getContext());
+				drawer = new AccuracyDrawerSimple2(getContext());
 			} else {
 				drawer = new AccuracyDrawer(getContext());
 			}

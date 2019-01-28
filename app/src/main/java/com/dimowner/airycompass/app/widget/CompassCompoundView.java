@@ -31,6 +31,7 @@ public class CompassCompoundView extends FrameLayout {
 	private long directionUpdatePrevTime = 0;
 
 	private CompassClockfaceView compassClockfaceView;
+	private CompassBackgroundView compassBackgroundView;
 	private TextView txtDirection;
 
 	private String n;
@@ -61,6 +62,7 @@ public class CompassCompoundView extends FrameLayout {
 		inflate(context, R.layout.compass_view_compound, this);
 
 		compassClockfaceView = findViewById(R.id.compass_clockface_view);
+		compassBackgroundView = findViewById(R.id.compass_background_view);
 		txtDirection = findViewById(R.id.txt_direction);
 
 		Resources res = context.getResources();
@@ -82,6 +84,10 @@ public class CompassCompoundView extends FrameLayout {
 			txtDirection.setText(str);
 			directionUpdatePrevTime = curTime;
 		}
+	}
+
+	public void setSimpleMode(boolean b) {
+		compassBackgroundView.setSimpleMode(b);
 	}
 
 	private String getDirectionText(float degree) {

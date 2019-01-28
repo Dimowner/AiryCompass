@@ -73,8 +73,8 @@ public class ColorMap {
 		return new int[] {
 				R.color.colorPrimary,
 				R.color.md_black_1000,
-				R.color.md_grey_800,
-				R.color.md_brown_700,
+				R.color.md_grey_800x,
+				R.color.md_brown_600,
 		};
 	}
 

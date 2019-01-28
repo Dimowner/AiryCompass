@@ -38,7 +38,7 @@
 	<dimen name="divider_height">1dp</dimen>
 
 	<dimen name="gradient_radius">300dp</dimen>
-	<dimen name="accelerometer_view_size">100dp</dimen>
+	<dimen name="accelerometer_view_size">90dp</dimen>
 
 	<dimen name="toolbar_height">56dp</dimen>
 	<dimen name="toolbar_elevation">4dp</dimen>

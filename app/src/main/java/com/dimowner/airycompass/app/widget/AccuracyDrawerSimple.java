@@ -31,11 +31,11 @@ import com.dimowner.airycompass.util.AndroidUtils;
 
 public class AccuracyDrawerSimple implements ViewDrawer<Integer> {
 
-	public static final float THICKNESS = AndroidUtils.dpToPx(4);
-	public static final float PADDING = AndroidUtils.dpToPx(16);
-	public static final float TEXT_PADDING = AndroidUtils.dpToPx(8);
-	public static final float INDICATOR_WIDTH = AndroidUtils.dpToPx(90);
-	public static final float TEXT_HEIGHT = AndroidUtils.dpToPx(12);
+	private static final float THICKNESS = AndroidUtils.dpToPx(4);
+	private static final float PADDING = AndroidUtils.dpToPx(18);
+	private static final float TEXT_PADDING = AndroidUtils.dpToPx(8);
+	private static final float INDICATOR_WIDTH = AndroidUtils.dpToPx(90);
+	private static final float TEXT_HEIGHT = AndroidUtils.dpToPx(12);
 
 	private String accName;
 	private String accValue;

@@ -34,7 +34,7 @@ import timber.log.Timber;
 
 public class CompassBackgroundView extends View {
 
-	public static final String DEGREE_SIGN = "°";
+//	public static final String DEGREE_SIGN = "°";
 
 	public static final float OUTER_RADIUS = 0.43f;
 	public static final float MIDDLE_RADIUS = 0.325f;
@@ -89,8 +89,11 @@ public class CompassBackgroundView extends View {
 	private Path staticNorthMarkPath = null;
 //	private Path northMarkPath2 = null;
 
-	private float azimuth;
+//	private float azimuth;
 //	private float magneticField;
+
+	private boolean isSimple = false;
+
 
 	public CompassBackgroundView(Context context) {
 		super(context);
@@ -139,19 +142,19 @@ public class CompassBackgroundView extends View {
 				innerCircleColor = ta.getColor(R.styleable.CompassBackgroundView_innerCircle, res.getColor(R.color.inner_circle_color));
 				northMarkColor = ta.getColor(R.styleable.CompassBackgroundView_northMarkArrow, res.getColor(R.color.north_mark_color));
 				ta.recycle();
-			} else {
-				//If failed to read View attributes, then read app theme attributes for for view colors.
-				TypedValue typedValue = new TypedValue();
-				Resources.Theme theme = context.getTheme();
-				theme.resolveAttribute(R.attr.outerCircleColor, typedValue, true);
-				outerCircleColor = typedValue.data;
-				theme.resolveAttribute(R.attr.middleCircleColor, typedValue, true);
-				middleCircleColor = typedValue.data;
-				theme.resolveAttribute(R.attr.innerCircleColor, typedValue, true);
-				innerCircleColor = typedValue.data;
-				theme.resolveAttribute(R.attr.northMarkColor, typedValue, true);
-				northMarkColor = typedValue.data;
 			}
+		} else {
+			//If failed to read View attributes, then read app theme attributes for for view colors.
+			TypedValue typedValue = new TypedValue();
+			Resources.Theme theme = context.getTheme();
+			theme.resolveAttribute(R.attr.outerCircleColor, typedValue, true);
+			outerCircleColor = typedValue.data;
+			theme.resolveAttribute(R.attr.middleCircleColor, typedValue, true);
+			middleCircleColor = typedValue.data;
+			theme.resolveAttribute(R.attr.innerCircleColor, typedValue, true);
+			innerCircleColor = typedValue.data;
+			theme.resolveAttribute(R.attr.northMarkColor, typedValue, true);
+			northMarkColor = typedValue.data;
 		}
 
 //		outerCircleColor = res.getColor(r);
@@ -305,12 +308,14 @@ public class CompassBackgroundView extends View {
 		super.onDraw(canvas);
 		Timber.v("onDraw");
 
-		//Draw outer circle
-		canvas.drawCircle(CENTER.x, CENTER.y, WIDTH*OUTER_RADIUS, outerCirclePaint);
-		//Draw middle circle
-		canvas.drawCircle(CENTER.x, CENTER.y, WIDTH*MIDDLE_RADIUS, middleCirclePaint);
-		//Draw inner circle
-		canvas.drawCircle(CENTER.x, CENTER.y, WIDTH*INNER_RADIUS, innerCirclePaint);
+		if (!isSimple) {
+			//Draw outer circle
+			canvas.drawCircle(CENTER.x, CENTER.y, WIDTH * OUTER_RADIUS, outerCirclePaint);
+			//Draw middle circle
+			canvas.drawCircle(CENTER.x, CENTER.y, WIDTH * MIDDLE_RADIUS, middleCirclePaint);
+			//Draw inner circle
+			canvas.drawCircle(CENTER.x, CENTER.y, WIDTH * INNER_RADIUS, innerCirclePaint);
+		}
 
 //		drawMagnetic(canvas);
 //
@@ -318,9 +323,9 @@ public class CompassBackgroundView extends View {
 		//Draw static north mark (triangle)
 		canvas.drawPath(staticNorthMarkPath, northMarkStaticPaint);
 
-		canvas.save();
-		canvas.rotate(-azimuth, CENTER.x, CENTER.y);
-
+//		canvas.save();
+//		canvas.rotate(-azimuth, CENTER.x, CENTER.y);
+//
 //		//Draw small clock marks
 //		canvas.drawPath(smallMarkPath, smallMarkPaint);
 //		//Draw big clock marks
@@ -353,8 +358,8 @@ public class CompassBackgroundView extends View {
 //		drawText(canvas, 45, se, radiusPx, directionTextSlavePaint);
 //		drawText(canvas, 135, sw, radiusPx, directionTextSlavePaint);
 //		drawText(canvas, 225, nw, radiusPx, directionTextSlavePaint);
-
-		canvas.restore();
+//
+//		canvas.restore();
 	}
 
 	private void initConstants() {
@@ -449,6 +454,12 @@ public class CompassBackgroundView extends View {
 			staticNorthMarkPath.lineTo(x - length/2.0f, y - length);
 		}
 	}
+
+	public void setSimpleMode(boolean simple) {
+		isSimple = simple;
+		invalidate();
+	}
+
 //
 //	private void layoutMagnetic() {
 //		if (magneticBackgroundPath == null) {
