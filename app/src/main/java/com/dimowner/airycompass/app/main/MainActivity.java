@@ -172,6 +172,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		linearAccelerationView.setSimpleMode(isSimple);
 		orientationView.setSimpleMode(isSimple);
 		accuracyView.setSimpleMode(isSimple);
+		magneticFieldView.setSimpleMode(isSimple);
 	}
 
 	@Override

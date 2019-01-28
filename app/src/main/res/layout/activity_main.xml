@@ -88,9 +88,6 @@
 				android:id="@+id/magnetic_field_view"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				app:magneticBackground="?attr/indicatorBackgroundColor"
-				app:magneticText="?attr/indicatorTextColor"
-				app:magneticIndicator="?attr/indicatorFieldColor"
 				/>
 
 		<com.dimowner.airycompass.app.widget.CompassCompoundView

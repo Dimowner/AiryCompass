@@ -33,7 +33,8 @@ public class AccuracyDrawerSimple implements ViewDrawer<Integer> {
 
 	public static final float THICKNESS = AndroidUtils.dpToPx(4);
 	public static final float PADDING = AndroidUtils.dpToPx(16);
-	public static final float INDICATOR_WIDTH = AndroidUtils.dpToPx(120);
+	public static final float TEXT_PADDING = AndroidUtils.dpToPx(8);
+	public static final float INDICATOR_WIDTH = AndroidUtils.dpToPx(90);
 	public static final float TEXT_HEIGHT = AndroidUtils.dpToPx(12);
 
 	private String accName;
@@ -165,8 +166,8 @@ public class AccuracyDrawerSimple implements ViewDrawer<Integer> {
 	private void layoutAccuracy() {
 		if (accuracyBackgroundPath == null) {
 			accuracyBackgroundPath = new Path();
-			accuracyBackgroundPath.moveTo(CENTER.x, HEIGHT-PADDING);
-			accuracyBackgroundPath.lineTo(CENTER.x+INDICATOR_WIDTH/2, HEIGHT-PADDING);
+			accuracyBackgroundPath.moveTo(CENTER.x+INDICATOR_WIDTH/2, HEIGHT-PADDING);
+			accuracyBackgroundPath.lineTo(CENTER.x-INDICATOR_WIDTH/2, HEIGHT-PADDING);
 		}
 	}
 
@@ -178,7 +179,6 @@ public class AccuracyDrawerSimple implements ViewDrawer<Integer> {
 		float percent = Math.min(1, (float) (accuracy*20) / max);
 
 		//Draw accuracy field value
-		float padd = AndroidUtils.dpToPx(8);
 		percent = percent * INDICATOR_WIDTH;
 		accuracyPath.reset();
 		accuracyPath = new Path();
@@ -189,8 +189,8 @@ public class AccuracyDrawerSimple implements ViewDrawer<Integer> {
 
 		Rect rect = new Rect();
 		accuracyTextPaint.getTextBounds(accValue, 0, accValue.length(), rect);
-		canvas.drawText(accValue, CENTER.x-INDICATOR_WIDTH/2-rect.width()/2f-padd, HEIGHT-PADDING, accuracyTextPaint);
+		canvas.drawText(accValue, CENTER.x-INDICATOR_WIDTH/2-rect.width()/2f-TEXT_PADDING, HEIGHT-PADDING, accuracyTextPaint);
 		accuracyTextPaint.getTextBounds(accName, 0, accName.length(), rect);
-		canvas.drawText(accName, CENTER.x+INDICATOR_WIDTH/2+rect.width()/2f+padd, HEIGHT-PADDING, accuracyTextPaint);
+		canvas.drawText(accName, CENTER.x+INDICATOR_WIDTH/2+rect.width()/2f+TEXT_PADDING, HEIGHT-PADDING, accuracyTextPaint);
 	}
 }

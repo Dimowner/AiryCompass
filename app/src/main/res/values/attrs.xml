@@ -39,11 +39,11 @@
 		<!--<attr name="accuracyIndicator" format="color" />-->
 	<!--</declare-styleable>-->
 
-	<declare-styleable name="MagneticFieldView">
-		<attr name="magneticBackground" format="color" />
-		<attr name="magneticText" format="color" />
-		<attr name="magneticIndicator" format="color" />
-	</declare-styleable>
+	<!--<declare-styleable name="MagneticFieldView">-->
+		<!--<attr name="magneticBackground" format="color" />-->
+		<!--<attr name="magneticText" format="color" />-->
+		<!--<attr name="magneticIndicator" format="color" />-->
+	<!--</declare-styleable>-->
 
 	<!--<declare-styleable name="AccelerometerView">-->
 		<!--<attr name="gridColor" format="color" />-->
