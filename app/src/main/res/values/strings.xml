@@ -48,8 +48,10 @@
 	<string name="mt_val">μT</string>
 	<string name="mag_field">mag.field</string>
 	<string name="magnetic_field">Magnetic field</string>
+	<string name="magnetic_field2">Magnetic field: %d</string>
 	<string name="accuracy">accuracy</string>
 	<string name="accuracy2">Accuracy</string>
+	<string name="accuracy3">Accuracy: %s</string>
 
 	<string name="accuracy_unreliable">unreliable</string>
 	<string name="accuracy_low">low</string>

@@ -28,6 +28,7 @@ public class MainPresenter implements MainContract.UserActionsListener {
 	private SensorsContract.SensorsCallback sensorsCallback;
 
 	private final Prefs prefs;
+	private boolean isSimple = false;
 
 	public MainPresenter(final Prefs prefs, final SensorsContract.Sensors sensors) {
 		this.prefs = prefs;
@@ -39,7 +40,8 @@ public class MainPresenter implements MainContract.UserActionsListener {
 		this.view = v;
 
 		view.keepScreenOn(prefs.isKeepScreenOn());
-		view.showSimpleMode(prefs.isSimpleMode());
+		isSimple = prefs.isSimpleMode();
+		view.showSimpleMode(isSimple);
 
 		if (sensorsCallback == null) {
 			sensorsCallback = new SensorsContract.SensorsCallback() {
@@ -51,7 +53,11 @@ public class MainPresenter implements MainContract.UserActionsListener {
 
 				@Override
 				public void onMagneticFieldChange(float value) {
-					view.updateMagneticField(value);
+					if (isSimple) {
+						view.updateMagneticFieldSimple(value);
+					} else {
+						view.updateMagneticField(value);
+					}
 				}
 
 				@Override
@@ -61,7 +67,11 @@ public class MainPresenter implements MainContract.UserActionsListener {
 
 				@Override
 				public void onAccuracyChanged(int accuracy) {
-					view.updateAccuracy(accuracy);
+					if (isSimple) {
+						view.updateAccuracySimple(accuracy);
+					} else {
+						view.updateAccuracy(accuracy);
+					}
 					switch (accuracy) {
 						case 0:
 						case 1:

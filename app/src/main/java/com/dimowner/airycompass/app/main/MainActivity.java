@@ -22,7 +22,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +40,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	private TextView txtAccuracyAlert;
 	private TextView txtAcceleration;
 	private TextView txtOrientation;
+	private TextView txtAccuracy;
+	private TextView txtMagnetic;
 
 	private CompassCompoundView compassCompoundView;
 	private MagneticFieldView magneticFieldView;
@@ -63,14 +64,16 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		compassCompoundView = findViewById(R.id.compass_view_compound);
 //		compassView = findViewById(R.id.compass_view);
 		magneticFieldView = findViewById(R.id.magnetic_field_view);
-		txtAccuracyAlert = findViewById(R.id.txt_accuracy);
+		txtAccuracyAlert = findViewById(R.id.txt_accuracy_calibration);
 		txtAcceleration = findViewById(R.id.txt_acceleration);
 		txtOrientation = findViewById(R.id.txt_orientation);
 		accuracyView = findViewById(R.id.accuracy_view);
 		orientationView = findViewById(R.id.accelerometer_view);
 		linearAccelerationView = findViewById(R.id.accelerometer_view2);
+		txtAccuracy = findViewById(R.id.txt_accuracy);
+		txtMagnetic = findViewById(R.id.txt_magnetic);
 
-		ImageButton btnSettings = findViewById(R.id.btn_settings);
+		TextView btnSettings = findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(this);
 
 		presenter = ACApplication.getInjector().provideMainPresenter();
@@ -139,6 +142,11 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	}
 
 	@Override
+	public void updateMagneticFieldSimple(float magneticVal) {
+		txtMagnetic.setText(getResources().getString(R.string.magnetic_field2, (int)magneticVal));
+	}
+
+	@Override
 	public void updateLinearAcceleration(float x, float y) {
 		linearAccelerationView.updateLinearAcceleration(x, y);
 	}
@@ -146,6 +154,26 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	@Override
 	public void updateAccuracy(int accuracy) {
 		accuracyView.updateAccuracyField(accuracy);
+	}
+
+	@Override
+	public void updateAccuracySimple(int accuracy) {
+		String accValue;
+		switch (accuracy) {
+			case 1:
+				accValue = getResources().getString(R.string.accuracy_low);
+				break;
+			case 2:
+				accValue = getResources().getString(R.string.accuracy_medium);
+				break;
+			case 3:
+				accValue = getResources().getString(R.string.accuracy_high);
+				break;
+			case 0:
+			default:
+				accValue = getResources().getString(R.string.accuracy_unreliable);
+		}
+		txtAccuracy.setText(getResources().getString(R.string.accuracy3, accValue));
 	}
 
 	@Override
@@ -176,15 +204,23 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	public void showSimpleMode(boolean isSimple) {
 		linearAccelerationView.setSimpleMode(isSimple);
 		orientationView.setSimpleMode(isSimple);
-		accuracyView.setSimpleMode(isSimple);
-		magneticFieldView.setSimpleMode(isSimple);
+//		accuracyView.setSimpleMode(isSimple);
+//		magneticFieldView.setSimpleMode(isSimple);
 		compassCompoundView.setSimpleMode(isSimple);
 		if (isSimple) {
 			txtOrientation.setVisibility(View.GONE);
 			txtAcceleration.setVisibility(View.GONE);
+			txtAccuracy.setVisibility(View.VISIBLE);
+			txtMagnetic.setVisibility(View.VISIBLE);
+			magneticFieldView.setVisibility(View.GONE);
+			accuracyView.setVisibility(View.GONE);
 		} else {
 			txtOrientation.setVisibility(View.VISIBLE);
 			txtAcceleration.setVisibility(View.VISIBLE);
+			txtAccuracy.setVisibility(View.GONE);
+			txtMagnetic.setVisibility(View.GONE);
+			magneticFieldView.setVisibility(View.VISIBLE);
+			accuracyView.setVisibility(View.VISIBLE);
 		}
 	}
 

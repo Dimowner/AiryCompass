@@ -30,9 +30,13 @@ public interface MainContract {
 
 		void updateMagneticField(float magneticVal);
 
+		void updateMagneticFieldSimple(float magneticVal);
+
 		void updateLinearAcceleration(float x, float y);
 
 		void updateAccuracy(int accuracy);
+
+		void updateAccuracySimple(int accuracy);
 
 		void alertBadAccuracy();
 
