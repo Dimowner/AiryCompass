@@ -152,10 +152,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	@Override
 	public void showAccuracyView(boolean on) {
 		if (on) {
-//			txtAccuracy.setVisibility(View.VISIBLE);
 			accuracyView.setVisibility(View.VISIBLE);
 		} else {
-//			txtAccuracy.setVisibility(View.GONE);
 			accuracyView.setVisibility(View.GONE);
 		}
 	}
@@ -163,10 +161,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	@Override
 	public void showMagneticView(boolean on) {
 		if (on) {
-//			txtMagnetic.setVisibility(View.VISIBLE);
 			magneticFieldView.setVisibility(View.VISIBLE);
 		} else {
-//			txtMagnetic.setVisibility(View.GONE);
 			magneticFieldView.setVisibility(View.GONE);
 		}
 	}
@@ -174,11 +170,9 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	@Override
 	public void showAccuracyViewSimple(boolean on) {
 		if (on) {
-			txtMagnetic.setVisibility(View.VISIBLE);
-//			magneticFieldView.setVisibility(View.VISIBLE);
+			txtAccuracy.setVisibility(View.VISIBLE);
 		} else {
-			txtMagnetic.setVisibility(View.GONE);
-//			magneticFieldView.setVisibility(View.GONE);
+			txtAccuracy.setVisibility(View.GONE);
 		}
 	}
 
@@ -186,10 +180,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	public void showMagneticViewSimple(boolean on) {
 		if (on) {
 			txtMagnetic.setVisibility(View.VISIBLE);
-//			magneticFieldView.setVisibility(View.VISIBLE);
 		} else {
 			txtMagnetic.setVisibility(View.GONE);
-//			magneticFieldView.setVisibility(View.GONE);
 		}
 	}
 
