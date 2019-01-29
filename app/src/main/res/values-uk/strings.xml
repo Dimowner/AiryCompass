@@ -37,14 +37,14 @@
 
 	<string name="btn_ok">Добре</string>
 
-	<string name="n">Пн</string>
-	<string name="e">Cх</string>
-	<string name="s">Пд</string>
-	<string name="w">Зх</string>
-	<string name="ne">ПнСх</string>
-	<string name="se">ПдСх</string>
-	<string name="sw">ПдЗх</string>
-	<string name="nw">ПнЗх</string>
+	<string name="n">\nПн</string>
+	<string name="e">\nCх</string>
+	<string name="s">\nПд</string>
+	<string name="w">\nЗх</string>
+	<string name="ne">\nПнСх</string>
+	<string name="se">\nПдСх</string>
+	<string name="sw">\nПдЗх</string>
+	<string name="nw">\nПнЗх</string>
 	<string name="mt_val">μТ</string>
 	<string name="mag_field">магн.поле</string>
 	<string name="magnetic_field2">Магнітне поле: %d %s</string>

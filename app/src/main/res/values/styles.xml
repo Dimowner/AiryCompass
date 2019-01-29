@@ -166,7 +166,7 @@
 	</style>
 
 	<style name="Text">
-		<item name="android:textColor">@color/text_primary_light</item>
+		<item name="android:textColor">?attr/primaryTextColor</item>
 		<item name="android:fontFamily">sans-serif-light</item>
 	</style>
 
@@ -175,7 +175,7 @@
 	</style>
 
 	<style name="Text.SectionLabel">
-		<item name="android:textColor">@color/text_primary_light</item>
+		<item name="android:textColor">?attr/primaryTextColor</item>
 		<item name="android:fontFamily">sans-serif-light</item>
 		<item name="android:textSize">@dimen/text_xlarge</item>
 	</style>

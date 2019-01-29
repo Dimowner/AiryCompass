@@ -37,7 +37,7 @@ public class CompassBackgroundView extends View {
 //	public static final String DEGREE_SIGN = "°";
 
 	public static final float OUTER_RADIUS = 0.43f;
-	public static final float MIDDLE_RADIUS = 0.325f;
+	public static final float MIDDLE_RADIUS = 0.33f;
 	public static final float INNER_RADIUS = 0.24f;
 //	public static final float SMALL_MARK_INNER_RADIUS = 0.35f;
 //	public static final float SMALL_MARK_OUTER_RADIUS = 0.38f;
@@ -189,7 +189,7 @@ public class CompassBackgroundView extends View {
 		middleCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		middleCirclePaint.setColor(middleCircleColor);
 		middleCirclePaint.setStyle(Paint.Style.STROKE);
-		middleCirclePaint.setStrokeWidth(AndroidUtils.dpToPx(42));
+		middleCirclePaint.setStrokeWidth(AndroidUtils.dpToPx(41));
 
 		innerCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		innerCirclePaint.setColor(innerCircleColor);
