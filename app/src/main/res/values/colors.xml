@@ -162,6 +162,7 @@
 	<color name="md_grey_800">#424242</color>
 	<color name="md_grey_800xx">#363636</color>
 	<color name="md_grey_800x">#292929</color>
+	<color name="md_grey_800xxx">#242424</color>
 	<color name="md_grey_900">#212121</color>
 	<color name="md_grey_900x">#111111</color>
 	<color name="md_black_1000">#000000</color>
