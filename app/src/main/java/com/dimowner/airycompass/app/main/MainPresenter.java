@@ -57,48 +57,58 @@ public class MainPresenter implements MainContract.UserActionsListener {
 			sensorsCallback = new SensorsContract.SensorsCallback() {
 				@Override
 				public void onRotationChange(float azimuth, float pitch, float roll) {
-					view.updateRotation(azimuth);
-					view.updateOrientation(pitch, roll);
+					if (view != null) {
+						view.updateRotation(azimuth);
+						view.updateOrientation(pitch, roll);
+					}
 				}
 
 				@Override
 				public void onMagneticFieldChange(float value) {
-					if (isSimple) {
-						view.updateMagneticFieldSimple(value);
-					} else {
-						view.updateMagneticField(value);
+					if (view != null) {
+						if (isSimple) {
+							view.updateMagneticFieldSimple(value);
+						} else {
+							view.updateMagneticField(value);
+						}
 					}
 				}
 
 				@Override
 				public void onLinearAccelerationChange(float x, float y, float z) {
-					view.updateLinearAcceleration(x, y);
+					if (view != null) {
+						view.updateLinearAcceleration(x, y);
+					}
 				}
 
 				@Override
 				public void onAccuracyChanged(int accuracy) {
-					if (isSimple) {
-						view.updateAccuracySimple(accuracy);
-					} else {
-						view.updateAccuracy(accuracy);
-					}
-					switch (accuracy) {
-						case 0:
-						case 1:
-						case 2:
-							Timber.v("Accuracy is not good");
-							view.alertPoorAccuracy();
-							break;
-						case 3:
-							Timber.v("High Accuracy");
-							view.hideAlertPoorAccuracy();
-							break;
+					if (view != null) {
+						if (isSimple) {
+							view.updateAccuracySimple(accuracy);
+						} else {
+							view.updateAccuracy(accuracy);
+						}
+						switch (accuracy) {
+							case 0:
+							case 1:
+							case 2:
+								Timber.v("Accuracy is not good");
+								view.alertPoorAccuracy();
+								break;
+							case 3:
+								Timber.v("High Accuracy");
+								view.hideAlertPoorAccuracy();
+								break;
+						}
 					}
 				}
 
 				@Override
 				public void onSensorsNotFound() {
-					view.showSensorsNotFound();
+					if (view != null) {
+						view.showSensorsNotFound();
+					}
 				}
 			};
 		}
