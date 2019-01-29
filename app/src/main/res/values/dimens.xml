@@ -19,27 +19,19 @@
 
 	<dimen name="spacing_huge">72dp</dimen>
 	<dimen name="spacing_double">32dp</dimen>
-	<dimen name="spacing_xnormal">24dp</dimen>
 	<dimen name="spacing_normal">16dp</dimen>
-	<dimen name="spacing_xsmall">12dp</dimen>
 	<dimen name="spacing_small">8dp</dimen>
-	<dimen name="spacing_tiny">4dp</dimen>
 	<dimen name="spacing_zero">0dp</dimen>
 
-	<dimen name="text_smallest">10sp</dimen>
 	<dimen name="text_small">12sp</dimen>
 	<dimen name="text_normal">14sp</dimen>
 	<dimen name="text_medium">16sp</dimen>
 	<dimen name="text_xmedium">18sp</dimen>
 	<dimen name="text_large">20sp</dimen>
 	<dimen name="text_xlarge">24sp</dimen>
-	<dimen name="text_largest">48sp</dimen>
 
-	<dimen name="divider_height">1dp</dimen>
-
-	<dimen name="gradient_radius">350dp</dimen>
+	<dimen name="gradient_radius">320dp</dimen>
 	<dimen name="accelerometer_view_size">90dp</dimen>
 
 	<dimen name="toolbar_height">56dp</dimen>
-	<dimen name="toolbar_elevation">4dp</dimen>
 </resources>

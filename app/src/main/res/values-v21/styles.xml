@@ -36,8 +36,8 @@
 		<item name="indicatorTextColor">@color/md_indigo_100</item>
 		<item name="indicatorFieldColor">@color/md_green_400</item>
 		<item name="smallMarkColor">@color/md_indigo_200</item>
-		<item name="bigMarkColor">@color/md_white_1000</item>
-		<item name="primaryTextColor">@color/md_white_1000</item>
+		<item name="bigMarkColor">@color/md_indigo_50</item>
+		<item name="primaryTextColor">@color/md_indigo_50</item>
 		<item name="secondaryTextColor">@color/md_indigo_100</item>
 		<item name="northMarkColor">@color/md_red_400</item>
 		<item name="accelerometerGridColor">@color/md_indigo_50</item>

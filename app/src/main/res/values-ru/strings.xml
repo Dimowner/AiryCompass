@@ -24,7 +24,6 @@
 	<string name="keep_screen_on">Оставлять экран включенным</string>
 	<string name="simple_mode">Простой режим</string>
 	<string name="energy_saving">Режим сохранения энергии</string>
-	<string name="warning">Внимание!</string>
 	<string name="error">Ошибка</string>
 	<string name="unable_to_init_sensor">Не удалось инициализировать сенсоры для Компаса.</string>
 	<string name="request">Обратная связь</string>
@@ -37,10 +36,6 @@
 	<string name="show_magnetic">Показывать магнитное поле</string>
 
 	<string name="btn_ok">Хорошо</string>
-	<string name="btn_save">Сохранить</string>
-	<string name="btn_cancel">Отменить</string>
-	<string name="btn_yes">Да</string>
-	<string name="btn_no">Нет</string>
 
 	<string name="n">С</string>
 	<string name="e">В</string>

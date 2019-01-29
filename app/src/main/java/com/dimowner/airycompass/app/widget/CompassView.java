@@ -112,17 +112,17 @@ public class CompassView extends View {
 		mT = res.getString(R.string.mt_val);
 		magField = res.getString(R.string.mag_field);
 
-		int outerCircleColor= res.getColor(R.color.outer_circle_color);
-		int middleCircleColor = res.getColor(R.color.middle_circle_color);
-		int innerCircleColor = res.getColor(R.color.inner_circle_color);
-		int magneticBackgroundColor = res.getColor(R.color.magnetic_background);
-		int magneticTextColor = res.getColor(R.color.magnetic_text_color);
-		int magneticGradientColor = res.getColor(R.color.magnetic_field_color);
-		int smallMarkColor = res.getColor(R.color.small_mark_color);
-		int bigMarkColor = res.getColor(R.color.big_mark_color);
-		int northMarkColor = res.getColor(R.color.north_mark_color);
-		int primaryTextColor = res.getColor(R.color.primary_text);
-		int secondaryTextColor = res.getColor(R.color.secondary_text);
+		int outerCircleColor= res.getColor(R.color.md_indigo_300);
+		int middleCircleColor = res.getColor(R.color.md_indigo_400x);
+		int innerCircleColor = res.getColor(R.color.md_indigo_500x);
+		int magneticBackgroundColor = res.getColor(R.color.md_indigo_800x);
+		int magneticTextColor = res.getColor(R.color.md_indigo_100);
+		int magneticGradientColor = res.getColor(R.color.md_green_400);
+		int smallMarkColor = res.getColor(R.color.md_indigo_200);
+		int bigMarkColor = res.getColor(R.color.md_indigo_50);
+		int northMarkColor = res.getColor(R.color.md_red_400);
+		int primaryTextColor = res.getColor(R.color.md_indigo_50);
+		int secondaryTextColor = res.getColor(R.color.md_indigo_50);
 
 		magneticPath = new Path();
 		CENTER = new Point(0, 0);

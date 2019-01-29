@@ -131,21 +131,21 @@ public class CompassClockfaceView extends View {
 //		int magneticBackgroundColor = res.getColor(R.color.magnetic_background);
 //		int magneticTextColor = res.getColor(R.color.magnetic_text_color);
 //		int magneticGradientColor = res.getColor(R.color.magnetic_field_color);
-		int smallMarkColor = res.getColor(R.color.small_mark_color);
-		int bigMarkColor = res.getColor(R.color.big_mark_color);
-		int northMarkColor = res.getColor(R.color.north_mark_color);
-		int primaryTextColor = res.getColor(R.color.primary_text);
-		int secondaryTextColor = res.getColor(R.color.secondary_text);
+		int smallMarkColor = res.getColor(R.color.md_indigo_200);
+		int bigMarkColor = res.getColor(R.color.md_indigo_50);
+		int northMarkColor = res.getColor(R.color.md_red_400);
+		int primaryTextColor = res.getColor(R.color.md_indigo_50);
+		int secondaryTextColor = res.getColor(R.color.md_indigo_100);
 
 		if (attrs != null) {
 			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassClockfaceView);
 			if (ta != null) {
 				//Read View custom attributes
-				smallMarkColor  = ta.getColor(R.styleable.CompassClockfaceView_smallMark, res.getColor(R.color.small_mark_color));
-				bigMarkColor = ta.getColor(R.styleable.CompassClockfaceView_bigMark, res.getColor(R.color.big_mark_color));
-				northMarkColor = ta.getColor(R.styleable.CompassClockfaceView_northMark,  res.getColor(R.color.north_mark_color));
-				primaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_primaryText,  res.getColor(R.color.primary_text));
-				secondaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_secondaryText,  res.getColor(R.color.secondary_text));
+				smallMarkColor  = ta.getColor(R.styleable.CompassClockfaceView_smallMark, res.getColor(R.color.md_indigo_200));
+				bigMarkColor = ta.getColor(R.styleable.CompassClockfaceView_bigMark, res.getColor(R.color.md_indigo_50));
+				northMarkColor = ta.getColor(R.styleable.CompassClockfaceView_northMark,  res.getColor(R.color.md_red_400));
+				primaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_primaryText,  res.getColor(R.color.md_indigo_50));
+				secondaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_secondaryText,  res.getColor(R.color.md_indigo_100));
 				ta.recycle();
 			}
 		} else {

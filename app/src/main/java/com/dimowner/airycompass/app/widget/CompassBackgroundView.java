@@ -127,20 +127,20 @@ public class CompassBackgroundView extends View {
 //		mT = res.getString(R.string.mt_val);
 //		magField = res.getString(R.string.mag_field);
 
-		int outerCircleColor= res.getColor(R.color.outer_circle_color);
-		int middleCircleColor = res.getColor(R.color.middle_circle_color);
-		int innerCircleColor = res.getColor(R.color.inner_circle_color);
-		int northMarkColor = res.getColor(R.color.north_mark_color);
+		int outerCircleColor= res.getColor(R.color.md_indigo_300);
+		int middleCircleColor = res.getColor(R.color.md_indigo_400x);
+		int innerCircleColor = res.getColor(R.color.md_indigo_500x);
+		int northMarkColor = res.getColor(R.color.md_red_400);
 
 		if (attrs != null) {
 			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassBackgroundView);
 
 			if (ta != null) {
 				//Read View custom attributes
-				outerCircleColor  = ta.getColor(R.styleable.CompassBackgroundView_outerCircle, res.getColor(R.color.outer_circle_color));
-				middleCircleColor = ta.getColor(R.styleable.CompassBackgroundView_middleCircle, res.getColor(R.color.middle_circle_color));
-				innerCircleColor = ta.getColor(R.styleable.CompassBackgroundView_innerCircle, res.getColor(R.color.inner_circle_color));
-				northMarkColor = ta.getColor(R.styleable.CompassBackgroundView_northMarkArrow, res.getColor(R.color.north_mark_color));
+				outerCircleColor  = ta.getColor(R.styleable.CompassBackgroundView_outerCircle, res.getColor(R.color.md_indigo_300));
+				middleCircleColor = ta.getColor(R.styleable.CompassBackgroundView_middleCircle, res.getColor(R.color.md_indigo_400x));
+				innerCircleColor = ta.getColor(R.styleable.CompassBackgroundView_innerCircle, res.getColor(R.color.md_indigo_500x));
+				northMarkColor = ta.getColor(R.styleable.CompassBackgroundView_northMarkArrow, res.getColor(R.color.md_red_400));
 				ta.recycle();
 			}
 		} else {

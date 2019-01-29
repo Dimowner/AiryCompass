@@ -50,17 +50,17 @@ public class MagneticFieldDrawer implements ViewDrawer<Float> {
 		if (theme.resolveAttribute(R.attr.indicatorBackgroundColor, typedValue, true)) {
 			magneticBackgroundColor = typedValue.data;
 		} else {
-			magneticBackgroundColor = res.getColor(R.color.magnetic_background);
+			magneticBackgroundColor = res.getColor(R.color.md_indigo_800x);
 		}
 		if (theme.resolveAttribute(R.attr.indicatorTextColor, typedValue, true)) {
 			magneticTextColor = typedValue.data;
 		} else {
-			magneticTextColor = res.getColor(R.color.magnetic_text_color);
+			magneticTextColor = res.getColor(R.color.md_indigo_100);
 		}
 		if (theme.resolveAttribute(R.attr.indicatorFieldColor, typedValue, true)) {
 			magneticFieldColor = typedValue.data;
 		} else {
-			magneticFieldColor = res.getColor(R.color.magnetic_field_color);
+			magneticFieldColor = res.getColor(R.color.md_green_400);
 		}
 
 		magneticPath = new Path();

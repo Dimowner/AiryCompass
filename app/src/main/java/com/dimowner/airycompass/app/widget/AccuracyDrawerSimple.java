@@ -88,17 +88,17 @@ public class AccuracyDrawerSimple implements ViewDrawer<Integer> {
 				if (theme.resolveAttribute(R.attr.indicatorBackgroundColor, typedValue, true)) {
 					accuracyBackgroundColor = typedValue.data;
 				} else {
-					accuracyBackgroundColor = res.getColor(R.color.magnetic_background);
+					accuracyBackgroundColor = res.getColor(R.color.md_indigo_800x);
 				}
 				if (theme.resolveAttribute(R.attr.indicatorTextColor, typedValue, true)) {
 					accuracyTextColor = typedValue.data;
 				} else {
-					accuracyTextColor = res.getColor(R.color.magnetic_text_color);
+					accuracyTextColor = res.getColor(R.color.md_indigo_100);
 				}
 				if (theme.resolveAttribute(R.attr.indicatorFieldColor, typedValue, true)) {
 					accuracyColor = typedValue.data;
 				} else {
-					accuracyColor = res.getColor(R.color.accuracy_color);
+					accuracyColor = res.getColor(R.color.md_green_400);
 				}
 //			}
 //		}

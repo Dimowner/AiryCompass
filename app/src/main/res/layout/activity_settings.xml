@@ -25,7 +25,6 @@
 			android:orientation="vertical">
 
 		<LinearLayout
-				android:id="@+id/toolbar"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal">
@@ -69,7 +68,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtKeepScreenOn"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -101,7 +99,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtSimpleMode"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -132,7 +129,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtEnergySaving"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -192,7 +188,6 @@
 			android:background="?android:selectableItemBackground"
 			android:orientation="horizontal">
 		<TextView
-				android:id="@+id/btnAdvanced"
 				style="@style/Text.NormalLabel"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
@@ -217,7 +212,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtShowAcceleration"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -251,7 +245,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtShowOrientation"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -285,7 +278,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtShowAccuracy"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
@@ -318,7 +310,6 @@
 				android:orientation="horizontal">
 
 			<TextView
-					android:id="@+id/txtShowMagnetic"
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"

@@ -24,7 +24,6 @@
 	<string name="keep_screen_on">Keep screen ON</string>
 	<string name="simple_mode">Simple mode</string>
 	<string name="energy_saving">Energy saving mode</string>
-	<string name="warning">Warning!</string>
 	<string name="error">Error</string>
 	<string name="unable_to_init_sensor">Unable to initialize sensors for Compass.</string>
 	<string name="request">Request or feedback</string>
@@ -37,10 +36,6 @@
 	<string name="show_magnetic">Show Magnetic field</string>
 
 	<string name="btn_ok">OK</string>
-	<string name="btn_save">Save</string>
-	<string name="btn_cancel">Cancel</string>
-	<string name="btn_yes">Yes</string>
-	<string name="btn_no">No</string>
 
 	<string name="n">N</string>
 	<string name="e">E</string>
