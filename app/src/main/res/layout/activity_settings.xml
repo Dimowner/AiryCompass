@@ -183,6 +183,167 @@
 				android:drawablePadding="@dimen/spacing_double"
 				/>
 
+	<LinearLayout
+			android:id="@+id/pnlAdvanced"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:focusable="true"
+			android:clickable="true"
+			android:background="?android:selectableItemBackground"
+			android:orientation="horizontal">
+		<TextView
+				android:id="@+id/btnAdvanced"
+				style="@style/Text.NormalLabel"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="@string/advanced"
+				android:gravity="end"
+				android:padding="@dimen/spacing_normal"
+				android:drawablePadding="@dimen/spacing_double"
+				/>
+		<ImageView
+				android:id="@+id/imgAdvanced"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@string/advanced"
+				android:src="@drawable/ic_expand_more"
+				android:layout_margin="@dimen/spacing_normal"/>
+	</LinearLayout>
+		<LinearLayout
+				android:id="@+id/pnlAcceleration"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
+					android:id="@+id/txtShowAcceleration"
+					style="@style/Text.NormalLabel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/show_acceleration"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_huge"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:drawablePadding="@dimen/spacing_double"
+					/>
+
+			<Switch
+					android:id="@+id/swShowAcceleration"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_gravity="top"
+					/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/pnlOrientation"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
+					android:id="@+id/txtShowOrientation"
+					style="@style/Text.NormalLabel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/show_orientation"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_huge"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:drawablePadding="@dimen/spacing_double"
+					/>
+
+			<Switch
+					android:id="@+id/swShowOrientation"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_gravity="top"
+					/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/pnlAccuracy"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
+					android:id="@+id/txtShowAccuracy"
+					style="@style/Text.NormalLabel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/show_accuracy"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_huge"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:drawablePadding="@dimen/spacing_double"
+					/>
+
+			<Switch
+					android:id="@+id/swShowAccuracy"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_gravity="top"
+					/>
+		</LinearLayout>
+		<LinearLayout
+				android:id="@+id/pnlMagnetic"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
+					android:id="@+id/txtShowMagnetic"
+					style="@style/Text.NormalLabel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/show_magnetic"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_huge"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:drawablePadding="@dimen/spacing_double"
+					/>
+
+			<Switch
+					android:id="@+id/swShowMagnetic"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginTop="@dimen/spacing_small"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_gravity="top"
+					/>
+		</LinearLayout>
 		<TextView
 				android:id="@+id/txtAbout"
 				style="@style/Text.NormalLabel"

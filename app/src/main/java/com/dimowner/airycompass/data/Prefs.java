@@ -32,4 +32,16 @@ public interface Prefs {
 
 	void setEnergySavingMode(boolean on);
 	boolean isEnergySavingMode();
+
+	void setShowAcceleration(boolean b);
+	boolean isShowAcceleration();
+
+	void setShowOrientation(boolean b);
+	boolean isShowOrientation();
+
+	void setShowAccuracy(boolean b);
+	boolean isShowAccuracy();
+
+	void setShowMagnetic(boolean b);
+	boolean isShowMagnetic();
 }

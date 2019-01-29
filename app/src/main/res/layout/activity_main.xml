@@ -37,18 +37,19 @@
 				android:textSize="@dimen/text_small"
 				android:fontFamily="sans-serif-light"
 				/>
+
 		<TextView
 				android:id="@+id/txt_orientation"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="52dp"
-				android:layout_marginRight="52dp"
-				android:text="@string/orientation"
 				android:layout_gravity="top|end"
 				android:layout_marginTop="@dimen/spacing_small"
+				android:layout_marginEnd="52dp"
+				android:layout_marginRight="52dp"
+				android:fontFamily="sans-serif-light"
+				android:text="@string/orientation"
 				android:textColor="?attr/accelerometerGridColor"
 				android:textSize="@dimen/text_small"
-				android:fontFamily="sans-serif-light"
 				/>
 		<com.dimowner.airycompass.app.widget.AccelerometerView
 				android:id="@+id/accelerometer_view"

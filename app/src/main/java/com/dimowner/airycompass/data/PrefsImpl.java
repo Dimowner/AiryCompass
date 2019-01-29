@@ -32,6 +32,11 @@ public class PrefsImpl implements Prefs {
 	private static final String PREF_KEY_SIMPLE_MODE = "is_simple_mode";
 	private static final String PREF_KEY_ENERGY_SAVING_MODE = "is_energy_saving_mode";
 
+	private static final String PREF_KEY_SHOW_ACCELERATION = "is_show_acceleration";
+	private static final String PREF_KEY_SHOW_ORIENTATION = "is_show_orientation";
+	private static final String PREF_KEY_SHOW_ACCURACY = "is_show_accuracy";
+	private static final String PREF_KEY_SHOW_MAGNETIC = "is_show_magnetic";
+
 	private SharedPreferences sharedPreferences;
 
 	private volatile static PrefsImpl instance;
@@ -109,5 +114,53 @@ public class PrefsImpl implements Prefs {
 	@Override
 	public boolean isEnergySavingMode() {
 		return sharedPreferences.getBoolean(PREF_KEY_ENERGY_SAVING_MODE, false);
+	}
+
+	@Override
+	public void setShowAcceleration(boolean b) {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putBoolean(PREF_KEY_SHOW_ACCELERATION, b);
+		editor.apply();
+	}
+
+	@Override
+	public boolean isShowAcceleration() {
+		return sharedPreferences.getBoolean(PREF_KEY_SHOW_ACCELERATION, true);
+	}
+
+	@Override
+	public void setShowOrientation(boolean b) {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putBoolean(PREF_KEY_SHOW_ORIENTATION, b);
+		editor.apply();
+	}
+
+	@Override
+	public boolean isShowOrientation() {
+		return sharedPreferences.getBoolean(PREF_KEY_SHOW_ORIENTATION, true);
+	}
+
+	@Override
+	public void setShowAccuracy(boolean b) {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putBoolean(PREF_KEY_SHOW_ACCURACY, b);
+		editor.apply();
+	}
+
+	@Override
+	public boolean isShowAccuracy() {
+		return sharedPreferences.getBoolean(PREF_KEY_SHOW_ACCURACY, true);
+	}
+
+	@Override
+	public void setShowMagnetic(boolean b) {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putBoolean(PREF_KEY_SHOW_MAGNETIC, b);
+		editor.apply();
+	}
+
+	@Override
+	public boolean isShowMagnetic() {
+		return sharedPreferences.getBoolean(PREF_KEY_SHOW_MAGNETIC, true);
 	}
 }

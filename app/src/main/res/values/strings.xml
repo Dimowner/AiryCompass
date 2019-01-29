@@ -30,6 +30,11 @@
 	<string name="request">Request or feedback</string>
 	<string name="email_clients_not_found">Not found any Email client</string>
 	<string name="send_email">Send by email&#8230;</string>
+	<string name="advanced">Advanced settings</string>
+	<string name="show_acceleration">Show Acceleration</string>
+	<string name="show_orientation">Show Orientation</string>
+	<string name="show_accuracy">Show Accuracy</string>
+	<string name="show_magnetic">Show Magnetic field</string>
 
 	<string name="btn_ok">OK</string>
 	<string name="btn_save">Save</string>

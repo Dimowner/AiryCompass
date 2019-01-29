@@ -8,6 +8,8 @@ public class SettingsPresenter implements SettingsContract.UserActionsListener {
 
 	private final Prefs prefs;
 
+	private boolean showAdvanced = false;
+
 	public SettingsPresenter(Prefs prefs) {
 		this.prefs = prefs;
 	}
@@ -18,6 +20,10 @@ public class SettingsPresenter implements SettingsContract.UserActionsListener {
 		view.showKeepScreenOnSetting(prefs.isKeepScreenOn());
 		view.showEnergySavingModeSetting(prefs.isEnergySavingMode());
 		view.showSimpleModeSetting(prefs.isSimpleMode());
+		view.setShowAccelerationView(prefs.isShowAcceleration());
+		view.setShowOrientationView(prefs.isShowOrientation());
+		view.setShowAccuracyView(prefs.isShowAccuracy());
+		view.setShowMagneticView(prefs.isShowMagnetic());
 	}
 
 	@Override
@@ -36,8 +42,40 @@ public class SettingsPresenter implements SettingsContract.UserActionsListener {
 	}
 
 	@Override
+	public void showAccelerationView(boolean b) {
+		prefs.setShowAcceleration(b);
+	}
+
+	@Override
+	public void showOrientationView(boolean b) {
+		prefs.setShowOrientation(b);
+	}
+
+	@Override
+	public void showAccuracyView(boolean b) {
+		prefs.setShowAccuracy(b);
+	}
+
+	@Override
+	public void showMagneticView(boolean b) {
+		prefs.setShowMagnetic(b);
+	}
+
+	@Override
+	public void showAdvancedClicked() {
+		showAdvanced = !showAdvanced;
+		if (showAdvanced) {
+			view.showAdvanced();
+		} else {
+			view.hideAdvanced();
+		}
+
+	}
+
+	@Override
 	public void bindView(SettingsContract.View view) {
 		this.view = view;
+		this.view.hideAdvanced();
 	}
 
 	@Override

@@ -24,6 +24,13 @@ public interface MainContract {
 
 		void keepScreenOn(boolean on);
 
+		void showAccelerationView(boolean on);
+		void showOrientationView(boolean on);
+		void showAccuracyView(boolean on);
+		void showMagneticView(boolean on);
+		void showAccuracyViewSimple(boolean on);
+		void showMagneticViewSimple(boolean on);
+
 		void updateRotation(float azimuth);
 
 		void updateOrientation(float pitch, float roll);
@@ -38,9 +45,9 @@ public interface MainContract {
 
 		void updateAccuracySimple(int accuracy);
 
-		void alertBadAccuracy();
+		void alertPoorAccuracy();
 
-		void hideAlertBadAccuracy();
+		void hideAlertPoorAccuracy();
 
 		void showSensorsNotFound();
 

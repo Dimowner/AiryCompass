@@ -39,9 +39,19 @@ public class MainPresenter implements MainContract.UserActionsListener {
 	public void bindView(final MainContract.View v) {
 		this.view = v;
 
-		view.keepScreenOn(prefs.isKeepScreenOn());
 		isSimple = prefs.isSimpleMode();
 		view.showSimpleMode(isSimple);
+
+		view.keepScreenOn(prefs.isKeepScreenOn());
+		view.showAccelerationView(prefs.isShowAcceleration());
+		view.showOrientationView(prefs.isShowOrientation());
+		if (isSimple) {
+			view.showAccuracyViewSimple(prefs.isShowAccuracy());
+			view.showMagneticViewSimple(prefs.isShowMagnetic());
+		} else {
+			view.showAccuracyView(prefs.isShowAccuracy());
+			view.showMagneticView(prefs.isShowMagnetic());
+		}
 
 		if (sensorsCallback == null) {
 			sensorsCallback = new SensorsContract.SensorsCallback() {
@@ -77,11 +87,11 @@ public class MainPresenter implements MainContract.UserActionsListener {
 						case 1:
 						case 2:
 							Timber.v("Accuracy is not good");
-							view.alertBadAccuracy();
+							view.alertPoorAccuracy();
 							break;
 						case 3:
 							Timber.v("High Accuracy");
-							view.hideAlertBadAccuracy();
+							view.hideAlertPoorAccuracy();
 							break;
 					}
 				}

@@ -42,6 +42,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	private TextView txtOrientation;
 	private TextView txtAccuracy;
 	private TextView txtMagnetic;
+	private TextView btnSettings;
 
 	private CompassCompoundView compassCompoundView;
 	private MagneticFieldView magneticFieldView;
@@ -73,7 +74,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		txtAccuracy = findViewById(R.id.txt_accuracy);
 		txtMagnetic = findViewById(R.id.txt_magnetic);
 
-		TextView btnSettings = findViewById(R.id.btn_settings);
+		btnSettings = findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(this);
 
 		presenter = ACApplication.getInjector().provideMainPresenter();
@@ -123,6 +124,72 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		} else {
 			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		}
+	}
+
+	@Override
+	public void showAccelerationView(boolean on) {
+		if (on) {
+			txtAcceleration.setVisibility(View.VISIBLE);
+			linearAccelerationView.setVisibility(View.VISIBLE);
+		} else {
+			txtAcceleration.setVisibility(View.GONE);
+			linearAccelerationView.setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public void showOrientationView(boolean on) {
+		if (on) {
+			txtOrientation.setVisibility(View.VISIBLE);
+			orientationView.setVisibility(View.VISIBLE);
+		} else {
+			txtOrientation.setVisibility(View.GONE);
+			orientationView.setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public void showAccuracyView(boolean on) {
+		if (on) {
+//			txtAccuracy.setVisibility(View.VISIBLE);
+			accuracyView.setVisibility(View.VISIBLE);
+		} else {
+//			txtAccuracy.setVisibility(View.GONE);
+			accuracyView.setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public void showMagneticView(boolean on) {
+		if (on) {
+//			txtMagnetic.setVisibility(View.VISIBLE);
+			magneticFieldView.setVisibility(View.VISIBLE);
+		} else {
+//			txtMagnetic.setVisibility(View.GONE);
+			magneticFieldView.setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public void showAccuracyViewSimple(boolean on) {
+		if (on) {
+			txtMagnetic.setVisibility(View.VISIBLE);
+//			magneticFieldView.setVisibility(View.VISIBLE);
+		} else {
+			txtMagnetic.setVisibility(View.GONE);
+//			magneticFieldView.setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	public void showMagneticViewSimple(boolean on) {
+		if (on) {
+			txtMagnetic.setVisibility(View.VISIBLE);
+//			magneticFieldView.setVisibility(View.VISIBLE);
+		} else {
+			txtMagnetic.setVisibility(View.GONE);
+//			magneticFieldView.setVisibility(View.GONE);
 		}
 	}
 
@@ -177,12 +244,12 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	}
 
 	@Override
-	public void alertBadAccuracy() {
+	public void alertPoorAccuracy() {
 		txtAccuracyAlert.setVisibility(View.VISIBLE);
 	}
 
 	@Override
-	public void hideAlertBadAccuracy() {
+	public void hideAlertPoorAccuracy() {
 		txtAccuracyAlert.setVisibility(View.GONE);
 	}
 
@@ -214,6 +281,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 			txtMagnetic.setVisibility(View.VISIBLE);
 			magneticFieldView.setVisibility(View.GONE);
 			accuracyView.setVisibility(View.GONE);
+			btnSettings.setText("");
 		} else {
 			txtOrientation.setVisibility(View.VISIBLE);
 			txtAcceleration.setVisibility(View.VISIBLE);
@@ -221,6 +289,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 			txtMagnetic.setVisibility(View.GONE);
 			magneticFieldView.setVisibility(View.VISIBLE);
 			accuracyView.setVisibility(View.VISIBLE);
+			btnSettings.setText(R.string.settings);
 		}
 	}
 

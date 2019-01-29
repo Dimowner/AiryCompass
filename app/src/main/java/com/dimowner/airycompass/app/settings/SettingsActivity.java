@@ -31,6 +31,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -40,19 +42,34 @@ import com.dimowner.airycompass.ACApplication;
 import com.dimowner.airycompass.AppConstants;
 import com.dimowner.airycompass.ColorMap;
 import com.dimowner.airycompass.R;
+import com.dimowner.airycompass.util.AnimationUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import timber.log.Timber;
 
-public class SettingsActivity extends Activity implements SettingsContract.View, View.OnClickListener {
+public class SettingsActivity extends Activity implements SettingsContract.View, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
 	private static final String VERSION_UNAVAILABLE = "N/A";
+
+	public static final long ANIMATION_DURATION = 200;
 
 	private Switch swKeepScreenOn;
 	private Switch swEnergySaving;
 	private Switch swSimpleMode;
+
+	private Switch swShowAcceleration;
+	private Switch swShowOrientation;
+	private Switch swShowAccuracy;
+	private Switch swShowMagnetic;
+
+	private LinearLayout pnlShowAcceleration;
+	private LinearLayout pnlShowOrientation;
+	private LinearLayout pnlShowAccuracy;
+	private LinearLayout pnlShowMagnetic;
+
+	private ImageView imgAdvanced;
 
 	private SettingsContract.UserActionsListener presenter;
 	private ColorMap colorMap;
@@ -76,34 +93,34 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		TextView btnRate = findViewById(R.id.btnRate);
 		TextView btnRequest = findViewById(R.id.btnRequest);
 		TextView txtAbout = findViewById(R.id.txtAbout);
+		LinearLayout btnAdvanced= findViewById(R.id.pnlAdvanced);
+		imgAdvanced = findViewById(R.id.imgAdvanced);
 		txtAbout.setText(getAboutContent());
 		btnBack.setOnClickListener(this);
 		btnRate.setOnClickListener(this);
 		btnRequest.setOnClickListener(this);
+		btnAdvanced.setOnClickListener(this);
 		swKeepScreenOn = findViewById(R.id.swKeepScreenOn);
 		swEnergySaving = findViewById(R.id.swEnergySaving);
 		swSimpleMode = findViewById(R.id.swSimpleMode);
 
-		swKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
-				presenter.keepScreenOn(isChecked);
-			}
-		});
+		swShowAcceleration = findViewById(R.id.swShowAcceleration);
+		swShowOrientation = findViewById(R.id.swShowOrientation);
+		swShowAccuracy = findViewById(R.id.swShowAccuracy);
+		swShowMagnetic = findViewById(R.id.swShowMagnetic);
 
-		swEnergySaving.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
-				presenter.energySavingMode(isChecked);
-			}
-		});
+		pnlShowAcceleration = findViewById(R.id.pnlAcceleration);
+		pnlShowOrientation = findViewById(R.id.pnlOrientation);
+		pnlShowAccuracy = findViewById(R.id.pnlAccuracy);
+		pnlShowMagnetic = findViewById(R.id.pnlMagnetic);
 
-		swSimpleMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
-				presenter.simpleMode(isChecked);
-			}
-		});
+		swKeepScreenOn.setOnCheckedChangeListener(this);
+		swEnergySaving.setOnCheckedChangeListener(this);
+		swSimpleMode.setOnCheckedChangeListener(this);
+		swShowAcceleration.setOnCheckedChangeListener(this);
+		swShowOrientation.setOnCheckedChangeListener(this);
+		swShowAccuracy.setOnCheckedChangeListener(this);
+		swShowMagnetic.setOnCheckedChangeListener(this);
 
 		presenter = ACApplication.getInjector().provideSettingsPresenter();
 
@@ -172,6 +189,36 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 				break;
 			case R.id.btnRequest:
 				requestFeature();
+				break;
+			case R.id.pnlAdvanced:
+				presenter.showAdvancedClicked();
+				break;
+		}
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		switch (buttonView.getId()) {
+			case R.id.swKeepScreenOn:
+				presenter.keepScreenOn(isChecked);
+				break;
+			case R.id.swEnergySaving:
+				presenter.energySavingMode(isChecked);
+				break;
+			case R.id.swSimpleMode:
+				presenter.simpleMode(isChecked);
+				break;
+			case R.id.swShowAcceleration:
+				presenter.showAccelerationView(isChecked);
+				break;
+			case R.id.swShowOrientation:
+				presenter.showOrientationView(isChecked);
+				break;
+			case R.id.swShowAccuracy:
+				presenter.showAccuracyView(isChecked);
+				break;
+			case R.id.swShowMagnetic:
+				presenter.showMagneticView(isChecked);
 				break;
 		}
 	}
@@ -248,6 +295,44 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 	@Override
 	public void showEnergySavingModeSetting(boolean b) {
 		swEnergySaving.setChecked(b);
+	}
+
+	@Override
+	public void showAdvanced() {
+		AnimationUtil.viewRotationAnimation(imgAdvanced, ANIMATION_DURATION);
+		pnlShowAcceleration.setVisibility(View.VISIBLE);
+		pnlShowOrientation.setVisibility(View.VISIBLE);
+		pnlShowAccuracy.setVisibility(View.VISIBLE);
+		pnlShowMagnetic.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void hideAdvanced() {
+		AnimationUtil.viewBackRotationAnimation(imgAdvanced, ANIMATION_DURATION);
+		pnlShowAcceleration.setVisibility(View.GONE);
+		pnlShowOrientation.setVisibility(View.GONE);
+		pnlShowAccuracy.setVisibility(View.GONE);
+		pnlShowMagnetic.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void setShowAccelerationView(boolean b) {
+		swShowAcceleration.setChecked(b);
+	}
+
+	@Override
+	public void setShowOrientationView(boolean b) {
+		swShowOrientation.setChecked(b);
+	}
+
+	@Override
+	public void setShowAccuracyView(boolean b) {
+		swShowAccuracy.setChecked(b);
+	}
+
+	@Override
+	public void setShowMagneticView(boolean b) {
+		swShowMagnetic.setChecked(b);
 	}
 
 	@Override
