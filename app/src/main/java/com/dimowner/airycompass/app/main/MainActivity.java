@@ -54,6 +54,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 
 	private ColorMap colorMap;
 	private ColorMap.OnThemeColorChangeListener onThemeColorChangeListener;
+	private String mT;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mT = getResources().getString(R.string.mt_val);
 		compassCompoundView = findViewById(R.id.compass_view_compound);
 //		compassView = findViewById(R.id.compass_view);
 		magneticFieldView = findViewById(R.id.magnetic_field_view);
@@ -202,7 +204,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 
 	@Override
 	public void updateMagneticFieldSimple(float magneticVal) {
-		txtMagnetic.setText(getResources().getString(R.string.magnetic_field2, (int)magneticVal));
+		txtMagnetic.setText(getResources().getString(R.string.magnetic_field2, (int)magneticVal, mT));
 	}
 
 	@Override

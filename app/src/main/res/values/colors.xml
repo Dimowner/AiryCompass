@@ -74,6 +74,7 @@
 	<color name="md_pink_600">#D81B60</color>
 	<color name="md_pink_700">#C2185B</color>
 	<color name="md_pink_800">#AD1457</color>
+	<color name="md_pink_800x">#A81254</color>
 	<color name="md_pink_900">#880E4F</color>
 	<color name="md_pink_A100">#FF80AB</color>
 	<color name="md_pink_A200">#FF4081</color>
@@ -206,6 +207,7 @@
 	<color name="md_green_600">#43A047</color>
 	<color name="md_green_700">#388E3C</color>
 	<color name="md_green_800">#2E7D32</color>
+	<color name="md_green_800x">#28742C</color>
 	<color name="md_green_900">#1B5E20</color>
 	<color name="md_green_A100">#B9F6CA</color>
 	<color name="md_green_A200">#69F0AE</color>
@@ -218,6 +220,7 @@
 	<color name="md_light_green_200">#C5E1A5</color>
 	<color name="md_light_green_300">#AED581</color>
 	<color name="md_light_green_400">#9CCC65</color>
+	<color name="md_light_green_400x">#9CCC65</color>
 	<color name="md_light_green_500">#8BC34A</color>
 	<color name="md_light_green_600">#7CB342</color>
 	<color name="md_light_green_700">#689F38</color>
@@ -333,7 +336,8 @@
 	<color name="md_grey_600">#757575</color>
 	<color name="md_grey_700">#616161</color>
 	<color name="md_grey_800">#424242</color>
-	<color name="md_grey_800x">#323232</color>
+	<color name="md_grey_800xx">#363636</color>
+	<color name="md_grey_800x">#292929</color>
 	<color name="md_grey_900">#212121</color>
 	<color name="md_grey_900x">#111111</color>
 	<color name="md_black_1000">#000000</color>

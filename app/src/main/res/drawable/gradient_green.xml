@@ -19,8 +19,8 @@
 		 android:shape="rectangle">
 
 	<gradient
-			android:endColor="@color/md_grey_800x"
+			android:endColor="@color/md_green_600"
 			android:gradientRadius="@dimen/gradient_radius"
-			android:startColor="@color/md_grey_900x"
+			android:startColor="@color/md_green_800"
 			android:type="radial"/>
 </shape>
