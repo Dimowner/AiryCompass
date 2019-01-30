@@ -31,7 +31,8 @@
 
 	<application
 			android:allowBackup="false"
-			android:icon="@mipmap/ic_launcher"
+			android:icon="@mipmap/ic_launcher2"
+			android:roundIcon="@mipmap/ic_launcher2"
 			android:hardwareAccelerated="@bool/useHardwareAcceleration"
 			android:name="com.dimowner.airycompass.ACApplication"
 			android:label="@string/app_name"
