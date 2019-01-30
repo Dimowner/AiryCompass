@@ -47,7 +47,7 @@
 	<string name="nw">NW</string>
 	<string name="mt_val">μT</string>
 	<string name="mag_field">mag.field</string>
-	<string name="magnetic_field2">Magnetic field: %d %s</string>
+	<string name="magnetic_field2">Magnetic field: %1$d %2$s</string>
 	<string name="accuracy">accuracy</string>
 	<string name="accuracy3">Accuracy: %s</string>
 

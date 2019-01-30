@@ -47,7 +47,7 @@
 	<string name="nw">СЗ</string>
 	<string name="mt_val">μТ</string>
 	<string name="mag_field">магн.поле</string>
-	<string name="magnetic_field2">Магнитное поле: %d %s</string>
+	<string name="magnetic_field2">Магнитное поле: %1$d %2$s</string>
 	<string name="accuracy">точность</string>
 	<string name="accuracy3">Точность: %s</string>
 

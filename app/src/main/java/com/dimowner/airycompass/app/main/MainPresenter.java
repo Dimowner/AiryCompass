@@ -41,16 +41,18 @@ public class MainPresenter implements MainContract.UserActionsListener {
 
 		isSimple = prefs.isSimpleMode();
 		view.showSimpleMode(isSimple);
-
+		view.updateAccuracySimple(0);
 		view.keepScreenOn(prefs.isKeepScreenOn());
 		view.showAccelerationView(prefs.isShowAcceleration());
 		view.showOrientationView(prefs.isShowOrientation());
 		if (isSimple) {
 			view.showAccuracyViewSimple(prefs.isShowAccuracy());
 			view.showMagneticViewSimple(prefs.isShowMagnetic());
+			view.updateMagneticFieldSimple(0);
 		} else {
 			view.showAccuracyView(prefs.isShowAccuracy());
 			view.showMagneticView(prefs.isShowMagnetic());
+			view.updateMagneticField(0);
 		}
 
 		if (sensorsCallback == null) {

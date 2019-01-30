@@ -51,6 +51,7 @@
 				android:textColor="?attr/accelerometerGridColor"
 				android:textSize="@dimen/text_small"
 				/>
+
 		<com.dimowner.airycompass.app.widget.AccelerometerView
 				android:id="@+id/accelerometer_view"
 				android:layout_width="@dimen/accelerometer_view_size"
@@ -100,14 +101,19 @@
 
 	</FrameLayout>
 
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_gravity="bottom">
+
 		<TextView
 				android:id="@+id/txt_accuracy_calibration"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginEnd="@dimen/spacing_double"
 				android:layout_marginStart="@dimen/spacing_double"
-				android:layout_marginBottom="@dimen/text_normal"
-				android:textColor="?attr/accelerometerGridColor"
+				android:textColor="?attr/indicatorTextColor"
 				android:layout_gravity="bottom|center"
 				android:gravity="center"
 				android:fontFamily="sans-serif-light"
@@ -115,51 +121,52 @@
 				android:textSize="@dimen/text_normal"
 				android:text="@string/need_calibration"
 				/>
-	<FrameLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="bottom">
 
-		<LinearLayout
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="bottom|start"
-				android:layout_marginBottom="@dimen/spacing_normal"
-				android:layout_marginLeft="@dimen/spacing_normal"
-				android:layout_marginStart="@dimen/spacing_normal"
-				android:orientation="vertical">
+		<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
 
-			<TextView
-					android:id="@+id/txt_accuracy"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textSize="@dimen/text_medium"
-					android:fontFamily="sans-serif-light"
-					android:textColor="?attr/indicatorTextColor"
-					tools:text="Accuracy: high"/>
-			<TextView
-					android:id="@+id/txt_magnetic"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textSize="@dimen/text_medium"
-					android:fontFamily="sans-serif-light"
-					android:textColor="?attr/indicatorTextColor"
-					tools:text="Magnetic field: 49mT"/>
-		</LinearLayout>
+				<LinearLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="bottom|start"
+						android:layout_marginBottom="@dimen/spacing_normal"
+						android:layout_marginLeft="@dimen/spacing_normal"
+						android:layout_marginStart="@dimen/spacing_normal"
+						android:orientation="vertical">
 
-		<TextView
-				android:id="@+id/btn_settings"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:textAllCaps="true"
-				android:textSize="@dimen/text_normal"
-				android:padding="20dp"
-				android:drawableEnd="@drawable/ic_settings"
-				android:drawableRight="@drawable/ic_settings"
-				android:drawablePadding="@dimen/spacing_small"
-				android:fontFamily="sans-serif-light"
-				android:layout_gravity="bottom|end"
-				android:textColor="?attr/indicatorTextColor"
-				android:text="@string/settings"/>
-	</FrameLayout>
+					<TextView
+							android:id="@+id/txt_accuracy"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="@dimen/text_medium"
+							android:fontFamily="sans-serif-light"
+							android:textColor="?attr/indicatorTextColor"
+							tools:text="Accuracy: high"/>
+					<TextView
+							android:id="@+id/txt_magnetic"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="@dimen/text_medium"
+							android:fontFamily="sans-serif-light"
+							android:textColor="?attr/indicatorTextColor"
+							tools:text="Magnetic field: 49mT"/>
+				</LinearLayout>
+
+				<TextView
+						android:id="@+id/btn_settings"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textAllCaps="true"
+						android:textSize="@dimen/text_normal"
+						android:padding="20dp"
+						android:drawableEnd="@drawable/ic_settings"
+						android:drawableRight="@drawable/ic_settings"
+						android:drawablePadding="@dimen/spacing_small"
+						android:fontFamily="sans-serif-light"
+						android:layout_gravity="bottom|end"
+						android:textColor="?attr/indicatorTextColor"
+						android:text="@string/settings"/>
+		</FrameLayout>
+	</LinearLayout>
 </FrameLayout>
