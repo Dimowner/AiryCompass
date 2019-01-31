@@ -12,6 +12,7 @@
 	<attr name="smallMarkColor" format="color" />
 	<attr name="bigMarkColor" format="color" />
 	<attr name="primaryTextColor" format="color" />
+	<attr name="compassTextColor" format="color" />
 	<attr name="secondaryTextColor" format="color" />
 	<attr name="northMarkColor" format="color" />
 

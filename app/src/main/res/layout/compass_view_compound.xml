@@ -44,7 +44,7 @@
 			app:smallMark="?attr/smallMarkColor"
 			app:bigMark="?attr/bigMarkColor"
 			app:northMark="?attr/northMarkColor"
-			app:primaryText="?attr/primaryTextColor"
+			app:primaryText="?attr/compassTextColor"
 			app:secondaryText="?attr/secondaryTextColor"
 			/>
 

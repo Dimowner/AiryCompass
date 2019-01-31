@@ -25,6 +25,14 @@
 	<!-- google's material design colours from
 	http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
 
+	<color name="blue_1">#e1e3f0</color>
+	<color name="blue_2">#bec2dd</color>
+	<color name="blue_3">#AEB2D1</color>
+	<color name="blue_4">#6D7DDB</color>
+	<color name="blue_5">#5D6ECF</color>
+	<color name="blue_6">#4556B6</color>
+	<color name="blue_7">#4556B6</color>
+
 	<!--reds-->
 	<color name="md_red_50">#FFEBEE</color>
 	<color name="md_red_100">#FFCDD2</color>

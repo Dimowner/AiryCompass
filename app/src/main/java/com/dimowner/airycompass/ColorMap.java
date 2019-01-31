@@ -30,8 +30,8 @@ public class ColorMap {
 	}
 
 	private void init(int color) {
-		if (color < 0 || color > 8) {
-			color = new Random().nextInt(7);
+		if (color < 0 || color > 9) {
+			color = new Random().nextInt(8);
 		}
 		switch (color) {
 			case 0:
@@ -57,6 +57,9 @@ public class ColorMap {
 				break;
 			case 7:
 				appThemeResource = R.style.AppTheme_Purple;
+				break;
+			case 8:
+				appThemeResource = R.style.AppTheme_Blue;
 				break;
 			default:
 				appThemeResource = R.style.AppTheme;
@@ -90,7 +93,8 @@ public class ColorMap {
 				R.color.md_green_600,
 				R.color.md_red_500,
 				R.color.md_pink_500,
-				R.color.md_deep_purple_500
+				R.color.md_deep_purple_500,
+				R.color.blue_6
 		};
 	}
 
