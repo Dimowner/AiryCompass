@@ -41,6 +41,7 @@
 	<color name="md_red_400">#EF5350</color>
 	<color name="md_red_500">#F44336</color>
 	<color name="md_red_600">#E53935</color>
+	<color name="md_red_600x">#E03531</color>
 	<color name="md_red_700">#D32F2F</color>
 	<color name="md_red_800">#C62828</color>
 	<color name="md_red_800x">#BE2424</color>
@@ -141,6 +142,8 @@
 	<color name="md_light_green_A400x">#7DCA3D</color>
 
 	<!--yellow -->
+	<color name="md_yellow_700">#FBC02D</color>
+	<color name="md_yellow_A200">#FFFF00</color>
 	<color name="md_yellow_A700">#FFD600</color>
 
 	<!--brown -->

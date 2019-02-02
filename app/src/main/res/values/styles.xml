@@ -28,15 +28,16 @@
 		<item name="middleCircleColor">@color/md_indigo_400x</item>
 		<item name="innerCircleColor">@color/md_indigo_500x</item>
 		<item name="indicatorBackgroundColor">@color/md_indigo_800x</item>
-		<item name="indicatorTextColor">@color/md_indigo_100</item>
-		<item name="indicatorFieldColor">@color/md_green_400</item>
-		<item name="smallMarkColor">@color/md_indigo_200</item>
+		<item name="indicatorTextColor">@color/md_indigo_50</item>
+		<item name="indicatorFieldColor">@color/blue_3</item>
+		<item name="smallMarkColor">@color/blue_2</item>
 		<item name="bigMarkColor">@color/md_indigo_50</item>
 		<item name="primaryTextColor">@color/md_indigo_50</item>
+		<item name="compassTextColor">@color/md_indigo_50</item>
 		<item name="secondaryTextColor">@color/md_indigo_100</item>
 		<item name="northMarkColor">@color/md_red_400</item>
-		<item name="accelerometerGridColor">@color/md_indigo_50</item>
-		<item name="accelerometerBallColor">@color/md_indigo_50</item>
+		<item name="accelerometerGridColor">@color/blue_1</item>
+		<item name="accelerometerBallColor">@color/blue_1</item>
 	</style>
 
 	<style name="AppTheme.Black" parent="AppTheme">
@@ -45,12 +46,13 @@
 		<item name="outerCircleColor">@color/md_grey_600</item>
 		<item name="middleCircleColor">@color/md_black_1000</item>
 		<item name="innerCircleColor">@color/md_black_1000</item>
-		<item name="indicatorBackgroundColor">@color/md_grey_800x</item>
+		<item name="indicatorBackgroundColor">@color/md_grey_800</item>
 		<item name="indicatorTextColor">@color/md_grey_400</item>
-		<item name="indicatorFieldColor">@color/md_green_700</item>
+		<item name="indicatorFieldColor">@color/md_grey_500</item>
 		<item name="smallMarkColor">@color/md_grey_600</item>
 		<item name="bigMarkColor">@color/md_grey_300</item>
 		<item name="primaryTextColor">@color/md_grey_200</item>
+		<item name="compassTextColor">@color/md_grey_200</item>
 		<item name="secondaryTextColor">@color/md_grey_300</item>
 		<item name="northMarkColor">@color/md_red_600</item>
 		<item name="accelerometerGridColor">@color/md_grey_200</item>
@@ -60,15 +62,16 @@
 	<style name="AppTheme.Grey" parent="AppTheme">
 		<item name="android:windowBackground">@drawable/gradient_grey</item>
 
-		<item name="outerCircleColor">@color/md_grey_600</item>
-		<item name="middleCircleColor">@color/md_grey_800</item>
+		<item name="outerCircleColor">@color/md_grey_700</item>
+		<item name="middleCircleColor">@color/md_grey_800xx</item>
 		<item name="innerCircleColor">@color/md_grey_800x</item>
-		<item name="indicatorBackgroundColor">@color/md_grey_900x</item>
+		<item name="indicatorBackgroundColor">@color/md_grey_800</item>
 		<item name="indicatorTextColor">@color/md_grey_400</item>
 		<item name="indicatorFieldColor">@color/md_green_700</item>
 		<item name="smallMarkColor">@color/md_grey_400</item>
 		<item name="bigMarkColor">@color/md_grey_100</item>
 		<item name="primaryTextColor">@color/md_grey_50</item>
+		<item name="compassTextColor">@color/md_grey_50</item>
 		<item name="secondaryTextColor">@color/md_grey_100</item>
 		<item name="northMarkColor">@color/md_red_600</item>
 		<item name="accelerometerGridColor">@color/md_grey_100</item>
@@ -87,6 +90,7 @@
 		<item name="smallMarkColor">@color/md_brown_200</item>
 		<item name="bigMarkColor">@color/md_brown_50</item>
 		<item name="primaryTextColor">@color/md_brown_50</item>
+		<item name="compassTextColor">@color/md_brown_50</item>
 		<item name="secondaryTextColor">@color/md_brown_100</item>
 		<item name="northMarkColor">@color/md_yellow_A700</item>
 		<item name="accelerometerGridColor">@color/md_brown_50</item>
@@ -97,14 +101,15 @@
 		<item name="android:windowBackground">@drawable/gradient_green</item>
 
 		<item name="outerCircleColor">@color/md_green_300</item>
-		<item name="middleCircleColor">@color/md_green_600</item>
-		<item name="innerCircleColor">@color/md_green_700</item>
+		<item name="middleCircleColor">@color/md_green_600x</item>
+		<item name="innerCircleColor">@color/md_green_700x</item>
 		<item name="indicatorBackgroundColor">@color/md_green_800</item>
 		<item name="indicatorTextColor">@color/md_green_100</item>
 		<item name="indicatorFieldColor">@color/md_light_green_400x</item>
 		<item name="smallMarkColor">@color/md_green_200</item>
 		<item name="bigMarkColor">@color/md_green_50</item>
 		<item name="primaryTextColor">@color/md_green_50</item>
+		<item name="compassTextColor">@color/md_green_50</item>
 		<item name="secondaryTextColor">@color/md_green_100</item>
 		<item name="northMarkColor">@color/md_light_green_A400</item>
 		<item name="accelerometerGridColor">@color/md_green_50</item>
@@ -114,17 +119,18 @@
 	<style name="AppTheme.Red" parent="AppTheme">
 		<item name="android:windowBackground">@drawable/gradient_red</item>
 
-		<item name="outerCircleColor">@color/md_red_400</item>
+		<item name="outerCircleColor">@color/md_red_300</item>
 		<item name="middleCircleColor">@color/md_red_500</item>
-		<item name="innerCircleColor">@color/md_red_600</item>
-		<item name="indicatorBackgroundColor">@color/md_red_800</item>
+		<item name="innerCircleColor">@color/md_red_600x</item>
+		<item name="indicatorBackgroundColor">@color/md_red_900</item>
 		<item name="indicatorTextColor">@color/md_red_100</item>
-		<item name="indicatorFieldColor">@color/md_green_400</item>
+		<item name="indicatorFieldColor">@color/md_yellow_700</item>
 		<item name="smallMarkColor">@color/md_red_200</item>
 		<item name="bigMarkColor">@color/md_red_50</item>
 		<item name="primaryTextColor">@color/md_red_50</item>
+		<item name="compassTextColor">@color/md_red_50</item>
 		<item name="secondaryTextColor">@color/md_red_100</item>
-		<item name="northMarkColor">@color/md_yellow_A700</item>
+		<item name="northMarkColor">@color/md_yellow_A200</item>
 		<item name="accelerometerGridColor">@color/md_red_50</item>
 		<item name="accelerometerBallColor">@color/md_red_50</item>
 	</style>
@@ -133,15 +139,16 @@
 		<item name="android:windowBackground">@drawable/gradient_pink</item>
 
 		<item name="outerCircleColor">@color/md_pink_400</item>
-		<item name="middleCircleColor">@color/md_pink_500</item>
+		<item name="middleCircleColor">@color/md_pink_500x</item>
 		<item name="innerCircleColor">@color/md_pink_600</item>
 		<item name="indicatorBackgroundColor">@color/md_pink_800</item>
-		<item name="indicatorTextColor">@color/md_pink_100</item>
-		<item name="indicatorFieldColor">@color/md_green_400</item>
-		<item name="smallMarkColor">@color/md_pink_200</item>
-		<item name="bigMarkColor">@color/md_pink_50</item>
+		<item name="indicatorTextColor">@color/md_pink_50</item>
+		<item name="indicatorFieldColor">@color/md_yellow_700</item>
+		<item name="smallMarkColor">@color/md_pink_100</item>
+		<item name="bigMarkColor">@color/md_white_1000</item>
 		<item name="primaryTextColor">@color/md_pink_50</item>
-		<item name="secondaryTextColor">@color/md_pink_100</item>
+		<item name="compassTextColor">@color/md_white_1000</item>
+		<item name="secondaryTextColor">@color/md_pink_50</item>
 		<item name="northMarkColor">@color/md_yellow_A700</item>
 		<item name="accelerometerGridColor">@color/md_pink_50</item>
 		<item name="accelerometerBallColor">@color/md_pink_50</item>
@@ -151,18 +158,38 @@
 		<item name="android:windowBackground">@drawable/gradient_purple</item>
 
 		<item name="outerCircleColor">@color/md_deep_purple_400</item>
-		<item name="middleCircleColor">@color/md_deep_purple_500</item>
-		<item name="innerCircleColor">@color/md_deep_purple_600</item>
+		<item name="middleCircleColor">@color/md_deep_purple_500x</item>
+		<item name="innerCircleColor">@color/md_deep_purple_600x</item>
 		<item name="indicatorBackgroundColor">@color/md_deep_purple_800</item>
 		<item name="indicatorTextColor">@color/md_deep_purple_100</item>
-		<item name="indicatorFieldColor">@color/md_green_400</item>
+		<item name="indicatorFieldColor">@color/blue_3</item>
 		<item name="smallMarkColor">@color/md_deep_purple_200</item>
 		<item name="bigMarkColor">@color/md_deep_purple_50</item>
 		<item name="primaryTextColor">@color/md_deep_purple_50</item>
+		<item name="compassTextColor">@color/md_deep_purple_50</item>
 		<item name="secondaryTextColor">@color/md_deep_purple_100</item>
-		<item name="northMarkColor">@color/md_red_A100</item>
+		<item name="northMarkColor">@color/md_red_A200</item>
 		<item name="accelerometerGridColor">@color/md_deep_purple_50</item>
 		<item name="accelerometerBallColor">@color/md_deep_purple_50</item>
+	</style>
+
+	<style name="AppTheme.Blue" parent="AppTheme">
+		<item name="android:windowBackground">@drawable/gradient_light</item>
+
+		<item name="outerCircleColor">@color/blue_3</item>
+		<item name="middleCircleColor">@color/blue_4</item>
+		<item name="innerCircleColor">@color/blue_5</item>
+		<item name="indicatorBackgroundColor">@color/blue_7</item>
+		<item name="indicatorTextColor">@color/blue_1</item>
+		<item name="indicatorFieldColor">@color/blue_2</item>
+		<item name="smallMarkColor">@color/blue_3</item>
+		<item name="bigMarkColor">@color/md_indigo_50</item>
+		<item name="primaryTextColor">@color/md_white_1000</item>
+		<item name="compassTextColor">@color/md_white_1000</item>
+		<item name="secondaryTextColor">@color/md_indigo_100</item>
+		<item name="northMarkColor">@color/md_yellow_A700</item>
+		<item name="accelerometerGridColor">@color/md_indigo_50</item>
+		<item name="accelerometerBallColor">@color/blue_1</item>
 	</style>
 
 	<style name="Text">
