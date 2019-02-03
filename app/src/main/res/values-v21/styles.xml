@@ -142,7 +142,7 @@
 		<item name="indicatorTextColor">@color/md_red_100</item>
 		<item name="indicatorFieldColor">@color/md_yellow_700</item>
 		<item name="smallMarkColor">@color/md_red_200</item>
-		<item name="bigMarkColor">@color/md_red_50</item>
+		<item name="bigMarkColor">@color/md_red_100</item>
 		<item name="primaryTextColor">@color/md_red_50</item>
 		<item name="compassTextColor">@color/md_red_50</item>
 		<item name="secondaryTextColor">@color/md_red_100</item>
