@@ -2,6 +2,21 @@
 <p>Ultra-lightweight and useful compass android application</p>
 <p>This application shows how small can be Android app. Apk file about ~100kb size</p>
 
+<a href='https://play.google.com/store/apps/details?id=com.dimowner.airycompass' target='_blank'><img height='80' style='border:0px;height:80px;' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' border='0' alt='GooglePlay Link' /></a>
+
+Features:
+- Compass
+- Orientation
+- Acceleration
+- Magnetic field
+- Simplified mode
+- Energy saving mode
+- Colorful themes
+- Customizable UI
+- Very fast start
+
+![Airy Compass Logo](https://github.com/Dimowner/AiryCompass/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher3.png)
+
 ### License
 
 ```
