@@ -15,7 +15,7 @@ Features:
 - Customizable UI
 - Very fast start
 
-![Airy Compass Logo](https://github.com/Dimowner/AiryCompass/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher3.png)
+![Airy Compass Logo](https://github.com/Dimowner/AiryCompass/blob/master/app/src/releaseConfig/res/mipmap-xxxhdpi/ic_launcher.png)
 
 ### License
 
