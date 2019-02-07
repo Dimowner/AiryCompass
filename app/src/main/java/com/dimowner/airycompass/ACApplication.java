@@ -17,8 +17,8 @@
 package com.dimowner.airycompass;
 
 import android.app.Application;
-//import com.crashlytics.android.Crashlytics;
-//import io.fabric.sdk.android.Fabric;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class ACApplication extends Application {
@@ -41,7 +41,7 @@ public class ACApplication extends Application {
 			});
 		}
 		super.onCreate();
-//		Fabric.with(this, new Crashlytics());
+		Fabric.with(this, new Crashlytics());
 
 		injector = new Injector(getApplicationContext());
 	}
