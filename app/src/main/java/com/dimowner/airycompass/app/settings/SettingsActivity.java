@@ -90,8 +90,8 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		setContentView(R.layout.activity_settings);
 
 		ImageButton btnBack = findViewById(R.id.btn_back);
-		TextView btnRate = findViewById(R.id.btnRate);
-		TextView btnRequest = findViewById(R.id.btnRequest);
+		LinearLayout btnRate = findViewById(R.id.btnRate);
+		LinearLayout btnRequest = findViewById(R.id.btnRequest);
 		TextView txtAbout = findViewById(R.id.txtAbout);
 		LinearLayout btnAdvanced= findViewById(R.id.pnlAdvanced);
 		imgAdvanced = findViewById(R.id.imgAdvanced);
@@ -132,7 +132,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 			items.add(new ThemeColorAdapter.ThemeItem(values[i], getApplicationContext().getResources().getColor(colorRes[i])));
 		}
 		ThemeColorAdapter adapter = new ThemeColorAdapter(SettingsActivity.this,
-				R.layout.list_item_spinner, R.id.txtColor, items);
+				R.layout.list_item_spinner, 0, items);
 		spinner.setAdapter(adapter);
 
 		onThemeColorChangeListener = new ColorMap.OnThemeColorChangeListener() {

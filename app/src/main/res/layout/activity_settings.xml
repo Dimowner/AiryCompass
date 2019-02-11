@@ -19,6 +19,7 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
+
 	<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -33,9 +34,9 @@
 					android:id="@+id/btn_back"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:contentDescription="@null"
 					android:layout_gravity="start"
 					android:background="?android:selectableItemBackground"
+					android:contentDescription="@null"
 					android:padding="@dimen/spacing_normal"
 					android:src="@drawable/ic_arrow_back"/>
 
@@ -59,37 +60,43 @@
 				android:layout_height="wrap_content"
 				android:paddingStart="@dimen/spacing_zero"
 				android:paddingLeft="@dimen/spacing_zero"
-				android:paddingRight="1dp"
-				android:paddingEnd="1dp"/>
+				android:paddingEnd="1dp"
+				android:paddingRight="1dp"/>
 
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal">
 
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="@null"
+					android:padding="@dimen/spacing_normal"
+					android:src="@drawable/ic_lightbulb_on"
+					/>
+
 			<TextView
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/keep_screen_on"
+					android:layout_marginStart="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_normal"
 					android:layout_marginTop="@dimen/spacing_normal"
-					android:layout_marginBottom="@dimen/spacing_normal"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_normal"
-					android:layout_marginStart="@dimen/spacing_normal"
-					android:drawableStart="@drawable/ic_lightbulb_on"
-					android:drawableLeft="@drawable/ic_lightbulb_on"
+					android:layout_marginBottom="@dimen/spacing_normal"
+					android:layout_weight="1"
 					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/keep_screen_on"
 					/>
 
 			<Switch
 					android:id="@+id/swKeepScreenOn"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/spacing_normal"
 					android:layout_gravity="top"
+					android:layout_margin="@dimen/spacing_normal"
 					/>
 		</LinearLayout>
 
@@ -98,34 +105,136 @@
 				android:layout_height="wrap_content"
 				android:orientation="horizontal">
 
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="@null"
+					android:padding="@dimen/spacing_normal"
+					android:src="@drawable/ic_compass"
+					/>
+
 			<TextView
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/simple_mode"
+					android:layout_marginStart="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_normal"
 					android:layout_marginTop="@dimen/spacing_normal"
-					android:layout_marginBottom="@dimen/spacing_normal"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_normal"
-					android:layout_marginStart="@dimen/spacing_normal"
-					android:drawableStart="@drawable/ic_compass"
-					android:drawableLeft="@drawable/ic_compass"
+					android:layout_marginBottom="@dimen/spacing_normal"
+					android:layout_weight="1"
 					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/simple_mode"
 					/>
 
 			<Switch
 					android:id="@+id/swSimpleMode"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/spacing_normal"
 					android:layout_gravity="top"
+					android:layout_margin="@dimen/spacing_normal"
 					/>
 		</LinearLayout>
+
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="@null"
+					android:padding="@dimen/spacing_normal"
+					android:src="@drawable/ic_battery_charging"
+					/>
+
+			<TextView
+					style="@style/Text.NormalLabel"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/spacing_normal"
+					android:layout_marginLeft="@dimen/spacing_normal"
+					android:layout_marginTop="@dimen/spacing_normal"
+					android:layout_marginEnd="@dimen/spacing_normal"
+					android:layout_marginRight="@dimen/spacing_normal"
+					android:layout_marginBottom="@dimen/spacing_normal"
+					android:layout_weight="1"
+					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/energy_saving"
+					/>
+
+			<Switch
+					android:id="@+id/swEnergySaving"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="top"
+					android:layout_margin="@dimen/spacing_normal"
+					/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/btnRate"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?android:selectableItemBackground"
+				android:focusable="true"
+				android:clickable="true"
+				android:orientation="horizontal">
+
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="@null"
+					android:padding="@dimen/spacing_normal"
+					android:src="@drawable/ic_thumbs"
+					/>
+
+			<TextView
+					style="@style/Text.NormalLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawablePadding="@dimen/spacing_double"
+					android:padding="@dimen/spacing_normal"
+					android:text="@string/rate_app"
+					/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/btnRequest"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?android:selectableItemBackground"
+				android:focusable="true"
+				android:clickable="true"
+				android:orientation="horizontal">
+
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:contentDescription="@null"
+					android:padding="@dimen/spacing_normal"
+					android:src="@drawable/ic_chat_bubble"
+					/>
+
+			<TextView
+					style="@style/Text.NormalLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawablePadding="@dimen/spacing_double"
+					android:padding="@dimen/spacing_normal"
+					android:text="@string/request"
+					/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/pnlAdvanced"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?android:selectableItemBackground"
+				android:clickable="true"
+				android:focusable="true"
 				android:orientation="horizontal">
 
 			<TextView
@@ -133,78 +242,21 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="@string/energy_saving"
-					android:layout_marginTop="@dimen/spacing_normal"
-					android:layout_marginBottom="@dimen/spacing_normal"
-					android:layout_marginEnd="@dimen/spacing_normal"
-					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_normal"
-					android:layout_marginStart="@dimen/spacing_normal"
-					android:drawableStart="@drawable/ic_battery_charging"
-					android:drawableLeft="@drawable/ic_battery_charging"
 					android:drawablePadding="@dimen/spacing_double"
+					android:gravity="end"
+					android:padding="@dimen/spacing_normal"
+					android:text="@string/advanced"
 					/>
 
-			<Switch
-					android:id="@+id/swEnergySaving"
+			<ImageView
+					android:id="@+id/imgAdvanced"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_margin="@dimen/spacing_normal"
-					android:layout_gravity="top"
-					/>
+					android:contentDescription="@string/advanced"
+					android:src="@drawable/ic_expand_more"/>
 		</LinearLayout>
-		<TextView
-				android:id="@+id/btnRate"
-				style="@style/Text.NormalLabel"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/rate_app"
-				android:drawableStart="@drawable/ic_thumbs"
-				android:drawableLeft="@drawable/ic_thumbs"
-				android:background="?android:selectableItemBackground"
-				android:padding="@dimen/spacing_normal"
-				android:drawablePadding="@dimen/spacing_double"
-				/>
 
-		<TextView
-				android:id="@+id/btnRequest"
-				style="@style/Text.NormalLabel"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/request"
-				android:drawableStart="@drawable/ic_chat_bubble"
-				android:drawableLeft="@drawable/ic_chat_bubble"
-				android:background="?android:selectableItemBackground"
-				android:padding="@dimen/spacing_normal"
-				android:drawablePadding="@dimen/spacing_double"
-				/>
-
-	<LinearLayout
-			android:id="@+id/pnlAdvanced"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:focusable="true"
-			android:clickable="true"
-			android:background="?android:selectableItemBackground"
-			android:orientation="horizontal">
-		<TextView
-				style="@style/Text.NormalLabel"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:text="@string/advanced"
-				android:gravity="end"
-				android:padding="@dimen/spacing_normal"
-				android:drawablePadding="@dimen/spacing_double"
-				/>
-		<ImageView
-				android:id="@+id/imgAdvanced"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:contentDescription="@string/advanced"
-				android:src="@drawable/ic_expand_more"
-				android:layout_margin="@dimen/spacing_normal"/>
-	</LinearLayout>
 		<LinearLayout
 				android:id="@+id/pnlAcceleration"
 				android:layout_width="match_parent"
@@ -215,26 +267,26 @@
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/show_acceleration"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginLeft="@dimen/spacing_huge"
 					android:layout_marginTop="@dimen/spacing_small"
-					android:layout_marginBottom="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_huge"
-					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_weight="1"
 					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/show_acceleration"
 					/>
 
 			<Switch
 					android:id="@+id/swShowAcceleration"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_gravity="top"
+					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginBottom="@dimen/spacing_small"
-					android:layout_gravity="top"
 					/>
 		</LinearLayout>
 
@@ -248,26 +300,26 @@
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/show_orientation"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginLeft="@dimen/spacing_huge"
 					android:layout_marginTop="@dimen/spacing_small"
-					android:layout_marginBottom="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_huge"
-					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_weight="1"
 					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/show_orientation"
 					/>
 
 			<Switch
 					android:id="@+id/swShowOrientation"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_gravity="top"
+					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginBottom="@dimen/spacing_small"
-					android:layout_gravity="top"
 					/>
 		</LinearLayout>
 
@@ -281,28 +333,29 @@
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/show_accuracy"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginLeft="@dimen/spacing_huge"
 					android:layout_marginTop="@dimen/spacing_small"
-					android:layout_marginBottom="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_huge"
-					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_weight="1"
 					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/show_accuracy"
 					/>
 
 			<Switch
 					android:id="@+id/swShowAccuracy"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_gravity="top"
+					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginBottom="@dimen/spacing_small"
-					android:layout_gravity="top"
 					/>
 		</LinearLayout>
+
 		<LinearLayout
 				android:id="@+id/pnlMagnetic"
 				android:layout_width="match_parent"
@@ -313,39 +366,40 @@
 					style="@style/Text.NormalLabel"
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:text="@string/show_magnetic"
+					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginLeft="@dimen/spacing_huge"
 					android:layout_marginTop="@dimen/spacing_small"
-					android:layout_marginBottom="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginLeft="@dimen/spacing_huge"
-					android:layout_marginStart="@dimen/spacing_huge"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:layout_weight="1"
 					android:drawablePadding="@dimen/spacing_double"
+					android:text="@string/show_magnetic"
 					/>
 
 			<Switch
 					android:id="@+id/swShowMagnetic"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_gravity="top"
+					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginEnd="@dimen/spacing_normal"
 					android:layout_marginRight="@dimen/spacing_normal"
-					android:layout_marginTop="@dimen/spacing_small"
 					android:layout_marginBottom="@dimen/spacing_small"
-					android:layout_gravity="top"
 					/>
 		</LinearLayout>
+
 		<TextView
 				android:id="@+id/txtAbout"
 				style="@style/Text.NormalLabel"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/app_name"
-				android:gravity="bottom|center"
-				android:textSize="@dimen/text_xmedium"
 				android:background="?android:selectableItemBackground"
-				android:padding="@dimen/spacing_normal"
 				android:drawablePadding="@dimen/spacing_double"
+				android:gravity="bottom|center"
+				android:padding="@dimen/spacing_normal"
+				android:text="@string/app_name"
+				android:textSize="@dimen/text_xmedium"
 				/>
 
 	</LinearLayout>

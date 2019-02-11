@@ -1,12 +1,12 @@
 package com.dimowner.airycompass.app.settings;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dimowner.airycompass.R;
@@ -16,13 +16,14 @@ import java.util.List;
 public class ThemeColorAdapter extends ArrayAdapter<ThemeColorAdapter.ThemeItem> {
 
 	private LayoutInflater inflater;
+	private int itemRes;
 	private List<ThemeItem> data;
 
 	ThemeColorAdapter(Activity context, int res, int txtRes, List<ThemeItem> items){
-
 		super(context, res, txtRes, items);
 		this.inflater = context.getLayoutInflater();
 		this.data = items;
+		this.itemRes = res;
 	}
 
 	@Override
@@ -37,22 +38,20 @@ public class ThemeColorAdapter extends ArrayAdapter<ThemeColorAdapter.ThemeItem>
 
 	private View getView(View convertView, int position, ViewGroup parent, boolean showDrawable) {
 		if(convertView == null){
-			convertView = inflater.inflate(R.layout.list_item_spinner, parent, false);
+			convertView = inflater.inflate(itemRes, parent, false);
 		}
 		TextView txtColor = convertView.findViewById(R.id.txtColor);
+		ImageView ivImage = convertView.findViewById(R.id.ivImage);
+		LinearLayout pnlItem = convertView.findViewById(R.id.pnlItem);
 		txtColor.setText(data.get(position).getColorName());
 		if (!showDrawable) {
-			if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-				txtColor.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
-			}
-			Resources r = getContext().getResources();
-			float n = r.getDimension(R.dimen.spacing_normal);
-			txtColor.setPadding((int)r.getDimension(R.dimen.spacing_huge), (int)n, (int)n, (int)n);
-			txtColor.setBackgroundColor(data.get(position).getColor());
+			ivImage.setVisibility(View.INVISIBLE);
+			pnlItem.setBackgroundColor(data.get(position).getColor());
 		} else {
-			txtColor.setBackgroundColor(getContext().getResources().getColor(R.color.transparent));
+			ivImage.setVisibility(View.VISIBLE);
+			pnlItem.setBackgroundColor(getContext().getResources().getColor(R.color.transparent));
 		}
-		return txtColor;
+		return convertView;
 	}
 
 	public static class ThemeItem {

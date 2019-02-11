@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,12 +38,12 @@ import com.dimowner.airycompass.app.widget.MagneticFieldView;
 public class MainActivity extends Activity implements MainContract.View, View.OnClickListener {
 
 	//	private CompassView compassView;
-	private TextView txtAccuracyAlert;
+	private LinearLayout pnlAccuracyAlert;
 	private TextView txtAcceleration;
 	private TextView txtOrientation;
 	private TextView txtAccuracy;
 	private TextView txtMagnetic;
-	private TextView btnSettings;
+	private TextView txtSettings;
 
 	private CompassCompoundView compassCompoundView;
 	private MagneticFieldView magneticFieldView;
@@ -67,7 +68,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		compassCompoundView = findViewById(R.id.compass_view_compound);
 //		compassView = findViewById(R.id.compass_view);
 		magneticFieldView = findViewById(R.id.magnetic_field_view);
-		txtAccuracyAlert = findViewById(R.id.txt_accuracy_calibration);
+		pnlAccuracyAlert = findViewById(R.id.pnl_accuracy_calibration);
 		txtAcceleration = findViewById(R.id.txt_acceleration);
 		txtOrientation = findViewById(R.id.txt_orientation);
 		accuracyView = findViewById(R.id.accuracy_view);
@@ -76,7 +77,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		txtAccuracy = findViewById(R.id.txt_accuracy);
 		txtMagnetic = findViewById(R.id.txt_magnetic);
 
-		btnSettings = findViewById(R.id.btn_settings);
+		txtSettings = findViewById(R.id.txt_settings);
+		LinearLayout btnSettings = findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(this);
 
 		presenter = ACApplication.getInjector().provideMainPresenter();
@@ -239,12 +241,12 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 
 	@Override
 	public void alertPoorAccuracy() {
-		txtAccuracyAlert.setVisibility(View.VISIBLE);
+		pnlAccuracyAlert.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void hideAlertPoorAccuracy() {
-		txtAccuracyAlert.setVisibility(View.GONE);
+		pnlAccuracyAlert.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -275,7 +277,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 			txtMagnetic.setVisibility(View.VISIBLE);
 			magneticFieldView.setVisibility(View.GONE);
 			accuracyView.setVisibility(View.GONE);
-			btnSettings.setText("");
+			txtSettings.setText("");
 		} else {
 			txtOrientation.setVisibility(View.VISIBLE);
 			txtAcceleration.setVisibility(View.VISIBLE);
@@ -283,7 +285,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 			txtMagnetic.setVisibility(View.GONE);
 			magneticFieldView.setVisibility(View.VISIBLE);
 			accuracyView.setVisibility(View.VISIBLE);
-			btnSettings.setText(R.string.settings);
+			txtSettings.setText(R.string.settings);
 		}
 	}
 
