@@ -1,6 +1,13 @@
+
+![Airy Compass Logo](https://github.com/Dimowner/AiryCompass/blob/master/app/src/releaseConfig/res/mipmap-xxxhdpi/ic_launcher.png)
+
 # AiryCompass
-<p>Ultra-lightweight and useful compass android application</p>
-<p>This application shows how small can be Android app. Apk file about ~100kb size</p>
+
+<b>Airy Compass</b> - is a small and fast application, always will help you to find the north.
+Optimized for the fastest start as possible, to save your time.
+There a few preferences which allow personalizing the app for a user, colorful themes, simple mode, show only needed components and hide not needed, energy saving mode.
+</p>
+<p>Apk file about ~200kb size</p>
 
 <a href='https://play.google.com/store/apps/details?id=com.dimowner.airycompass' target='_blank'><img height='80' style='border:0px;height:80px;' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' border='0' alt='GooglePlay Link' /></a>
 
@@ -14,8 +21,6 @@ Features:
 - Colorful themes
 - Customizable UI
 - Very fast start
-
-![Airy Compass Logo](https://github.com/Dimowner/AiryCompass/blob/master/app/src/releaseConfig/res/mipmap-xxxhdpi/ic_launcher.png)
 
 ### License
 
