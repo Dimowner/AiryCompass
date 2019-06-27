@@ -45,9 +45,9 @@
 		</activity>
 		<activity android:name="com.dimowner.airycompass.app.settings.SettingsActivity"
 					 android:screenOrientation="portrait"/>
-	    <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="@string/fabric_api_key" />
+	    <!--<meta-data-->
+            <!--android:name="io.fabric.ApiKey"-->
+            <!--android:value="@string/fabric_api_key" />-->
     </application>
 
 </manifest>
