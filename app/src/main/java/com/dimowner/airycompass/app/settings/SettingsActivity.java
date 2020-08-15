@@ -47,8 +47,6 @@ import com.dimowner.airycompass.util.AnimationUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import timber.log.Timber;
-
 public class SettingsActivity extends Activity implements SettingsContract.View, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
 	private static final String VERSION_UNAVAILABLE = "N/A";
@@ -126,7 +124,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 
 		final Spinner spinner = findViewById(R.id.themeColor);
 		List<ThemeColorAdapter.ThemeItem> items = new ArrayList<>();
-		String values[] = getResources().getStringArray(R.array.theme_colors);
+		String[] values = getResources().getStringArray(R.array.theme_colors);
 		int[] colorRes = colorMap.getColorResources();
 		for (int i = 0; i < values.length; i++) {
 			items.add(new ThemeColorAdapter.ThemeItem(values[i], getApplicationContext().getResources().getColor(colorRes[i])));
@@ -138,7 +136,6 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		onThemeColorChangeListener = new ColorMap.OnThemeColorChangeListener() {
 			@Override
 			public void onThemeColorChange(int pos) {
-				Timber.v("onThemeColorChange pos = " + pos);
 				setTheme(colorMap.getAppThemeResource());
 				recreate();
 			}

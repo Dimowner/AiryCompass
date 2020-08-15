@@ -9,6 +9,5 @@
 		android:padding="@dimen/spacing_normal"
 		android:background="@color/colorPrimary"
 		android:drawableStart="@drawable/ic_color_lens"
-		android:drawableLeft="@drawable/ic_color_lens"
 		android:drawablePadding="@dimen/spacing_double"
 		android:text="@string/app_name"/>

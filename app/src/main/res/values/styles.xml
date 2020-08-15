@@ -16,13 +16,18 @@
 
 <resources>
 
-	<style name="AppTheme" parent="android:Theme.Holo.Light">
+	<style name="AppTheme" parent="@android:style/Theme.Material">
+		<item name="android:colorPrimary">@color/colorPrimary</item>
+		<item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="android:colorAccent">@color/md_white_1000</item>
 
 		<item name="android:windowActionBar">false</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowActionBarOverlay">true</item>
 
 		<item name="android:windowBackground">@drawable/gradient_blue</item>
+
+		<item name="android:navigationBarColor">@color/colorPrimary</item>
 
 		<item name="outerCircleColor">@color/md_indigo_300</item>
 		<item name="middleCircleColor">@color/md_indigo_400x</item>
@@ -41,7 +46,9 @@
 	</style>
 
 	<style name="AppTheme.Black" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_black_1000</item>
 		<item name="android:windowBackground">@drawable/gradient_black</item>
+		<item name="android:navigationBarColor">@color/md_black_1000</item>
 
 		<item name="outerCircleColor">@color/md_grey_600</item>
 		<item name="middleCircleColor">@color/md_black_1000</item>
@@ -60,7 +67,9 @@
 	</style>
 
 	<style name="AppTheme.Grey" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_grey_800x</item>
 		<item name="android:windowBackground">@drawable/gradient_grey</item>
+		<item name="android:navigationBarColor">@color/md_grey_800x</item>
 
 		<item name="outerCircleColor">@color/md_grey_700</item>
 		<item name="middleCircleColor">@color/md_grey_800xx</item>
@@ -79,7 +88,9 @@
 	</style>
 
 	<style name="AppTheme.Brown" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_brown_600</item>
 		<item name="android:windowBackground">@drawable/gradient_brown</item>
+		<item name="android:navigationBarColor">@color/md_brown_600</item>
 
 		<item name="outerCircleColor">@color/md_brown_300</item>
 		<item name="middleCircleColor">@color/md_brown_500</item>
@@ -98,7 +109,9 @@
 	</style>
 
 	<style name="AppTheme.Green" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_green_600</item>
 		<item name="android:windowBackground">@drawable/gradient_green</item>
+		<item name="android:navigationBarColor">@color/md_green_600</item>
 
 		<item name="outerCircleColor">@color/md_green_300</item>
 		<item name="middleCircleColor">@color/md_green_600x</item>
@@ -117,7 +130,9 @@
 	</style>
 
 	<style name="AppTheme.Red" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_red_600</item>
 		<item name="android:windowBackground">@drawable/gradient_red</item>
+		<item name="android:navigationBarColor">@color/md_red_600</item>
 
 		<item name="outerCircleColor">@color/md_red_300</item>
 		<item name="middleCircleColor">@color/md_red_500</item>
@@ -126,7 +141,7 @@
 		<item name="indicatorTextColor">@color/md_red_100</item>
 		<item name="indicatorFieldColor">@color/md_yellow_700</item>
 		<item name="smallMarkColor">@color/md_red_200</item>
-		<item name="bigMarkColor">@color/md_red_50</item>
+		<item name="bigMarkColor">@color/md_red_100</item>
 		<item name="primaryTextColor">@color/md_red_50</item>
 		<item name="compassTextColor">@color/md_red_50</item>
 		<item name="secondaryTextColor">@color/md_red_100</item>
@@ -136,7 +151,9 @@
 	</style>
 
 	<style name="AppTheme.Pink" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_pink_500</item>
 		<item name="android:windowBackground">@drawable/gradient_pink</item>
+		<item name="android:navigationBarColor">@color/md_pink_500</item>
 
 		<item name="outerCircleColor">@color/md_pink_400</item>
 		<item name="middleCircleColor">@color/md_pink_500x</item>
@@ -155,7 +172,9 @@
 	</style>
 
 	<style name="AppTheme.Purple" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/md_deep_purple_500</item>
 		<item name="android:windowBackground">@drawable/gradient_purple</item>
+		<item name="android:navigationBarColor">@color/md_deep_purple_500</item>
 
 		<item name="outerCircleColor">@color/md_deep_purple_400</item>
 		<item name="middleCircleColor">@color/md_deep_purple_500x</item>
@@ -174,7 +193,9 @@
 	</style>
 
 	<style name="AppTheme.Blue" parent="AppTheme">
+		<item name="android:colorPrimaryDark">@color/blue_5</item>
 		<item name="android:windowBackground">@drawable/gradient_light</item>
+		<item name="android:navigationBarColor">@color/blue_5</item>
 
 		<item name="outerCircleColor">@color/blue_3</item>
 		<item name="middleCircleColor">@color/blue_4</item>

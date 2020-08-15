@@ -32,12 +32,7 @@
 			app:northMarkArrow="?attr/northMarkColor"
 			/>
 
-	<!--<com.dimowner.airycompass.app.widget.MagneticFieldView-->
-			<!--android:id="@+id/magnetic_field_view"-->
-			<!--android:layout_width="match_parent"-->
-			<!--android:layout_height="wrap_content" />-->
-
-	<com.dimowner.airycompass.app.widget.CompassClockfaceView
+	<com.dimowner.airycompass.app.widget.CompassClockFaceView
 			android:id="@+id/compass_clockface_view"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

@@ -30,7 +30,7 @@ public class CompassCompoundView extends FrameLayout {
 	private static final int UPDATE_INTERVAL_DIRECTION = 120; //mills
 	private long directionUpdatePrevTime = 0;
 
-	private CompassClockfaceView compassClockfaceView;
+	private CompassClockFaceView compassClockfaceView;
 	private CompassBackgroundView compassBackgroundView;
 	private TextView txtDirection;
 

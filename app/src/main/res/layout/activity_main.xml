@@ -29,7 +29,6 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="52dp"
-				android:layout_marginLeft="52dp"
 				android:text="@string/acceleration"
 				android:layout_gravity="top|start"
 				android:layout_marginTop="@dimen/spacing_small"
@@ -45,7 +44,6 @@
 				android:layout_gravity="top|end"
 				android:layout_marginTop="@dimen/spacing_small"
 				android:layout_marginEnd="52dp"
-				android:layout_marginRight="52dp"
 				android:fontFamily="sans-serif-light"
 				android:text="@string/orientation"
 				android:textColor="?attr/accelerometerGridColor"
@@ -59,7 +57,6 @@
 				android:layout_gravity="end"
 				android:layout_marginTop="@dimen/spacing_double"
 				android:layout_marginEnd="@dimen/spacing_double"
-				android:layout_marginRight="@dimen/spacing_double"
 				/>
 
 		<com.dimowner.airycompass.app.widget.AccelerometerView
@@ -68,14 +65,9 @@
 				android:layout_height="@dimen/accelerometer_view_size"
 				android:layout_gravity="start"
 				android:layout_marginStart="@dimen/spacing_double"
-				android:layout_marginLeft="@dimen/spacing_double"
 				android:layout_marginTop="@dimen/spacing_double"
 				/>
 	</FrameLayout>
-	<!--<com.dimowner.airycompass.app.widget.CompassView-->
-			<!--android:id="@+id/compass_view"-->
-			<!--android:layout_width="match_parent"-->
-			<!--android:layout_height="wrap_content" />-->
 
 	<FrameLayout
 			android:layout_width="wrap_content"
@@ -131,7 +123,6 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="bottom|start"
 						android:layout_marginBottom="@dimen/spacing_normal"
-						android:layout_marginLeft="@dimen/spacing_normal"
 						android:layout_marginStart="@dimen/spacing_normal"
 						android:orientation="vertical">
 
@@ -161,7 +152,6 @@
 						android:textSize="@dimen/text_normal"
 						android:padding="20dp"
 						android:drawableEnd="@drawable/ic_settings"
-						android:drawableRight="@drawable/ic_settings"
 						android:drawablePadding="@dimen/spacing_small"
 						android:fontFamily="sans-serif-light"
 						android:layout_gravity="bottom|end"

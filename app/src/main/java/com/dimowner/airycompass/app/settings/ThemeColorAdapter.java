@@ -2,7 +2,6 @@ package com.dimowner.airycompass.app.settings;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +41,7 @@ public class ThemeColorAdapter extends ArrayAdapter<ThemeColorAdapter.ThemeItem>
 		TextView txtColor = convertView.findViewById(R.id.txtColor);
 		txtColor.setText(data.get(position).getColorName());
 		if (!showDrawable) {
-			if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-				txtColor.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
-			}
+			txtColor.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
 			Resources r = getContext().getResources();
 			float n = r.getDimension(R.dimen.spacing_normal);
 			txtColor.setPadding((int)r.getDimension(R.dimen.spacing_huge), (int)n, (int)n, (int)n);

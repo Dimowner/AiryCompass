@@ -36,7 +36,6 @@ import com.dimowner.airycompass.app.widget.MagneticFieldView;
 
 public class MainActivity extends Activity implements MainContract.View, View.OnClickListener {
 
-	//	private CompassView compassView;
 	private TextView txtAccuracyAlert;
 	private TextView txtAcceleration;
 	private TextView txtOrientation;
@@ -113,10 +112,8 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-			case R.id.btn_settings:
-				startActivity(SettingsActivity.getStartIntent(getApplicationContext()));
-				break;
+		if (v.getId() == R.id.btn_settings) {
+			startActivity(SettingsActivity.getStartIntent(getApplicationContext()));
 		}
 	}
 

@@ -31,15 +31,8 @@ import android.view.View;
 import com.dimowner.airycompass.R;
 import com.dimowner.airycompass.util.AndroidUtils;
 
-import timber.log.Timber;
+public class CompassClockFaceView extends View {
 
-public class CompassClockfaceView extends View {
-
-//	public static final String DEGREE_SIGN = "°";
-//
-//	public static final float OUTER_RADIUS = 0.43f;
-//	public static final float MIDDLE_RADIUS = 0.325f;
-//	public static final float INNER_RADIUS = 0.24f;
 	public static final float SMALL_MARK_INNER_RADIUS = 0.35f;
 	public static final float SMALL_MARK_OUTER_RADIUS = 0.38f;
 	public static final float BIG_MARK_INNER_RADIUS = 0.34f;
@@ -48,9 +41,6 @@ public class CompassClockfaceView extends View {
 	public static final float NORTH_MARK_OUTER_RADIUS = 0.4f;
 	public static final float DEGREE_RADIUS = 0.30f;
 	public static final float DIRECTION_RADIUS = 0.215f;
-//	public static final float MAGNETIC_VIEW_RADIUS = 0.407f;
-//	public static final float MAGNETIC_NAME_RADIUS = 0.414f;
-//	public static final float MAGNETIC_VAL_RADIUS = 0.4f;
 
 	private String n;
 	private String e;
@@ -60,15 +50,7 @@ public class CompassClockfaceView extends View {
 	private String se;
 	private String sw;
 	private String nw;
-//	private String mT;
-//	private String magField;
 
-//	private Paint outerCirclePaint;
-//	private Paint middleCirclePaint;
-//	private Paint innerCirclePaint;
-//	private Paint magneticBackgroundPaint;
-//	private Paint magneticTextPaint;
-//	private Paint magneticFieldPaint;
 	private Paint smallMarkPaint;
 	private Paint bigMarkPaint;
 	private Paint northMarkPaint;
@@ -77,7 +59,6 @@ public class CompassClockfaceView extends View {
 	private Paint degreeTextPaint;
 	private Paint directionTextMainPaint;
 	private Paint directionTextSlavePaint;
-//	private Paint currentDirectionTextPaint;
 
 	private Point CENTER;
 	private float WIDTH;
@@ -85,26 +66,22 @@ public class CompassClockfaceView extends View {
 	private Path smallMarkPath = null;
 	private Path bigMarkPath = null;
 	private Path northMarkPath = null;
-//	private Path magneticPath = null;
-//	private Path magneticBackgroundPath = null;
-//	private Path staticNorthMarkPath = null;
 	private Path northMarkPath2 = null;
 
 	private float azimuth;
-//	private float magneticField;
 
-	public CompassClockfaceView(Context context) {
+	public CompassClockFaceView(Context context) {
 		super(context);
 		init(context, null);
 	}
 
-	public CompassClockfaceView(Context context, AttributeSet attrs) {
+	public CompassClockFaceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context, attrs);
 	}
 
 
-	public CompassClockfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
+	public CompassClockFaceView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		init(context, attrs);
 	}
@@ -122,15 +99,7 @@ public class CompassClockfaceView extends View {
 		se = res.getString(R.string.se);
 		sw = res.getString(R.string.sw);
 		nw = res.getString(R.string.nw);
-//		mT = res.getString(R.string.mt_val);
-//		magField = res.getString(R.string.mag_field);
 
-//		int outerCircleColor= res.getColor(R.color.outer_circle_color);
-//		int middleCircleColor = res.getColor(R.color.middle_circle_color);
-//		int innerCircleColor = res.getColor(R.color.inner_circle_color);
-//		int magneticBackgroundColor = res.getColor(R.color.magnetic_background);
-//		int magneticTextColor = res.getColor(R.color.magnetic_text_color);
-//		int magneticGradientColor = res.getColor(R.color.magnetic_field_color);
 		int smallMarkColor = res.getColor(R.color.md_indigo_200);
 		int bigMarkColor = res.getColor(R.color.md_indigo_50);
 		int northMarkColor = res.getColor(R.color.md_red_400);
@@ -138,14 +107,14 @@ public class CompassClockfaceView extends View {
 		int secondaryTextColor = res.getColor(R.color.md_indigo_100);
 
 		if (attrs != null) {
-			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassClockfaceView);
+			TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CompassClockFaceView);
 			if (ta != null) {
 				//Read View custom attributes
-				smallMarkColor  = ta.getColor(R.styleable.CompassClockfaceView_smallMark, res.getColor(R.color.md_indigo_200));
-				bigMarkColor = ta.getColor(R.styleable.CompassClockfaceView_bigMark, res.getColor(R.color.md_indigo_50));
-				northMarkColor = ta.getColor(R.styleable.CompassClockfaceView_northMark,  res.getColor(R.color.md_red_400));
-				primaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_primaryText,  res.getColor(R.color.md_indigo_50));
-				secondaryTextColor = ta.getColor(R.styleable.CompassClockfaceView_secondaryText,  res.getColor(R.color.md_indigo_100));
+				smallMarkColor  = ta.getColor(R.styleable.CompassClockFaceView_smallMark, res.getColor(R.color.md_indigo_200));
+				bigMarkColor = ta.getColor(R.styleable.CompassClockFaceView_bigMark, res.getColor(R.color.md_indigo_50));
+				northMarkColor = ta.getColor(R.styleable.CompassClockFaceView_northMark,  res.getColor(R.color.md_red_400));
+				primaryTextColor = ta.getColor(R.styleable.CompassClockFaceView_primaryText,  res.getColor(R.color.md_indigo_50));
+				secondaryTextColor = ta.getColor(R.styleable.CompassClockFaceView_secondaryText,  res.getColor(R.color.md_indigo_100));
 				ta.recycle();
 			}
 		} else {
@@ -164,43 +133,7 @@ public class CompassClockfaceView extends View {
 			secondaryTextColor = typedValue.data;
 		}
 
-//		magneticPath = new Path();
 		CENTER = new Point(0, 0);
-
-//		//Background circles
-//		outerCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		outerCirclePaint.setColor(outerCircleColor);
-//		outerCirclePaint.setStyle(Paint.Style.STROKE);
-//		outerCirclePaint.setStrokeWidth(AndroidUtils.dpToPx(1));
-//
-//		middleCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		middleCirclePaint.setColor(middleCircleColor);
-//		middleCirclePaint.setStyle(Paint.Style.STROKE);
-//		middleCirclePaint.setStrokeWidth(AndroidUtils.dpToPx(42));
-//
-//		innerCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		innerCirclePaint.setColor(innerCircleColor);
-//		innerCirclePaint.setStyle(Paint.Style.STROKE);
-//		innerCirclePaint.setStrokeWidth(AndroidUtils.dpToPx(34));
-//
-//		//Magnetic view
-//		magneticBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		magneticBackgroundPaint.setStyle(Paint.Style.STROKE);
-//		magneticBackgroundPaint.setStrokeCap(Paint.Cap.ROUND);
-//		magneticBackgroundPaint.setStrokeWidth(AndroidUtils.dpToPx(8));
-//		magneticBackgroundPaint.setColor(magneticBackgroundColor);
-//
-//		magneticTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		magneticTextPaint.setColor(magneticTextColor);
-//		magneticTextPaint.setTextSize(AndroidUtils.dpToPx(10));
-//		magneticTextPaint.setTypeface(typeface);
-//		magneticTextPaint.setTextAlign(Paint.Align.CENTER);
-//
-//		magneticFieldPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		magneticFieldPaint.setColor(magneticGradientColor);
-//		magneticFieldPaint.setStrokeWidth(AndroidUtils.dpToPx(8));
-//		magneticFieldPaint.setStyle(Paint.Style.STROKE);
-//		magneticFieldPaint.setStrokeCap(Paint.Cap.ROUND);
 
 		//Clock marks
 		smallMarkPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -249,13 +182,6 @@ public class CompassClockfaceView extends View {
 		directionTextSlavePaint.setColor(secondaryTextColor);
 		directionTextSlavePaint.setTextSize(AndroidUtils.dpToPx(14));
 		directionTextSlavePaint.setTextAlign(Paint.Align.CENTER);
-
-//		//Current direction
-//		currentDirectionTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//		currentDirectionTextPaint.setColor(primaryTextColor);
-//		currentDirectionTextPaint.setTextSize(AndroidUtils.dpToPx(30));
-//		currentDirectionTextPaint.setTextAlign(Paint.Align.CENTER);
-
 	}
 
 	@Override
@@ -285,28 +211,11 @@ public class CompassClockfaceView extends View {
 		layoutBigClockMarks();
 
 		layoutNorthMark();
-//		layoutStaticNorthMark();
-//
-//		layoutMagnetic();
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		Timber.v("onDraw");
-
-//		//Draw outer circle
-//		canvas.drawCircle(CENTER.x, CENTER.y, WIDTH*OUTER_RADIUS, outerCirclePaint);
-//		//Draw middle circle
-//		canvas.drawCircle(CENTER.x, CENTER.y, WIDTH*MIDDLE_RADIUS, middleCirclePaint);
-//		//Draw inner circle
-//		canvas.drawCircle(CENTER.x, CENTER.y, WIDTH*INNER_RADIUS, innerCirclePaint);
-//
-//		drawMagnetic(canvas);
-//
-//		drawAzimuthValue(canvas);
-//		//Draw static north mark (triangle)
-//		canvas.drawPath(staticNorthMarkPath, northMarkStaticPaint);
 
 		canvas.save();
 		canvas.rotate(-azimuth, CENTER.x, CENTER.y);
@@ -427,56 +336,6 @@ public class CompassClockfaceView extends View {
 		}
 	}
 
-//	private void layoutStaticNorthMark() {
-//		if (staticNorthMarkPath == null) {
-//			float x = CENTER.x;
-//			float length = AndroidUtils.dpToPx(12);
-//			float y = (CENTER.y - WIDTH*OUTER_RADIUS + length - AndroidUtils.dpToPx(2));
-//			staticNorthMarkPath = new Path();
-//			staticNorthMarkPath.moveTo(x - length/2.0f, y - length);
-//			staticNorthMarkPath.lineTo(x + length/2.0f, y - length);
-//			staticNorthMarkPath.lineTo(x, y);
-//			staticNorthMarkPath.lineTo(x - length/2.0f, y - length);
-//		}
-//	}
-//
-//	private void layoutMagnetic() {
-//		if (magneticBackgroundPath == null) {
-//			float r = WIDTH* MAGNETIC_VIEW_RADIUS;
-//			RectF bound = new RectF(CENTER.x - r, CENTER.y - r, CENTER.x + r, CENTER.y + r);
-//			magneticBackgroundPath = new Path();
-//			magneticBackgroundPath.addArc(bound, 315, 85);
-//		}
-//	}
-//
-//	private void drawMagnetic(Canvas canvas) {
-//		int angle = 85;
-//		float r = WIDTH* MAGNETIC_VIEW_RADIUS;
-//		RectF bound = new RectF(CENTER.x - r, CENTER.y - r, CENTER.x + r, CENTER.y + r);
-//
-//		//Draw magnetic background
-//		canvas.drawPath(magneticBackgroundPath, magneticBackgroundPaint);
-//
-//		int max = 160;
-//		float percent = Math.min(1, magneticField / max);
-//		percent = percent * angle;
-//
-//		//Draw magnetic field value
-//		magneticPath.reset();
-//		magneticPath.addArc(bound, 315 + angle - percent, percent);
-//		canvas.drawPath(magneticPath, magneticFieldPaint);
-//
-//		drawText(canvas, 307, (int)magneticField+mT, WIDTH*MAGNETIC_VAL_RADIUS, magneticTextPaint);
-//		drawTextInverted(canvas, 53, magField, WIDTH*MAGNETIC_NAME_RADIUS, magneticTextPaint);
-//	}
-//
-//	private void drawAzimuthValue(Canvas canvas) {
-//		String str = ((int)azimuth) + DEGREE_SIGN + " " + getDirectionText(azimuth);
-//		Rect rect = new Rect();
-//		currentDirectionTextPaint.getTextBounds(str, 0, str.length(), rect);
-//		canvas.drawText(str, CENTER.x, CENTER.y + rect.height()/2.0f, currentDirectionTextPaint);
-//	}
-
 	private void drawText(Canvas canvas, float degree, String text, float radius, Paint paint) {
 		canvas.save();
 		canvas.translate(
@@ -488,59 +347,10 @@ public class CompassClockfaceView extends View {
 		canvas.restore();
 	}
 
-//	private void drawTextInverted(Canvas canvas, float degree, String text, float radius, Paint paint) {
-//		canvas.save();
-//		canvas.translate(
-//				((float) Math.cos(Math.toRadians(degree)) * radius) + CENTER.x,
-//				((float) Math.sin(Math.toRadians(degree)) * radius) + CENTER.y
-//		);
-//		canvas.rotate(270f + degree);
-//		canvas.drawText(text, 0, 0, paint);
-//		canvas.restore();
-//	}
-//
-//	public void updateMagneticField(float field) {
-////		Timber.v("updateMagneticField omMF = " + magneticField + "newMF = " + field);
-//		if ((int)magneticField != (int)field) {
-//			magneticField = field;
-//			invalidate();
-//		}
-//	}
-
 	public void updateAzimuth(float azimuth) {
-//		Timber.v("updateAzimuth oldAz = " + this.azimuth + " newAz = " + azimuth);
 		if ((int)this.azimuth != (int)azimuth) {
 			this.azimuth = azimuth;
 			invalidate();
 		}
 	}
-
-//	private String getDirectionText(float degree) {
-//		final float step = 22.5f;
-//		if (degree >= 0 && degree < step || degree > 360 - step) {
-//			return n;
-//		}
-//		if (degree >= step && degree < step * 3) {
-//			return ne;
-//		}
-//		if (degree >= step * 3 && degree < step * 5) {
-//			return e;
-//		}
-//		if (degree >= step * 5 && degree < step * 7) {
-//			return se;
-//		}
-//		if (degree >= step * 7 && degree < step * 9) {
-//			return s;
-//		}
-//		if (degree >= step * 9 && degree < step * 11) {
-//			return sw;
-//		}
-//		if (degree >= step * 11 && degree < step * 13) {
-//			return w;
-//		}
-//		if (degree >= step * 13 && degree < step * 15) {
-//			return nw;
-//		}
-//		return "";
-//	}
 }

@@ -24,8 +24,6 @@ import android.view.View;
 
 import com.dimowner.airycompass.util.AndroidUtils;
 
-import timber.log.Timber;
-
 public class AccelerometerView extends View {
 
 	private float roll = 0f;
@@ -39,7 +37,6 @@ public class AccelerometerView extends View {
 	//Converted value from pixels to coefficient used in function which describes move.
 	private float k = (float) (MAX_MOVE / (Math.PI/2));
 
-//	private ViewDrawer<PointF> drawer;
 	private AccelerometerDrawer drawer;
 	private boolean isSimple = false;
 
@@ -60,17 +57,12 @@ public class AccelerometerView extends View {
 
 	private void init(Context context) {
 		point = new PointF(0, 0);
-//		if (isSimple) {
-//			drawer = new AccelerometerDrawerSimple(context);
-//		} else {
-			drawer = new AccelerometerDrawer(context, isSimple);
-//		}
+		drawer = new AccelerometerDrawer(context, isSimple);
 	}
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		Timber.v("onMeasure");
 
 		int w = MeasureSpec.getSize(widthMeasureSpec);
 		int h = MeasureSpec.getSize(heightMeasureSpec);
@@ -129,7 +121,6 @@ public class AccelerometerView extends View {
 					(float) (k * Math.atan(y*MAX_ACCELERATION/k))
 				);
 
-//			Timber.v("updateLinearAcceleration pitch = " + x + " roll = " + y + " xPos = " + xPos + " yPos = " + yPos);
 			drawer.update(point);
 			invalidate();
 		}
@@ -138,12 +129,7 @@ public class AccelerometerView extends View {
 	public void setSimpleMode(boolean mode) {
 		if (isSimple != mode) {
 			isSimple = mode;
-//			if (isSimple) {
-//				drawer = new AccelerometerDrawerSimple(getContext());
-//			} else {
-				drawer = new AccelerometerDrawer(getContext(), isSimple);
-//			}
-//			drawer.setSimpleMode(isSimple);
+			drawer = new AccelerometerDrawer(getContext(), isSimple);
 			drawer.update(point);
 			requestLayout();
 		}

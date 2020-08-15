@@ -18,7 +18,6 @@ package com.dimowner.airycompass.app.main;
 
 import com.dimowner.airycompass.data.Prefs;
 import com.dimowner.airycompass.sensor.SensorsContract;
-import timber.log.Timber;
 
 public class MainPresenter implements MainContract.UserActionsListener {
 
@@ -95,11 +94,9 @@ public class MainPresenter implements MainContract.UserActionsListener {
 							case 0:
 							case 1:
 							case 2:
-								Timber.v("Accuracy is not good");
 								view.alertPoorAccuracy();
 								break;
 							case 3:
-								Timber.v("High Accuracy");
 								view.hideAlertPoorAccuracy();
 								break;
 						}

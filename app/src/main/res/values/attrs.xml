@@ -26,7 +26,7 @@
 		<attr name="northMarkArrow" format="color" />
 	</declare-styleable>
 
-	<declare-styleable name="CompassClockfaceView">
+	<declare-styleable name="CompassClockFaceView">
 		<attr name="smallMark" format="color" />
 		<attr name="bigMark" format="color" />
 		<attr name="northMark" format="color" />

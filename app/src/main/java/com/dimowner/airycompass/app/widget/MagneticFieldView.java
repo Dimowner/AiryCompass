@@ -26,7 +26,6 @@ public class MagneticFieldView extends View {
 	private float magneticField;
 
 	private ViewDrawer<Float> drawer;
-	private boolean isSimple = false;
 
 	public MagneticFieldView(Context context) {
 		super(context);
@@ -44,11 +43,7 @@ public class MagneticFieldView extends View {
 	}
 
 	private void init(Context context) {
-		if (isSimple) {
-			drawer = new MagneticFieldDrawerSimple(context);
-		} else {
-			drawer = new MagneticFieldDrawer(context);
-		}
+		drawer = new MagneticFieldDrawer(context);
 	}
 
 	@Override
@@ -82,24 +77,10 @@ public class MagneticFieldView extends View {
 	}
 
 	public void updateMagneticField(float field) {
-//		Timber.v("updateMagneticField omMF = " + magneticField + "newMF = " + field);
 		if ((int)magneticField != (int)field) {
 			magneticField = field;
 			drawer.update(field);
 			invalidate();
-		}
-	}
-
-	public void setSimpleMode(boolean mode) {
-		if (isSimple != mode) {
-			isSimple = mode;
-			if (isSimple) {
-				drawer = new MagneticFieldDrawerSimple(getContext());
-			} else {
-				drawer = new MagneticFieldDrawer(getContext());
-			}
-			drawer.update(magneticField);
-			requestLayout();
 		}
 	}
 }
