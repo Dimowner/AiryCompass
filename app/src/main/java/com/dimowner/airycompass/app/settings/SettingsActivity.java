@@ -239,6 +239,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 	private void requestFeature() {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
+		i.setData(Uri.parse("mailto:"));
 		i.putExtra(Intent.EXTRA_EMAIL, new String[]{AppConstants.REQUESTS_RECEIVER});
 		i.putExtra(Intent.EXTRA_SUBJECT,
 				"[" + getResources().getString(R.string.app_name) + "] - " + getResources().getString(R.string.request)
