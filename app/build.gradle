@@ -9,58 +9,74 @@
 //}
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 //apply plugin: 'io.fabric'
 
 ext.versions = [
 		// Android
-		targetSdkVersion: 28,
-		minSdkVersion   : 21,
-		buildtools      : "28.0.3",
+		targetSdkVersion: 30,
+		minSdkVersion   : 23,
+		buildtools      : "30.0.3",
 
 		//Timber
-		timber          : "4.6.1",
+		timber          : "4.7.1",
 ]
+
+def localProperties = new Properties()
+try {
+	localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+} catch (Exception e) {
+	logger.warn("No Local Properties File Found!")
+}
 
 def versionMajor = 0
 def versionMinor = 3
 def versionPatch = 19
 
 android {
-	compileSdkVersion versions.targetSdkVersion
-	buildToolsVersion versions.buildtools
+	compileSdkVersion 30
+	buildToolsVersion "30.0.3"
 	defaultConfig {
 		applicationId "com.dimowner.airycompass"
-		minSdkVersion versions.minSdkVersion
-		targetSdkVersion versions.targetSdkVersion
-		versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
-		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+		minSdkVersion 23//versions.minSdkVersion
+		targetSdkVersion 30//versions.targetSdkVersion
+		versionCode 10//versionMajor * 10000 + versionMinor * 100 + versionPatch
+		versionName "10.0"//"${versionMajor}.${versionMinor}.${versionPatch}"
 //		vectorDrawables.useSupportLibrary = true
 	}
 
-	def keystorePropertiesFile = rootProject.file("keystore.properties")
-	def keystoreProperties = new Properties()
-	keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+//	def keystorePropertiesFile = rootProject.file("keystore.properties")
+//	def keystoreProperties = new Properties()
+//	keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 	signingConfigs {
 		dev {
-			storeFile file(keystoreProperties['storeFile'])
-			storePassword keystoreProperties['storePassword']
-			keyAlias keystoreProperties['keyAlias']
-			keyPassword keystoreProperties['keyPassword']
+			storeFile file('key/debug/debug.keystore')
+			storePassword 'android'
+			keyAlias 'androiddebugkey'
+			keyPassword 'android'
 		}
-		release {
-			storeFile file(keystoreProperties['prodStoreFile'])
-			storePassword keystoreProperties['prodStorePassword']
-			keyAlias keystoreProperties['prodKeyAlias']
-			keyPassword keystoreProperties['prodKeyPassword']
-		}
+//		dev {
+//			storeFile file(keystoreProperties['storeFile'])
+//			storePassword keystoreProperties['storePassword']
+//			keyAlias keystoreProperties['keyAlias']
+//			keyPassword keystoreProperties['keyPassword']
+//		}
+//		release {
+//			storeFile file(keystoreProperties['prodStoreFile'])
+//			storePassword keystoreProperties['prodStorePassword']
+//			keyAlias keystoreProperties['prodKeyAlias']
+//			keyPassword keystoreProperties['prodKeyPassword']
+//		}
 	}
 
 	buildTypes {
 		release {
 			minifyEnabled true
 			shrinkResources true
-			useProguard true
+//			useProguard true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
 		debug {
@@ -75,21 +91,17 @@ android {
 			dimension "default"
 			applicationId "com.dimowner.airycompass.debug"
 			minSdkVersion versions.minSdkVersion
-			targetSdkVersion versions.targetSdkVersion
-			signingConfig = signingConfigs.dev
 		}
 		releaseConfig {
 			dimension "default"
-			signingConfig = signingConfigs.release
+			signingConfig = signingConfigs.dev
 			applicationId "com.dimowner.airycompass"
-			minSdkVersion versions.minSdkVersion
-			targetSdkVersion versions.targetSdkVersion
 		}
 	}
 
 	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_7
-		targetCompatibility JavaVersion.VERSION_1_7
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
 	}
 
 	lintOptions {
